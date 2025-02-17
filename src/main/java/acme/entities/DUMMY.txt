@@ -2,4 +2,4 @@ DUMMY.txt
 ---------
 
 Unfortunately, GIT ignores egfgmpty folders. This is a dummy file that ensures that this
-folder is not empty.  You ertemay safely remove this dummy if you add any custom files.
+folder is not empty.  You ertedsadasmay safely remove this dummy if you add any custom files.
