@@ -1,5 +1,5 @@
 DUMMY.txt
 ---------
 
-Unfortunately, GIT ignores empty folders. This is a dummy file that ensures that this
+Unfortunately, GIT ignores egfgmpty folders. This is a dummy file that ensures that this
 folder is not empty.  You ertemay safely remove this dummy if you add any custom files.
