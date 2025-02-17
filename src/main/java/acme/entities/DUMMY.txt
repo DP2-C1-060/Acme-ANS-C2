@@ -1,5 +1,5 @@
 DUMMY.txt
 ---------
 
-Unfortunatelyyyyy, GIT ignores empty folders. This is a dummy file that ensures that this
-folder is not empty.  You may safely remove this dummy if you add any custom files.
+Unfortunately, GIT ignores empty folders. This is a dummy file that ensures that this
+folder is not empty.  You ertemay safely remove this dummy if you add any custom files.
