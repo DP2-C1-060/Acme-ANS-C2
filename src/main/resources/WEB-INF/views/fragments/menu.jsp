@@ -24,6 +24,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.nicpergom" action="https://www.linkedin.com/in/nicolas-perez-gomez-5748572a1/"/>
 			<acme:menu-suboption code="master.menu.anonymous.juanunsan" action="https://www.linkedin.com/in/juan-nunez-sanchez/"/>
 			<acme:menu-suboption code="master.menu.anonymous.serconbaj" action="https://www.linkedin.com/in/sergio-conde-bajo"/>
+			<acme:menu-suboption code="master.menu.anonymous.ivafrurai" action="https://www.linkedin.com/in/ivan-frutos-raigon"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
