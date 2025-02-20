@@ -9,11 +9,8 @@
 # they accept any liabilities with respect to them.
 
 master.company.title = La empresa
-master.company.text = \
-	Acme One, S.A. es una empresa ficticia cuyo proyecto ayuda\
-	a los estudiantes de la asignatura Diseño y Pruebas 2\
-	a comenzar con la creacion de un proyecto. 
-master.company.name = Acme One, Inc.
-master.company.address = 01 Acme One Drive, Wondercity, Wonderland
+master.company.text = Acme ANS D01.
+master.company.name = Acme ANS D01.
+master.company.address = 01 Acme ANS D01 Drive, Wondercity, Wonderland
 master.company.phone = +1 000 111 222
 master.company.email = contact@acme.com

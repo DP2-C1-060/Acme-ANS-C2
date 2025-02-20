@@ -9,12 +9,9 @@
 # they accept any liabilities with respect to them.
 
 master.company.title = The company
-master.company.text = \
-	Acme One, Inc. is a fictitious company whose project helps \
-	the D&amp;T2 students get started with instantiating a \
-	Starter project.
-master.company.name = Acme One, Inc.
-master.company.address = 01 Acme One Drive, Wondercity, Wonderland
+master.company.text = Acme ANS D01.
+master.company.name = Acme ANS D01.
+master.company.address = 01 Acme ANS D01 Drive, Wondercity, Wonderland
 master.company.phone = +1 000 111 222
 master.company.email = contact@acme.com
 

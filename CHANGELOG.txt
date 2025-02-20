@@ -10,7 +10,7 @@
 
 ** Year 2025
 
-25.1.0	This is the first version of Acme One
+25.1.0	This is the version of Acme ANS D01
 
 ** Year 2024
 

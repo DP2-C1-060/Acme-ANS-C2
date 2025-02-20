@@ -9,7 +9,5 @@
 # they accept any liabilities with respect to them.
 
 master.welcome.title = ¡Bienvenidos!
-master.welcome.text = \
-	¡Acme One! Nunca antes había sido tan fácil iniciar un \
-	proyecto y hacerlo funcionar.
+master.welcome.text = Acme ANS D01
 ﻿
