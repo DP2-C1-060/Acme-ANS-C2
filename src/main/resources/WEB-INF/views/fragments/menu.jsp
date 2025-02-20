@@ -21,6 +21,7 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.javmunrom" action="https://www.linkedin.com/in/javier-mu%C3%B1oz-romero-a982391b9/"/>
+			<acme:menu-suboption code="master.menu.anonymous.nicpergom" action="https://www.linkedin.com/in/javier-mu%C3%B1oz-romero-a982391b9/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
