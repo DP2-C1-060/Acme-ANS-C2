@@ -23,6 +23,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.javmunrom" action="https://www.linkedin.com/in/javier-mu%C3%B1oz-romero-a982391b9/"/>
 			<acme:menu-suboption code="master.menu.anonymous.nicpergom" action="https://www.linkedin.com/in/nicolas-perez-gomez-5748572a1/"/>
 			<acme:menu-suboption code="master.menu.anonymous.juanunsan" action="https://www.linkedin.com/in/juan-nunez-sanchez/"/>
+			<acme:menu-suboption code="master.menu.anonymous.serconbaj" action="https://www.linkedin.com/in/sergio-conde-bajo"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
