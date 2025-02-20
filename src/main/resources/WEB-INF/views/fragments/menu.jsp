@@ -21,7 +21,7 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.javmunrom" action="https://www.linkedin.com/in/javier-mu%C3%B1oz-romero-a982391b9/"/>
-			<acme:menu-suboption code="master.menu.anonymous.nicpergom" action="https://www.linkedin.com/in/javier-mu%C3%B1oz-romero-a982391b9/"/>
+			<acme:menu-suboption code="master.menu.anonymous.nicpergom" action="https://www.linkedin.com/in/nicolas-perez-gomez-5748572a1/"/>
 			<acme:menu-suboption code="master.menu.anonymous.juanunsan" action="https://www.linkedin.com/in/juan-nunez-sanchez/"/>
 		</acme:menu-option>
 
