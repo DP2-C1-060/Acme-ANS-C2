@@ -12,6 +12,8 @@
 
 25.1.0	This is the version of Acme ANS D01
 
+25.2.0	This is the version of Acme ANS D02
+
 ** Year 2024
 
 24.1.0	Upgraded to the new version of the Acme framework.
