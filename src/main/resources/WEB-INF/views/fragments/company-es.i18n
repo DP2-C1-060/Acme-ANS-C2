@@ -9,8 +9,8 @@
 # they accept any liabilities with respect to them.
 
 master.company.title = La empresa
-master.company.text = Acme ANS D01.
-master.company.name = Acme ANS D01.
-master.company.address = 01 Acme ANS D01 Drive, Wondercity, Wonderland
+master.company.text = Acme ANS D02.
+master.company.name = Acme ANS D02.
+master.company.address = 01 Acme ANS D02 Drive, Wondercity, Wonderland
 master.company.phone = +1 000 111 222
 master.company.email = contact@acme.com
