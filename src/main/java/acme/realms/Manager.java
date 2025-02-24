@@ -3,17 +3,18 @@ package acme.realms;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
-
 import acme.client.components.basis.AbstractRole;
+import acme.client.components.mappings.Automapped;
+import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,25 +23,30 @@ import lombok.Setter;
 @Setter
 public class Manager extends AbstractRole {
 
-	// Serialisation identifier -----------------------------------------------
+	// Serialisation version --------------------------------------------------
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-	@NotBlank
+	@Mandatory
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
+	@Column(unique = true)
+	@Automapped
 	private String				identifier;
 
-	@NotNull
-	private Integer				yearsExperience;
+	@Mandatory
+	@Automapped
+	private int					yearsOfExperience;
 
-	@NotNull
-	@Past
-	@Min(0)
+	@Mandatory
+	@ValidMoment
+	@Temporal(TemporalType.DATE)
+	@Automapped
 	private Date				dateOfBirth;
 
-	@URL
-	@Length(max = 255)
+	@Optional
+	@ValidUrl
+	@Automapped
 	private String				pictureUrl;
 
 }
