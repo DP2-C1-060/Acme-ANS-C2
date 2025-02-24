@@ -1,0 +1,4 @@
+key,key:userAccount,identifier,yearsOfExperience,dateOfBirth,pictureUrl
+manager-01,user-account-manager-01,MG123456,10,2000/05/20 10:00,http://example.com/manager1.jpg
+manager-02,user-account-manager-02,MN654321,15,2000/10/15 10:00,http://example.com/manager2.jpg
+manager-03,user-account-manager-03,MT000001,5,2000/03/10 10:00,

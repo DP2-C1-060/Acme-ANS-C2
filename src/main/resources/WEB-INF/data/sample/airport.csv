@@ -1,0 +1,11 @@
+key,code,name,city
+airport-01,ATL,"Hartsfield-Jackson Atlanta International","Atlanta"
+airport-02,LAX,"Los Angeles International","Los Angeles"
+airport-03,ORD,"O'Hare International","Chicago"
+airport-04,DFW,"Dallas/Fort Worth International","Dallas"
+airport-05,JFK,"John F. Kennedy International","New York"
+airport-06,SFO,"San Francisco International","San Francisco"
+airport-07,SEA,"Seattle-Tacoma International","Seattle"
+airport-08,MIA,"Miami International","Miami"
+airport-09,YYZ,"Toronto Pearson International","Toronto"
+airport-10,LHR,"Heathrow","London"
