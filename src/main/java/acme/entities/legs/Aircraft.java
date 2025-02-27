@@ -3,7 +3,6 @@ package acme.entities.legs;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -23,7 +22,6 @@ public class Aircraft extends AbstractEntity {
 	@Mandatory
 	private String				model;
 
-	@NotNull
 	@Automapped
 	@Mandatory
 	private Integer				capacity;
