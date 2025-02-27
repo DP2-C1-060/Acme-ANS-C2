@@ -28,7 +28,6 @@ import org.hibernate.validator.constraints.Length;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {})
 @ReportAsSingleViolation
-
 @NotBlank
 @Length(min = 1, max = 75)
 
