@@ -54,6 +54,10 @@ public class Flight extends AbstractEntity {
 	@Column(length = 255)
 	private String				description;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 	// Derived attributes -----------------------------------------------------
 
 
