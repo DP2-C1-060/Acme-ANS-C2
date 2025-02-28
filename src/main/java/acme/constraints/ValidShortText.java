@@ -30,7 +30,7 @@ import org.hibernate.validator.constraints.Length;
 @ReportAsSingleViolation
 
 @NotBlank
-@Length(min = 1, max = 75)
+@Length(min = 1, max = 50)
 
 public @interface ValidShortText {
 
