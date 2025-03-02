@@ -15,7 +15,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.constraints.ValidLongText;
-import acme.entities.legs.Airport;
+import acme.entities.airport.Airport;
 import lombok.Getter;
 import lombok.Setter;
 

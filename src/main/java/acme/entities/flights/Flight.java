@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -105,6 +106,7 @@ public class Flight extends AbstractEntity {
 
 
 	@Mandatory
+	@Valid
 	@ManyToOne(optional = false)
 	private Manager manager;
 }
