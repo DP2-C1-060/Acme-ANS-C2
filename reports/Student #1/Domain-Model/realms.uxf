@@ -89,11 +89,14 @@
             &lt;/coordinates&gt;
             &lt;panel_attributes&gt;
                 Manager
+                &lt;&lt;Entity&gt;&gt;
+                &lt;&lt;Getter&gt;&gt;
+                &lt;&lt;Setter&gt;&gt;
                 --
-                - identifier: String
-                - yearsOfExperience: int
-                - dateOfBirth: Date
-                - pictureUrl: String
+                - identifier: String [@Mandatory, @Column(unique=true), @ValidString(pattern="^[A-Z]{2,3}\\d{6}$"), @Automapped]
+                - yearsOfExperience: int [@Mandatory, @ValidNumber(min=0, max=70), @Automapped]
+                - dateOfBirth: Date [@Mandatory, @ValidDateOfBirth, @Temporal(TemporalType.DATE), @Automapped, @ValidMoment(past=true)]
+                - pictureUrl: String [@Optional, @ValidUrl, @Automapped]
             &lt;/panel_attributes&gt;
         &lt;/element&gt;
         
@@ -193,8 +196,25 @@
         &lt;/element&gt;
     &lt;/elements&gt;
 &lt;/umlet&gt;
-
-
 </help_text>
   <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>50</y>
+      <w>590</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Manager
+--
++ identifier: String {Mandatory, ValidString(pattern = "^[A-Z]{2,3}\\d{6}$"), Automapped}
++ yearsOfExperience: int {Mandatory, ValidNumber(min = 0, max = 70), Automapped}
++ dateOfBirth: Date {Mandatory, ValidDateOfBirth, ValidMoment(past = true), Automapped}
++ pictureUrl: String {Optional, ValidUrl, Automapped}
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>
