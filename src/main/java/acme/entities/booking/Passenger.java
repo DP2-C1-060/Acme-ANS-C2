@@ -47,13 +47,13 @@ public class Passenger extends AbstractEntity {
 
 	@Mandatory
 	@ValidMoment(past = true)
-	@Temporal(TemporalType.DATE)
-	private Date				datoOfBrith;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				dateOfBirth;
 
 	@Optional
 	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				especialNeeds;
+	private String				specialNeeds;
 
 	// Derived attributes -----------------------------------------------------
 
