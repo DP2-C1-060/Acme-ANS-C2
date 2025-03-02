@@ -1,11 +1,11 @@
-key,code,name,city
-airport-01,ATL,"Hartsfield-Jackson Atlanta International","Atlanta"
-airport-02,LAX,"Los Angeles International","Los Angeles"
-airport-03,ORD,"O'Hare International","Chicago"
-airport-04,DFW,"Dallas/Fort Worth International","Dallas"
-airport-05,JFK,"John F. Kennedy International","New York"
-airport-06,SFO,"San Francisco International","San Francisco"
-airport-07,SEA,"Seattle-Tacoma International","Seattle"
-airport-08,MIA,"Miami International","Miami"
-airport-09,YYZ,"Toronto Pearson International","Toronto"
-airport-10,LHR,"Heathrow","London"
+key,name,iataCode,operationalScope,city,country,website,email,contactPhone
+airport-01,"Hartsfield-Jackson Atlanta International",ATL,INTERNATIONAL,Atlanta,USA,https://www.atl.com,info@atl.com,+14047554222
+airport-02,"Los Angeles",LAX,DOMESTIC,Los Angeles,USA,https://www.flylax.com,info@flylax.com,+13106468000
+airport-03,"O'Hare International",ORD,INTERNATIONAL,Chicago,USA,https://www.flychicago.com/ohare,info@flychicago.com,+17736864500
+airport-04,"Dallas/Fort Worth International",DFW,INTERNATIONAL,Dallas,USA,https://www.dfwairport.com,info@dfwairport.com,+19729739999
+airport-05,"John F. Kennedy",JFK,REGIONAL,New York,USA,https://www.jfkairport.com,info@jfkairport.com,+17182448000
+airport-06,"San Francisco",SFO,REGIONAL,San Francisco,USA,https://www.flysfo.com,info@flysfo.com,+16508214100
+airport-07,"Seattle-Tacoma",SEA,DOMESTIC,Seattle,USA,https://www.portseattle.org/sea-tac,info@portseattle.org,+12067873778
+airport-08,"Miami International",MIA,INTERNATIONAL,Miami,USA,https://www.miami-airport.com,info@miami-airport.com,+13058767600
+airport-09,"Toronto Pearson International",YYZ,INTERNATIONAL,Toronto,Canada,https://www.torontopearson.com,info@torontopearson.com,+19056763200
+airport-10,"Heathrow",LHR,INTERNATIONAL,London,UK,https://www.heathrow.com,info@heathrow.com,+442087457711
