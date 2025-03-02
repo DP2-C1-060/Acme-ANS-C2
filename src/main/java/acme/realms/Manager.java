@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -15,6 +14,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidDateOfBirth;
 import lombok.Getter;
@@ -31,8 +31,8 @@ public class Manager extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Automapped
 	private String				identifier;
 
