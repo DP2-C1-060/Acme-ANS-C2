@@ -8,13 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Pattern;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import acme.constraints.ValidShortText;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
@@ -36,7 +37,7 @@ public class Leg extends AbstractEntity {
 	@ValidShortText
 	@Automapped
 	@Column(unique = true)
-	@Pattern(regexp = "^[A-Z]{2}\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{2}\\d{4}$")
 	private String				flightNumber;
 
 	@Mandatory
@@ -68,17 +69,21 @@ public class Leg extends AbstractEntity {
 
 	@Mandatory
 	@ManyToOne(optional = false)
+	@Valid
 	private Airport				departureAirport;
 
 	@Mandatory
 	@ManyToOne(optional = false)
+	@Valid
 	private Airport				arrivalAirport;
 
 	@Mandatory
 	@ManyToOne(optional = false)
+	@Valid
 	private Aircraft			aircraft;
 
 	@Mandatory
 	@ManyToOne(optional = false)
+	@Valid
 	private Flight				flight;
 }
