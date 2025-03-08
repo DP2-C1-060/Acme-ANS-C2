@@ -1,0 +1,45 @@
+key,name,moment,subject,text,score,recommended
+review-01,Mary,2024/09/01 08:00,Excellent Service,The airport staff was very friendly and helpful.,9.5,true
+review-02,Leo,2024/09/02 12:30,Long Delay,My flight was delayed for 3 hours with no explanation.,4.0,false
+review-03,George,2024/09/03 15:45,Spotless Airport,The airport was extremely clean and well maintained.,10.0,true
+review-04,Anna,2024/09/04 09:20,Unfriendly Employees,Customer service at check-in was rude and unhelpful.,3.0,false
+review-05,David,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-06,L,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-07,Lo,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-08,"Lorem ipsum dolor sit amet,consectetur adipiscin",2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-09,"Lorem ipsum dolor sit amet,consectetur adipiscing",2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-10,โลเร็ม อิปซัม,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-11,لوريم إيبسوم,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-12,洛伦·伊普森,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-13,<marquee>Hacked</marquee>,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-14,<script>alert(‘Hacked!’);</script>,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-15,' or 'A' = 'A,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-16,David,2024/09/10 16:25,L,The seats on my flight were too close together.,3.5,false
+review-17,David,2024/09/10 16:25,Lo,The seats on my flight were too close together.,3.5,false
+review-18,David,2024/09/10 16:25,"Lorem ipsum dolor sit amet,consectetur adipiscin",The seats on my flight were too close together.,3.5,false
+review-19,David,2024/09/10 16:25,"Lorem ipsum dolor sit amet,consectetur adipiscing",The seats on my flight were too close together.,3.5,false
+review-20,David,2024/09/10 16:25,โลเร็ม อิปซัม,The seats on my flight were too close together.,3.5,false
+review-21,David,2024/09/10 16:25,لوريم إيبسوم,The seats on my flight were too close together.,3.5,false
+review-22,David,2024/09/10 16:25,洛伦·伊普森,The seats on my flight were too close together.,3.5,false
+review-23,David,2024/09/10 16:25,<marquee>Hacked</marquee>,The seats on my flight were too close together.,3.5,false
+review-24,David,2024/09/10 16:25,<script>alert(‘Hacked!’);</script>,The seats on my flight were too close together.,3.5,false
+review-25,David,2024/09/10 16:25,' or 'A' = 'A,The seats on my flight were too close together.,3.5,false
+review-26,David,2024/09/10 16:25,Cramped Legroom,L,3.5,false
+review-27,David,2024/09/10 16:25,Cramped Legroom,Lo,3.5,false
+review-28,David,2024/09/10 16:25,Cramped Legroom,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",3.5,false
+review-29,David,2024/09/10 16:25,Cramped Legroom,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",3.5,false
+review-30,David,2024/09/10 16:25,Cramped Legroom,โลเร็ม อิปซัม,3.5,false
+review-31,David,2024/09/10 16:25,Cramped Legroom,لوريم إيبسوم,3.5,false
+review-32,David,2024/09/10 16:25,Cramped Legroom,洛伦·伊普森,3.5,false
+review-33,David,2024/09/10 16:25,Cramped Legroom,<marquee>Hacked</marquee>,3.5,false
+review-34,David,2024/09/10 16:25,Cramped Legroom,<script>alert(‘Hacked!’);</script>,3.5,false
+review-35,David,2024/09/10 16:25,Cramped Legroom,' or 'A' = 'A,3.5,false
+review-36,David,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,0.00,false
+review-37,David,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,0.01,false
+review-38,David,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,9.99,false
+review-39,David,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,10.00,false
+review-40,David,2000/01/01 0:00,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-41,David,2000/01/01 0:01,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-42,David,2024/12/31 23:59,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-43,David,2025/01/01 00:00,Cramped Legroom,The seats on my flight were too close together.,3.5,false
+review-44,David,2024/09/10 16:25,Cramped Legroom,The seats on my flight were too close together.,3.5,""
