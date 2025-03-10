@@ -11,3 +11,8 @@
 acme.validation.header.message  	= Must have from 1 to 75 characters
 acme.validation.text.message   		= Must have from 1 to 255 characters
 acme.validation.dateofbirth.message = The date of birth must indicate an age between 18 and 100 years and must not be in the future.
+
+acme.validation.leg.dates.message = The scheduled arrival must be after the scheduled departure
+acme.validation.leg.airports.message = The departure and arrival airports must be different
+acme.validation.leg.prefix.message = The flight number prefix must match the airline's IATA code
+acme.validation.leg.number.message = The flight number already exists in the system (the last 4 digits must be unique)

@@ -3,7 +3,6 @@ package acme.entities.legs;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -17,6 +16,10 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidShortText;
+import acme.constraints.leg.ValidDistinctAirports;
+import acme.constraints.leg.ValidFlightNumberPrefix;
+import acme.constraints.leg.ValidScheduledDates;
+import acme.constraints.leg.ValidUniqueFlightNumberDigits;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.flights.Flight;
@@ -26,6 +29,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidUniqueFlightNumberDigits
+@ValidScheduledDates
+@ValidDistinctAirports
+@ValidFlightNumberPrefix
 public class Leg extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -36,8 +43,7 @@ public class Leg extends AbstractEntity {
 	@Mandatory
 	@ValidShortText
 	@Automapped
-	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2}\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
 	private String				flightNumber;
 
 	@Mandatory
@@ -53,9 +59,9 @@ public class Leg extends AbstractEntity {
 	private Date				scheduledArrival;
 
 	@Mandatory
-	@ValidNumber(min = 0.1, max = 24, integer = 2, fraction = 2)
 	@Automapped
-	private double				duration; // en horas
+	@ValidNumber(min = 1, max = 1000, integer = 4)
+	private Integer				duration; // en minutos
 
 	@Mandatory
 	@Automapped
