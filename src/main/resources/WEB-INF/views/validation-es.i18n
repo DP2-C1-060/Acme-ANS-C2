@@ -17,3 +17,4 @@ acme.validation.leg.dates.message  = La fecha de llegada debe ser posterior a la
 acme.validation.leg.airports.message = Los aeropuertos de salida y llegada deben ser distintos
 acme.validation.leg.prefix.message = El prefijo del número de vuelo debe coincidir con el código IATA de la aerolínea
 acme.validation.leg.number.message = El número de vuelo ya existe en el sistema (los últimos 4 dígitos deben ser únicos)
+acme.validation.activityLog.invalidLeg = El tramo de vuelo tiene que haber dado tiempo

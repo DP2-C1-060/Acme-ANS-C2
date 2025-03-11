@@ -16,3 +16,4 @@ acme.validation.leg.dates.message = The scheduled arrival must be after the sche
 acme.validation.leg.airports.message = The departure and arrival airports must be different
 acme.validation.leg.prefix.message = The flight number prefix must match the airline's IATA code
 acme.validation.leg.number.message = The flight number already exists in the system (the last 4 digits must be unique)
+acme.validation.activityLog.invalidLeg = The leg must have taken place
