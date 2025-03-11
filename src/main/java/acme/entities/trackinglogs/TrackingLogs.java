@@ -1,5 +1,5 @@
 
-package acme.entities.claim;
+package acme.entities.trackinglogs;
 
 import java.util.Date;
 
@@ -12,17 +12,19 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidScore;
 import acme.constraints.ValidLongText;
-import acme.realms.Agent;
+import acme.constraints.ValidShortText;
+import acme.entities.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Claim extends AbstractEntity {
+public class TrackingLogs extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
 	private static final long	serialVersionUID	= 1L;
@@ -33,33 +35,32 @@ public class Claim extends AbstractEntity {
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
-	private Date				registrationMoment;
+	private Date				lastUpdateMoment;
 
 	@Mandatory
-	@ValidEmail
+	@ValidShortText
 	@Automapped
-	private String				email;
+	private String				step;
 
 	@Mandatory
-	@ValidLongText
+	@ValidScore
 	@Automapped
-	private String				description;
-
-	@Mandatory
-	@Valid
-	@Automapped
-	private ClaimType			type;
+	private Double				resolutionPercentage;
 
 	@Mandatory
 	@Valid
 	@Automapped
 	private Boolean				accepted			= false;
 
+	@Optional
+	@ValidLongText
+	@Automapped
+	private String				resolution;
+
 	// Relationships ----------------------------------------------------------
 
 	@Mandatory
 	@ManyToOne(optional = false)
 	@Valid
-	private Agent				agent;
-
+	private Claim				claim;
 }
