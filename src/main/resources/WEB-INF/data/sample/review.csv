@@ -1,4 +1,4 @@
-key,name,moment,subject,text,score,recommended
+key,name,reviewMoment,subject,text,score,recommended
 review-01,Mary,2024/09/01 08:00,Excellent Service,The airport staff was very friendly and helpful.,9.5,true
 review-02,Leo,2024/09/02 12:30,Long Delay,My flight was delayed for 3 hours with no explanation.,4.0,false
 review-03,George,2024/09/03 15:45,Spotless Airport,The airport was extremely clean and well maintained.,10.0,true

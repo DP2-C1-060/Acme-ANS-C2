@@ -38,7 +38,7 @@ public class Review extends AbstractEntity {
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
-	private Date				moment;
+	private Date				reviewMoment;
 
 	@Mandatory
 	@ValidShortText
