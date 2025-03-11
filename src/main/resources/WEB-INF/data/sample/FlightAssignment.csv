@@ -1,0 +1,17 @@
+key,flightCrewDuty,lastUpdate,assignmentStatus,remarks,key:flightCrewMember,key:leg
+
+flight-assignment-01,PILOT,2024/03/10 14:00,CONFIRMED,"First pilot of the flight",flightCrewMember-01,leg-01
+flight-assignment-02,COPILOT,2024/03/10 14:05,CONFIRMED,"Second in command",flightCrewMember-02,leg-01
+flight-assignment-03,LEADATTENDANT,2024/03/10 14:10,CONFIRMED,"Ensuring passenger safety",flightCrewMember-03,leg-01
+flight-assignment-04,CABINATTENDANT,2024/03/10 14:15,CONFIRMED,"Assisting passengers and crew",flightCrewMember-04,leg-01
+flight-assignment-05,PILOT,2024/03/12 09:30,CONFIRMED,"Experienced captain leading the flight",flightCrewMember-01,leg-02
+flight-assignment-06,COPILOT,2024/03/12 09:35,CONFIRMED,"Supporting the captain in navigation",flightCrewMember-02,leg-02
+flight-assignment-07,LEADATTENDANT,2024/03/12 09:40,CONFIRMED,"Managing the cabin crew operations",flightCrewMember-03,leg-02
+flight-assignment-08,CABINATTENDANT,2024/03/12 09:45,CONFIRMED,"Helping passengers with their needs",flightCrewMember-04,leg-02
+flight-assignment-09,CABINATTENDANT,2024/03/13 08:15,CONFIRMED,"Assisting passengers and handling safety",flightCrewMember-03,leg-03
+flight-assignment-10,PILOT,2024/03/13 08:20,CONFIRMED,"Handling takeoff and landing",flightCrewMember-01,leg-03
+flight-assignment-11,COPILOT,2024/03/13 08:25,CONFIRMED,"Monitoring flight systems",flightCrewMember-02,leg-03
+flight-assignment-12,LEADATTENDANT,2024/03/13 08:30,CONFIRMED,"Overseeing in-flight service",flightCrewMember-03,leg-03
+flight-assignment-13,CABINATTENDANT,2024/03/14 07:50,CANCELLED,"Flight assignment canceled due to schedule changes",flightCrewMember-04,leg-04
+
+
