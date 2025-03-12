@@ -1,5 +1,5 @@
 
-package acme.constraints;
+package acme.constraints.activityLog;
 
 import javax.validation.ConstraintValidatorContext;
 
