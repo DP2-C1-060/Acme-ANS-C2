@@ -29,3 +29,5 @@ acme.validation.activityLog.invalidLeg = The leg must have taken place
 
 acme.validation.constraints.NotNull.message = must not be null
 acme.validation.manager.experience.message = Years of experience exceed the allowed maximum based on the date of birth.
+acme.validation.past.message = FoundationDate must be in the past.
+acme.validation.phone.message = Phone must have between 6 and 15 digits.
