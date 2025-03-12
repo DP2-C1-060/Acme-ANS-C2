@@ -1,13 +1,13 @@
 key,name,iataCode,website,type,foundationDate,email,phone
-airline-01,Iberia,IBX,https://www.iberia.com,STANDARD,1927/06/28 10:00,contacto@iberia.com,+34123456789
-airline-02,Lufthansa,LHX,https://www.lufthansa.com,LUXURY,1953/01/06 10:00,support@lufthansa.com,+49891234567
-airline-03,Ryanair,RYX,https://www.ryanair.com,LOW_COST,1984/11/28 10:00,info@ryanair.com,+35312345678
-airline-04,Air France,AFX,https://www.airfrance.com,STANDARD,1933/10/07 10:00,service@airfrance.com,+33123456789
-airline-05,Emirates,EMX,https://www.emirates.com,LUXURY,1985/03/25 10:00,booking@emirates.com,+97160055555
-airline-06,JetSmart,JSX,https://www.jetsmart.com,LOW_COST,2017/04/10 10:00,help@jetsmart.com,+56987654321
-airline-07,Avianca,AVX,https://www.avianca.com,STANDARD,1919/12/05 10:00,contact@avianca.com,+57123456789
-airline-08,Qatar Airways,QAX,https://www.qatarairways.com,LUXURY,1993/11/22 10:00,info@qatarairways.com,+97412345678
-airline-09,FlyCheap,FCX,https://www.flycheap.com,LOW_COST,2020/08/15 10:00,support@flycheap.com,+44201234567
-airline-10,Azul Airlines,AZX,https://www.voeazul.com.br,STANDARD,2008/12/15 10:00,atendimento@azul.com.br,+55123456789
-airline-11,Nordic Air,NDX,https://www.nordicair.com,STANDARD,2001/05/14 10:00,support@nordicair.com,+4687654321
-airline-12,LuxAir Exclusive,LXX,https://www.luxairex.com,LUXURY,2010/07/23 10:00,vip@luxairex.com,+33678901234
+airline-01,Lorem ipsum dolor sit amet,IBX,ftp://a,STANDARD,1927/06/28 10:00,contacto@iberia.com,+34123456789
+airline-02,L,LHX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",LUXURY,1953/01/06 10:00,support@lufthansa.com,+49891234567
+airline-03,Lo,RYX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",LOW_COST,1984/11/28 10:00,info@ryanair.com,+35312345678
+airline-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",AFX,"ftp://www.lorem-ipsum.org",STANDARD,1933/10/07 10:00,service@airfrance.com,+33123456789
+airline-05,"Lorem ipsum dolor sit amet, consectetur adipiscin",EMX,"http://www.lorem-ipsum.org/dolor/sit.html#dolor",LUXURY,1985/03/25 10:00,booking@emirates.com,+97160055555
+airline-06,โลเร็ม อิปซัม,JSX,"http://example.org?a=1&b=2",LOW_COST,2017/04/10 10:00,help@jetsmart.com,+56987654321
+airline-07,لوريم إيبسوم,AVX,"http://example.org?a&b",STANDARD,1919/12/05 10:00,contact@avianca.com,+57123456789
+airline-08,洛伦·伊普森,QAX,"http://example.org/",LUXURY,1993/11/22 10:00,info@qatarairways.com,+97412345678
+airline-09,<marquee>Hacked</marquee>,FCX,"http://example.org/a",LOW_COST,2020/08/15 10:00,support@flycheap.com,+44201234567
+airline-10,<script>alert(‘Hacked!’);</script>,AZX,"http://example.org/a/b",STANDARD,2008/12/15 10:00,atendimento@azul.com.br,+55123456789
+airline-11,' or 'A' = 'A ,NDX,"http://example.org/a/b?",STANDARD,2001/05/14 10:00,support@nordicair.com,+4687654321
+airline-12,' or 'A' = 'A ,YTX,"http://example.org/a/b?a&b",STANDARD,2001/05/14 10:00,support@nordicair.com,+4687654321
