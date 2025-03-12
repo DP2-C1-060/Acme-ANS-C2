@@ -25,6 +25,7 @@ acme.validation.flight.legs.order.message = Flight legs must be ordered chronolo
 acme.validation.flight.published.message = Published flights must have at least one leg and no legs in draft mode
 acme.validation.flight.selftransfer.message = Self-transfer flights must have at least two legs
 
-
 acme.validation.activityLog.invalidLeg = The leg must have taken place
 
+acme.validation.constraints.NotNull.message = must not be null
+acme.validation.manager.experience.message = Years of experience exceed the allowed maximum based on the date of birth.

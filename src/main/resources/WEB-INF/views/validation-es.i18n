@@ -8,7 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-
 acme.validation.header.message = Debe tener entre 1 y 75 caracteres
 acme.validation.text.message = Debe tener entre 1 y 255 caracteres
 acme.validation.dateofbirth.message = La fecha de nacimiento debe indicar una edad entre 18 y 100 años y no puede estar en el futuro
@@ -27,3 +26,6 @@ acme.validation.flight.published.message = Los vuelos publicados deben tener al 
 acme.validation.flight.selftransfer.message = Los vuelos con auto-trasbordo deben tener al menos dos tramos
 
 acme.validation.activityLog.invalidLeg = El tramo de vuelo tiene que haber dado tiempo
+
+javax.validation.constraints.NotNull.message = no debe ser nulo
+acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento.

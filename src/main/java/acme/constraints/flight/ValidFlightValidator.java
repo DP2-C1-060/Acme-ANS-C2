@@ -28,6 +28,9 @@ class ValidFlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 	@Override
 	public boolean isValid(final Flight flight, final ConstraintValidatorContext context) {
+
+		assert context != null;
+
 		if (flight == null) {
 			super.state(context, false, "*", "acme.validation.flight.null.message");
 			return false;
@@ -41,7 +44,7 @@ class ValidFlightValidator extends AbstractValidator<ValidFlight, Flight> {
 				Leg previous = legs.get(i - 1);
 				Leg current = legs.get(i);
 				if (!current.getScheduledDeparture().after(previous.getScheduledArrival())) {
-					super.state(context, false, "legs", "acme.validation.flight.legs.order.message");
+					super.state(context, false, "*", "acme.validation.flight.legs.order.message");
 					break;
 				}
 			}
