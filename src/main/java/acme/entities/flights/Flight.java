@@ -15,12 +15,10 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
-import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
+import acme.constraints.ValidOptionalLongText;
 import acme.constraints.ValidShortText;
-import acme.constraints.flight.ValidFlightLegsOrder;
-import acme.constraints.flight.ValidPublishedFlight;
-import acme.constraints.flight.ValidSelfTransferFlight;
+import acme.constraints.flight.ValidFlight;
 import acme.entities.legs.Leg;
 import acme.realms.Manager;
 import lombok.Getter;
@@ -29,9 +27,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@ValidPublishedFlight
-@ValidSelfTransferFlight
-@ValidFlightLegsOrder
+@ValidFlight
 public class Flight extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -54,7 +50,7 @@ public class Flight extends AbstractEntity {
 	private Money				cost;
 
 	@Optional
-	@ValidString(max = 255)
+	@ValidOptionalLongText
 	@Automapped
 	private String				description;
 

@@ -12,11 +12,11 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidSelfTransferFlightValidator.class)
+@Constraint(validatedBy = ValidFlightValidator.class)
 @Documented
-public @interface ValidSelfTransferFlight {
+public @interface ValidFlight {
 
-	String message() default "{acme.validation.flight.selftransfer.message}";
+	String message() default "{acme.validation.flight.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

@@ -1,14 +1,14 @@
 key,tag,self-transfer,cost,description,key:manager,draftMode
-flight-01,"FASTEST FLIGHT",TRUE,EUR 150.00,"The fastest flight available. 速い",manager-01,false
-flight-02,"CHEAP & SAFE",FALSE,EUR 99.99,"Cheap flight with a 'special' discount. 💰✈️",manager-02,true
-flight-03,"𝑬𝒍 𝒇𝒂𝒔𝒕𝒆𝒔𝒕",TRUE,EUR 200.50,"El vuelo más rápido. ¡Oferta imperdible! 🏃‍♂️🔥",manager-02,false
-flight-04,"SECURE FLIGHT",FALSE,EUR 350.75,"<script>alert('Hacked');</script> ⚠️🛑",manager-01,true
-flight-05,"ULTRA COMFORT",TRUE,EUR 1000000.00,"No description available. 舒适",manager-02,false
-flight-06,"WORLDWIDE",FALSE,EUR 500.00,"International flight covering many destinations. 🌍✈️",manager-01,true
-flight-07,"SPECIAL: @#$%^&*()",TRUE,EUR 0.01,"Test edge case covering many destinations. 🎭🔍",manager-01,false
-flight-08,"ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890",FALSE,EUR 250.00,"Boundary tag length. 边界测试",manager-02,true
-flight-09,"NORMAL FLIGHT",TRUE,EUR 300.00,"Regular flight with standard services. ✈️",manager-01,false
-flight-10,"EDGE CASE: EMPTY DESCRIPTION",FALSE,EUR 120.00,"No description. ⚡",manager-02,true
-flight-11,"MINIMAL COST",TRUE,EUR 0.01,"Cost zero edge case. 💸",manager-01,false
+flight-01,"Lorem ipsum dolor sit ame",TRUE,GBP 150.00,"The fastest flight available. 速い",manager-01,false
+flight-02,"L",FALSE,EUR 99.99,"Cheap flight with a 'special' discount. 💰✈️",manager-02,true
+flight-03,"Lo",TRUE,EUR 200.50,"El vuelo más rápido. ¡Oferta imperdible! 🏃‍♂️🔥",manager-02,false
+flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",FALSE,EUR 350.75,"<script>alert('Hacked');</script> ⚠️🛑",manager-01,true
+flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,EUR 1000000.00,"No description available. 舒适",manager-02,false
+flight-06,"โลเร็ม อิปซัม",FALSE,EUR 500.00,"International flight covering many destinations. 🌍✈️",manager-01,true
+flight-07,"لوريم إيبسوم",TRUE,EUR 0.01,"Test edge case covering many destinations. 🎭🔍",manager-01,false
+flight-08,"洛伦·伊普森",FALSE,EUR 250.00,"Boundary tag length. 边界测试",manager-02,true
+flight-09,"<marquee>Hacked</marquee>",TRUE,EUR 300.00,"Regular flight with standard services. ✈️",manager-01,false
+flight-10,"<script>alert(‘Hacked!’);</script>",FALSE,EUR 120.00,"No description. ⚡",manager-02,true
+flight-11,"' or 'A' = 'A ",TRUE,EUR 0.01,"Cost zero edge case. 💸",manager-01,false
 flight-12,"MAXIMUM COST",FALSE,EUR 999999.99,"Testing upper cost boundary. ⬆️🔝",manager-02,true
 flight-13,"ECONOMY",TRUE,EUR 199.99,"Standard international flight with high demand. 经济舱",manager-01,false
