@@ -28,8 +28,10 @@ class ValidFlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 	@Override
 	public boolean isValid(final Flight flight, final ConstraintValidatorContext context) {
-		if (flight == null)
-			return true;
+		if (flight == null) {
+			super.state(context, false, "*", "acme.validation.flight.null.message");
+			return false;
+		}
 
 		List<Leg> legs = this.flightRepository.findLegsByFlightId(flight.getId());
 

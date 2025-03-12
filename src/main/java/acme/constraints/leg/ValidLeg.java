@@ -12,11 +12,11 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = FlightNumberPrefixValidator.class)
+@Constraint(validatedBy = ValidLegValidator.class)
 @Documented
-public @interface ValidFlightNumberPrefix {
+public @interface ValidLeg {
 
-	String message() default "{acme.validation.leg.prefix.message}";
+	String message() default "{acme.validation.leg.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
