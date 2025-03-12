@@ -9,18 +9,21 @@
 # they accept any liabilities with respect to them.
 
 
-acme.validation.header.message  	= Debe tener entre 1 y 75 caracteres
-acme.validation.text.message   		= Debe tener entre 1 y 255 caracteres
+acme.validation.header.message = Debe tener entre 1 y 75 caracteres
+acme.validation.text.message = Debe tener entre 1 y 255 caracteres
 acme.validation.dateofbirth.message = La fecha de nacimiento debe indicar una edad entre 18 y 100 años y no puede estar en el futuro
 
-acme.validation.leg.dates.message  = La fecha de llegada debe ser posterior a la fecha de salida
+acme.validation.leg.message = El tramo contiene datos inválidos
+acme.validation.leg.dates.message = La fecha de llegada debe ser posterior a la fecha de salida
 acme.validation.leg.airports.message = Los aeropuertos de salida y llegada deben ser distintos
 acme.validation.leg.prefix.message = El prefijo del número de vuelo debe coincidir con el código IATA de la aerolínea
 acme.validation.leg.number.message = El número de vuelo ya existe en el sistema (los últimos 4 dígitos deben ser únicos)
+acme.validation.leg.flight.number.message = El número de vuelo debe constar de tres letras mayúsculas seguidas de cuatro dígitos (por ejemplo, "ABC1234").
 
+acme.validation.flight.null.message = El vuelo no debe ser nulo
+acme.validation.flight.message = El vuelo contiene datos inválidos
 acme.validation.flight.legs.order.message = Los tramos del vuelo deben estar ordenados cronológicamente sin solapamientos
 acme.validation.flight.published.message = Los vuelos publicados deben tener al menos un tramo y ningún tramo en modo borrador
 acme.validation.flight.selftransfer.message = Los vuelos con auto-trasbordo deben tener al menos dos tramos
 
 acme.validation.activityLog.invalidLeg = El tramo de vuelo tiene que haber dado tiempo
-
