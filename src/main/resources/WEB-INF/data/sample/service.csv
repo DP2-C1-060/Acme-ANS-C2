@@ -1,0 +1,48 @@
+key,name,picture,averageDwellTime,promotionCode,money
+service-00,"Lorem ipsum dolor sit ame",https://example.com/restaurant.jpg,1.5,FOOD-25,EUR 5.00
+service-01,"L",https://example.com/packages.jpg,1.00,PACK-30,EUR 10.00
+service-02,"Lo",https://example.com/duttyfree.jpg,2.0,PARF-45,EUR 15.00
+service-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",https://example.com/taxis.jpg,1.0,TAXI-10,EUR 0.00
+service-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",https://example.com/machine.jpg,1.0,MACH-20,EUR 20.00
+service-06,"โลเร็ม อิปซัม",https://example.com/wifi.jpg,3.0,PCPE-10,EUR 5.00
+service-07,"لوريم إيبسوم",https://example.com/wifi.jpg,3.0,MSKM-10,EUR 5.00
+service-08,"洛伦·伊普森",https://example.com/wifi.jpg,3.0,PWIE-10,EUR 5.00
+service-09,"<marquee>Hacked</marquee>",https://example.com/wifi.jpg,3.0,AJHD-10,EUR 5.00
+service-10,"<script>alert(‘Hacked!’);</script>",https://example.com/wifi.jpg,3.0,ZBSE-10,EUR 5.00
+service-11,"' or 'A' = 'A","https://example.com/eijr.jpg",3.0,LKAE-10,EUR 5.00
+
+service-12,"Lorem ipsum dolor sit ame","http://lorem.com/ipsum",3.0,PORT-10,EUR 5.00
+service-13,"Lorem ipsum dolor sit ame","ftp://a",3.0,JRKT-10,EUR 5.00
+service-14,"Lorem ipsum dolor sit ame","ftp://a.b",3.0,KRTM-10,EUR 5.00
+service-15,"Lorem ipsum dolor sit ame","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",3.0,KRMT-10,EUR 5.00
+service-16,"Lorem ipsum dolor sit ame","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",3.0,RPRN-10,EUR 5.00
+service-17,"Lorem ipsum dolor sit ame","https://www.lorem-ipsum.org",3.0,SJDN-10,EUR 5.00
+service-18,"Lorem ipsum dolor sit ame","http://www.lorem-ipsum.org/dolor/sit.html",3.0,EJNN-10,EUR 5.00
+service-19,"Lorem ipsum dolor sit ame","http://www.lorem-ipsum.org/dolor/sit.html#dolor",3.0,WIBE-10,EUR 5.00
+service-20,"Lorem ipsum dolor sit ame","http://example.org?a=1&b=2",3.0,JENR-10,EUR 5.00
+service-21,"Lorem ipsum dolor sit ame","http://example.org?",3.0,KERN-10,EUR 5.00
+service-22,"Lorem ipsum dolor sit ame","http://example.org?a",3.0,QLKW-10,EUR 5.00
+service-23,"Lorem ipsum dolor sit ame","http://example.org?a&b",3.0,WEIK-10,EUR 5.00
+service-24,"Lorem ipsum dolor sit ame","http://example.org/",3.0,MAIE-10,EUR 5.00
+service-25,"Lorem ipsum dolor sit ame","http://example.org/a",3.0,SNER-10,EUR 5.00
+service-26,"Lorem ipsum dolor sit ame","http://example.org/a/b",3.0,AKJS-10,EUR 5.00
+service-27,"Lorem ipsum dolor sit ame","http://example.org/a/b?",3.0,AMSN-10,EUR 5.00
+service-28,"Lorem ipsum dolor sit ame","http://example.org/a/b?a&b",3.0,AWKW-10,EUR 5.00
+service-29,"Lorem ipsum dolor sit ame","http://example.org/a/b?a&b",3.0,SDPL-10,EUR 5.00
+service-30,"Lorem ipsum dolor sit ame","http://example.org/a/b?a&b",3.0,AUER-10,EUR 5.00
+
+service-31,"Lorem ipsum dolor sit ame","http://example.org/a/b?a&b",3.0,JSKD-10,EUR 500000.00
+service-32,"Lorem ipsum dolor sit ame","http://example.org/a/b?a&b",3.0,LSKE-10,EUR 0.00
+service-33,"Lorem ipsum dolor sit ame","http://example.org/a/b?a&b",3.0,SBDS-10,EUR 0.01
+service-34,"Lorem ipsum dolor sit ame","http://example.org/a/b?a&b",3.0,MSEN-10,EUR 999999.99
+service-35,"Lorem ipsum dolor sit ame","http://example.org/a/b?a&b",3.0,SOIE-10,EUR 1000000.00
+
+
+
+
+
+
+
+
+
+
