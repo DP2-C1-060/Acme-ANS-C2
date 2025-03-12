@@ -1,5 +1,5 @@
 
-package acme.entities.booking;
+package acme.entities.trackinglogs;
 
 import java.util.Date;
 
@@ -13,55 +13,54 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidScore;
+import acme.constraints.ValidOptionalLongText;
+import acme.constraints.ValidShortText;
+import acme.entities.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Passenger extends AbstractEntity {
+public class TrackingLogs extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
-
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(min = 1, max = 255)
-	@Automapped
-	private String				fullName;
-
-	@Mandatory
-	@ValidEmail
-	@Automapped
-	private String				email;
-
-	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
-	@Automapped
-	private String				passportNumber;
-
-	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				dateOfBirth;
+	@Automapped
+	private Date				lastUpdateMoment;
+
+	@Mandatory
+	@ValidShortText
+	@Automapped
+	private String				step;
+
+	@Mandatory
+	@ValidScore
+	@Automapped
+	private Double				resolutionPercentage;
+
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				accepted			= false;
 
 	@Optional
-	@ValidString(min = 1, max = 50)
+	@ValidOptionalLongText
 	@Automapped
-	private String				specialNeeds;
-
-	// Derived attributes -----------------------------------------------------
+	private String				resolution;
 
 	// Relationships ----------------------------------------------------------
 
 	@Mandatory
+	@ManyToOne(optional = false)
 	@Valid
-	@ManyToOne
-	private Booking				booking;
-
+	private Claim				claim;
 }

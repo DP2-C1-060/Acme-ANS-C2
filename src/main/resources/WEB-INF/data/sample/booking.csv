@@ -1,0 +1,26 @@
+key,locatorCode,purchaseMoment,travelClass,price,lastNibble,key:customer,key:flight
+booking-01,9L9751V,2021/10/10 01:19,BUSINESS,3884.69 EUR,8727,customer-01,flight-01
+booking-02,JJ9A04XR,2021/11/10 05:43,BUSINESS,51.82 GBP,,customer-01,flight-02
+booking-03,9VVMARO,2020/08/11 23:58,BUSINESS,4980.98 USD,,customer-01,flight-02
+booking-04,7P9FD81X,2021/09/05 14:26,ECONOMY,2217.06 GBP,,customer-01,flight-02
+booking-05,0C8CYFT,2020/01/14 16:38,ECONOMY,0.01 EUR,,customer-01,flight-01
+booking-06,AY78EWQ,2021/12/21 05:24,BUSINESS,134.68 EUR,9610,customer-02,flight-01
+booking-07,RMBX3RZN,2021/09/17 00:39,ECONOMY,3936.29 EUR,,customer-01,flight-13
+booking-08,GHR3ME,2021/10/10 20:12,BUSINESS,1259.48 USD,4285,customer-01,flight-11
+booking-09,Y4H852U,2020/11/02 20:51,ECONOMY,1322.48 USD,7992,customer-01,flight-12
+booking-10,3RG0B7F2,2021/12/26 05:42,ECONOMY,1335.0 GBP,,customer-01,flight-10
+booking-11,OR3WFVRW,2021/01/30 19:47,BUSINESS,3821.41 USD,,customer-02,flight-09
+booking-12,G5P09PL,2021/03/29 13:42,BUSINESS,2612.35 USD,,customer-02,flight-08
+booking-13,IPOL89,2021/01/18 20:53,ECONOMY,676.25 USD,2545,customer-02,flight-07
+booking-14,ANRN8QI,2021/07/18 02:01,ECONOMY,408.3 EUR,,customer-02,flight-02
+booking-15,0ZXNZS,2021/12/20 11:50,ECONOMY,362.69 USD,,customer-01,flight-01
+booking-16,PSDNTX4,2020/07/21 09:46,BUSINESS,3718.4 USD,,customer-02,flight-01
+booking-17,V2IAJ8HH,2017/11/29 00:33,BUSINESS,3163.56 USD,,customer-01,flight-01
+booking-18,2A8USS5,2021/11/01 22:03,ECONOMY,3414.7 EUR,,customer-01,flight-01
+booking-19,HZ9GWPW,2020/07/01 03:15,BUSINESS,4314.37 USD,,customer-02,flight-06
+booking-20,7HW4FF22,2019/08/22 08:06,BUSINESS,4649.37 USD,6528,customer-01,flight-05
+booking-21,JBISYN,2021/01/02 09:35,BUSINESS,0.01 EUR,,customer-01,flight-04
+booking-22,UDS5QPX,2021/02/10 09:52,ECONOMY,0.01 GBP,5346,customer-02,flight-03
+booking-23,5NOCLIB,2021/03/13 23:50,ECONOMY,2511.19 USD,3538,customer-01,flight-02
+booking-24,9ODRSJA8,2021/07/09 04:25,BUSINESS,2221.66 USD,,customer-01,flight-02
+booking-25,SKNTI5,2021/11/10 16:06,BUSINESS,2790.91 GBP,2207,customer-01,flight-02

@@ -16,8 +16,9 @@ import org.hibernate.validator.constraints.Length;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {})
 @ReportAsSingleViolation
-@Length(min = 1, max = 255)
-public @interface ValidLongText {
+@Length(max = 255)
+
+public @interface ValidOptionalLongText {
 
 	// Standard validation properties -----------------------------------------
 

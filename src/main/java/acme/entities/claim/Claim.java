@@ -1,5 +1,5 @@
 
-package acme.entities.booking;
+package acme.entities.claim;
 
 import java.util.Date;
 
@@ -12,28 +12,28 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidString;
+import acme.constraints.ValidOptionalLongText;
+import acme.realms.Agent;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Passenger extends AbstractEntity {
+public class Claim extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
-
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(min = 1, max = 255)
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Automapped
-	private String				fullName;
+	private Date				registrationMoment;
 
 	@Mandatory
 	@ValidEmail
@@ -41,27 +41,25 @@ public class Passenger extends AbstractEntity {
 	private String				email;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
+	@ValidOptionalLongText
 	@Automapped
-	private String				passportNumber;
+	private String				description;
 
 	@Mandatory
-	@ValidMoment(past = true)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				dateOfBirth;
-
-	@Optional
-	@ValidString(min = 1, max = 50)
+	@Valid
 	@Automapped
-	private String				specialNeeds;
+	private ClaimType			type;
 
-	// Derived attributes -----------------------------------------------------
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				accepted			= false;
 
 	// Relationships ----------------------------------------------------------
 
 	@Mandatory
+	@ManyToOne(optional = false)
 	@Valid
-	@ManyToOne
-	private Booking				booking;
+	private Agent				agent;
 
 }
