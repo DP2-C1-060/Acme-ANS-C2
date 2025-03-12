@@ -14,7 +14,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.constraints.ValidLongText;
+import acme.constraints.ValidOptionalLongText;
 import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
@@ -46,7 +46,7 @@ public class Review extends AbstractEntity {
 	private String				subject;
 
 	@Mandatory
-	@ValidLongText
+	@ValidOptionalLongText
 	@Automapped
 	private String				text;
 

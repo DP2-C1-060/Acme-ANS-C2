@@ -1,5 +1,5 @@
 
-package acme.constraints.leg;
+package acme.constraints.activityLog;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,11 +11,13 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = UniqueFlightNumberDigitsValidator.class)
-public @interface ValidUniqueFlightNumberDigits {
+@Constraint(validatedBy = ActivityLogValidator.class)
 
-	String message() default "{acme.validation.leg.number.message}";
+public @interface ValidActivityLog {
+
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
+
 }

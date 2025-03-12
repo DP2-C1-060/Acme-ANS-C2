@@ -1,0 +1,23 @@
+key,flightCrewDuty,lastUpdate,assignmentStatus,remarks,key:flightCrewMember,key:leg
+
+flightAssignment-01,PILOT,2012/07/02 0:00,CONFIRMED,"First pilot of the flight",flightCrewMember-01,leg-01
+flightAssignment-02,COPILOT,2000/01/01 0:00,CONFIRMED,"Second in command",flightCrewMember-02,leg-01
+flightAssignment-03,LEADATTENDANT,2000/01/01 0:01,CONFIRMED,"Ensuring passenger safety",flightCrewMember-03,leg-01
+flightAssignment-04,CABINATTENDANT,2024/12/31 23:59,CONFIRMED,"Assisting passengers and crew",flightCrewMember-04,leg-01
+flightAssignment-05,PILOT,2025/01/01 0:00,CONFIRMED,"Experienced captain leading the flight",flightCrewMember-01,leg-02
+flightAssignment-06,COPILOT,2024/03/12 09:35,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flightCrewMember-02,leg-02
+
+
+flightAssignment-07,COPILOT,2024/03/12 09:35,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",flightCrewMember-02,leg-02
+flightAssignment-08,LEADATTENDANT,2024/03/12 09:40,CONFIRMED,"L",flightCrewMember-03,leg-02
+flightAssignment-09,CABINATTENDANT,2024/03/12 09:45,CONFIRMED,"Lo",flightCrewMember-04,leg-02
+flightAssignment-10,CABINATTENDANT,2024/03/13 08:15,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",flightCrewMember-03,leg-03
+flightAssignment-11,PILOT,2024/03/13 08:20,CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",flightCrewMember-01,leg-03
+
+
+
+flightAssignment-13,COPILOT,2024/03/13 08:25,CONFIRMED,"Monitoring flight systems",flightCrewMember-02,leg-03
+flightAssignment-14,LEADATTENDANT,2024/03/13 08:30,CONFIRMED,"Overseeing in-flight service",flightCrewMember-03,leg-03
+flightAssignment-15,CABINATTENDANT,2024/03/14 07:50,CANCELLED,"Flight assignment canceled due to schedule changes",flightCrewMember-04,leg-04
+
+

@@ -15,7 +15,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.constraints.ValidLongText;
+import acme.constraints.ValidOptionalLongText;
 import acme.entities.airport.Airport;
 import lombok.Getter;
 import lombok.Setter;
@@ -80,6 +80,6 @@ public class WeatherConditions extends AbstractEntity {
 	private Float				precipProbability;
 
 	@Optional
-	@ValidLongText
+	@ValidOptionalLongText
 	private String				conditions;
 }
