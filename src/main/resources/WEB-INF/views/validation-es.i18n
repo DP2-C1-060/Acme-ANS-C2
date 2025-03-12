@@ -29,3 +29,5 @@ acme.validation.activityLog.invalidLeg = El tramo de vuelo tiene que haber dado 
 
 javax.validation.constraints.NotNull.message = no debe ser nulo
 acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento.
+acme.validation.past.message = La fecha de fundacion debe ser uan fecha pasada.
+acme.validation.phone.message = El numero de telefono debe tener entre 6 y 15 digitos.
