@@ -1,0 +1,15 @@
+key,key:userAccount,licenseNumber,phoneNumber,specialization,passedHealthTest,yearsOfExperience,certifications
+technician-01,user-account-technician-01,AV987654,987654321,Inspección de aeronaves,true,35,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+technician-02,user-account-technician-02,AER123456,123456789,Aviónica aeronáutica,true,0,""
+technician-03,user-account-technician-01,XYZ987654,543210987,Lorem ipsum dolor sit ame,true,1,"L"
+technician-04,user-account-technician-01,XYZ987654,543210987,L,true,69,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+technician-05,user-account-technician-01,XYZ987654,543210987,Lo,true,70,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+technician-06,user-account-technician-01,XYZ987654,543210987,"Lorem ipsum dolor sit amet, consectetur adipiscing",true,15,"โลเร็ม อิปซัม"
+technician-07,user-account-technician-01,XYZ987654,543210987,โลเร็ม อิปซัม,true,2,"لوريم إيبسوم"
+technician-08,user-account-technician-01,XYZ987654,543210987,لوريم إيبسوم,true,25,"洛伦·伊普森"
+technician-09,user-account-technician-01,XYZ987654,543210987,洛伦·伊普森,true,63,"<marquee>Hacked</marquee>"
+technician-010,user-account-technician-01,XYZ987654,543210987,<marquee>Hacked</marquee>,true,0,"<script>alert(‘Hacked!’);</script>"
+technician-011,user-account-technician-01,AV987654,987654321,<script>alert(‘Hacked!’);</script>,true,1,"' or 'A' = 'A "
+technician-012,user-account-technician-02,AER123456,123456789,' or 'A' = 'A,true,30,""
+technician-013,user-account-technician-02,AER123456,123456789,Aviónica aeronáutica,false,1,Licencia EASA B1
+technician-014,user-account-technician-02,AER123456,123456789,Aviónica aeronáutica,true,3,Licencia EASA B1

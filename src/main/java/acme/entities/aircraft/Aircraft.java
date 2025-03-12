@@ -62,4 +62,5 @@ public class Aircraft extends AbstractEntity {
 	@Valid
 	@Automapped
 	private Airline				airline;
+
 }
