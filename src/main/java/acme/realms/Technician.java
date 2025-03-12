@@ -8,7 +8,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidLongText;
+import acme.constraints.ValidOptionalLongText;
 import acme.constraints.ValidPhone;
 import acme.constraints.ValidShortText;
 import acme.constraints.ValidYearsOfExperience;
@@ -49,7 +49,7 @@ public class Technician extends AbstractRole {
 	private Integer				yearsOfExperience;
 
 	@Optional
-	@ValidLongText
+	@ValidOptionalLongText
 	@Automapped
 	private String				certifications;
 }
