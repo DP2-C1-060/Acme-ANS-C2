@@ -18,11 +18,14 @@ public class ValidDateOfBirthValidator implements ConstraintValidator<ValidDateO
 	public boolean isValid(final Date dateOfBirth, final ConstraintValidatorContext context) {
 		if (dateOfBirth == null)
 			return false;
+
 		LocalDate birthDate = dateOfBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		LocalDate today = LocalDate.now();
 
-		int age = today.getYear() - birthDate.getYear();
+		if (!birthDate.isBefore(today))
+			return false;
 
+		int age = today.getYear() - birthDate.getYear();
 		if (birthDate.plusYears(age).isAfter(today))
 			age--;
 

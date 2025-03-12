@@ -24,6 +24,9 @@ class ValidLegValidator extends AbstractValidator<ValidLeg, Leg> {
 
 	@Override
 	public boolean isValid(final Leg leg, final ConstraintValidatorContext context) {
+
+		assert context != null;
+
 		if (leg == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
