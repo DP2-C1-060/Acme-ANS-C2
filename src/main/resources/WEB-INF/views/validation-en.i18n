@@ -16,4 +16,11 @@ acme.validation.leg.dates.message = The scheduled arrival must be after the sche
 acme.validation.leg.airports.message = The departure and arrival airports must be different
 acme.validation.leg.prefix.message = The flight number prefix must match the airline's IATA code
 acme.validation.leg.number.message = The flight number already exists in the system (the last 4 digits must be unique)
+
+
+acme.validation.flight.legs.order.message = Flight legs must be ordered chronologically without overlaps
+acme.validation.flight.published.message = Published flights must have at least one leg and no legs in draft mode
+acme.validation.flight.selftransfer.message = Self-transfer flights must have at least two legs
+
 acme.validation.activityLog.invalidLeg = The leg must have taken place
+
