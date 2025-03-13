@@ -1,5 +1,5 @@
 
-package acme.realms;
+package acme.realms.agent;
 
 import java.util.Date;
 
@@ -19,7 +19,9 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidLongText;
 import acme.constraints.ValidOptionalLongText;
+import acme.constraints.agent.ValidAgent;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +29,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidAgent
 public class Agent extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
@@ -38,17 +41,16 @@ public class Agent extends AbstractRole {
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
-	private String				identifier;
+	private String				employeeCode;
 
 	@Mandatory
+	@ValidLongText
 	@Automapped
-	@ValidOptionalLongText
 	private String				languages;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	@Automapped
 	private Date				workStartMoment;
 
 	@Optional
@@ -69,7 +71,7 @@ public class Agent extends AbstractRole {
 	// Relationships ----------------------------------------------------------
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
+	@ManyToOne(optional = false)
 	private Airline				airline;
 }
