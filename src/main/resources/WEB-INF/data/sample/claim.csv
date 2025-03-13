@@ -4,7 +4,7 @@ claim-02,2024/12/03 09:15,ana.lopez@example.com,"El pasajero expresa su desconte
 claim-03,2024/12/03 10:05,carlos.gomez@example.com,"El pasajero fue sometido a un control de seguridad excesivamente riguroso y poco justificado, causando una experiencia incómoda.",SECURITY_INCIDENT,true,agent-02
 claim-04,2024/12/03 11:20,maria.fernandez@example.com,"El pasajero reporta un maltrato por parte del personal de abordo, quien fue grosero y poco servicial durante el vuelo.",OTHER_ISSUES,false,agent-02
 claim-05,2024/12/03 12:10,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
-# registrationMoment (la fecha minima es el workStartMoment del agent + delta)
+# registrationMoment (la fecha minima es el workStartMoment del agent + delta),""
 claim-06,2024/11/23 08:01,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
 claim-07,2024/11/23 08:02,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
 claim-08,2024/12/31 23:59,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
@@ -18,5 +18,10 @@ claim-15,2024/12/03 12:10,luis.rodriguez@example.com,โลเร็ม อิ�
 claim-16,2024/12/03 12:10,luis.rodriguez@example.com,لوريم إيبسوم,FLIGHT_ISSUES,true,agent-02
 claim-17,2024/12/03 12:10,luis.rodriguez@example.com,洛伦·伊普森,FLIGHT_ISSUES,true,agent-02
 claim-18,2024/12/03 12:10,luis.rodriguez@example.com,<marquee>Hacked</marquee>,FLIGHT_ISSUES,true,agent-02
-claim-19,2024/12/03 12:10,luis.rodriguez@example.com,<script>alert(‘Hacked!’);</script>,FLIGHT_ISSUES,true,agent-02
-claim-20,2024/12/03 12:10,luis.rodriguez@example.com,' or 'A' = 'A,FLIGHT_ISSUES,true,agent-02
+claim-20,2024/12/03 12:10,luis.rodriguez@example.com,<script>alert(‘Hacked!’);</script>,FLIGHT_ISSUES,true,agent-02
+claim-21,2024/12/03 12:10,luis.rodriguez@example.com,' or 'A' = 'A,FLIGHT_ISSUES,true,agent-02
+claim-22,2024/12/03 12:10,a@b.e,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
+claim-23,2024/12/03 12:10,a@b.es,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
+claim-24,2024/12/03 12:10,a@b.esx,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
+claim-25,2024/12/03 12:10,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
+claim-26,2024/12/03 12:10,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02
