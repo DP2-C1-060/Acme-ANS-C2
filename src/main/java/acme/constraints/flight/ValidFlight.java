@@ -16,7 +16,7 @@ import javax.validation.Payload;
 @Documented
 public @interface ValidFlight {
 
-	String message() default "{acme.validation.flight.message}";
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

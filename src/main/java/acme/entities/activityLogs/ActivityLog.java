@@ -41,7 +41,7 @@ public class ActivityLog extends AbstractEntity {
 	private String				typeOfIndicent;
 
 	@Mandatory
-	@ValidString
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				description;
 

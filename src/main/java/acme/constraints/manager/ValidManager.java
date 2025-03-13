@@ -1,5 +1,5 @@
 
-package acme.constraints.leg;
+package acme.constraints.manager;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -12,12 +12,13 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidLegValidator.class)
+@Constraint(validatedBy = ValidManagerValidator.class)
 @Documented
-public @interface ValidLeg {
+public @interface ValidManager {
 
-	String message() default "";
+	String message() default "{}";
 
 	Class<?>[] groups() default {};
+
 	Class<? extends Payload>[] payload() default {};
 }

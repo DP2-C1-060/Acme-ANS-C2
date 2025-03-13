@@ -1,7 +1,6 @@
 
-package acme.constraints.manager;
+package acme.constraints.agent;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,13 +11,12 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidManagerExperienceValidator.class)
-@Documented
-public @interface ValidManagerExperience {
+@Constraint(validatedBy = AgentValidator.class)
+public @interface ValidAgent {
 
-	String message() default "{acme.validation.manager.experience.message}";
+	String message() default "";
 
 	Class<?>[] groups() default {};
-
 	Class<? extends Payload>[] payload() default {};
+
 }
