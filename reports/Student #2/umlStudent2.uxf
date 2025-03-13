@@ -113,42 +113,30 @@ bg=BLUE</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>318</x>
-      <y>582</y>
-      <w>198</w>
-      <h>66</h>
+      <x>294</x>
+      <y>522</y>
+      <w>270</w>
+      <h>108</h>
     </coordinates>
-    <panel_attributes>Recommendation
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Recommendations
 --
-+ name: String
-+ description: String
-+ recommendationType: RecommendationType
-
++ amadeusId: String {Optional, ValidString(min = 1, max = 50), Column(unique = false)}
++ name: String {Mandatory, ValidString(min = 1, max = 255)}
++ category: RecommendationCategory {Optional, Enumerated(EnumType.STRING)}
++ bookingLink: String {Optional, ValidString(min = 0, max = 512)}
++ pictures: String {Optional, ValidString(min = 0, max = 5000), Lob}
++ rating: Double {Optional, ValidNumber(min = 0, max = 5)}
++ latitude: Double {Optional, ValidNumber(min = -90, max = 90)}
++ longitude: Double {Optional, ValidNumber(min = -180, max = 180)}
 bg=BLUE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>318</x>
-      <y>492</y>
-      <w>174</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Form&gt;&gt;
-RecommendationsDashboard
---
-+city: String
-+country: String
-+recommendations: List&lt;Recommendation&gt;
-bg=CYAN</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>528</x>
-      <y>702</y>
+      <x>456</x>
+      <y>678</y>
       <w>90</w>
       <h>48</h>
     </coordinates>
@@ -197,19 +185,20 @@ belongs to</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>408</x>
-      <y>672</y>
+      <x>312</x>
+      <y>654</y>
       <w>108</w>
       <h>78</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
-RecommendationType
+RecommendationCategory
 --
 EXPERIENCE
 ACTIVITY
 RESTAURANT
-ACOMMODATION
+ACCOMMODATION
 OTHER
+
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
