@@ -30,12 +30,9 @@ acme.validation.activityLog.invalidLeg = The leg must have taken place
 acme.validation.agent.duplicated.message = The employee code must be unique
 acme.validation.agent.employeecode.message = The first two letters must match the agent's initials
 acme.validation.agent.workStartMoment.message = The date work began at the airline must be after its founding date
+acme.validation.claim.registrationMoment.message = The claim registration date must be after the date the agent started working at the airline
 
 acme.validation.constraints.NotNull.message = must not be null
-
-acme.validation.manager.experience.message = Years of experience exceed the allowed maximum based on the date of birth
-acme.validation.manager.age.tooYoung = The minimum age to work is 16 years.
-acme.validation.manager.identifier.invalid = The identifier must start with the first letter of the name and the first letter of the surname
-
+acme.validation.manager.experience.message = Years of experience exceed the allowed maximum based on the date of birth.
 acme.validation.past.message = FoundationDate must be in the past.
 acme.validation.phone.message = Phone must have between 6 and 15 digits.
