@@ -3,6 +3,7 @@ package acme.entities.airport;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -11,6 +12,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidPhone;
 import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,11 +35,11 @@ public class Airport extends AbstractEntity {
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{3}$")
 	@Column(unique = true)
-	@Automapped
 	private String				iataCode;
 
 	@Mandatory
 	@Automapped
+	@Valid
 	private OperationalScope	operationalScope;
 
 	@Mandatory
@@ -61,7 +63,7 @@ public class Airport extends AbstractEntity {
 	private String				email;
 
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhone
 	@Automapped
 	private String				contactPhone;
 

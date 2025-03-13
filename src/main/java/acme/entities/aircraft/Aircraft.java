@@ -35,12 +35,11 @@ public class Aircraft extends AbstractEntity {
 	@Mandatory
 	@ValidShortText
 	@Column(unique = true)
-	@Automapped
 	private String				registrationNumber;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 1)
+	@Automapped
 	private Integer				capacity;
 
 	@Mandatory
@@ -49,6 +48,7 @@ public class Aircraft extends AbstractEntity {
 	private Double				cargoWeight;
 
 	@Mandatory
+	@Valid
 	@Automapped
 	private AircraftStatus		status;
 
@@ -58,9 +58,8 @@ public class Aircraft extends AbstractEntity {
 	private String				details;
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
-	@Automapped
+	@ManyToOne(optional = false)
 	private Airline				airline;
 
 }
