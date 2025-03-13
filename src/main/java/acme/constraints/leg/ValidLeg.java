@@ -16,7 +16,7 @@ import javax.validation.Payload;
 @Documented
 public @interface ValidLeg {
 
-	String message() default "{acme.validation.leg.message}";
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
