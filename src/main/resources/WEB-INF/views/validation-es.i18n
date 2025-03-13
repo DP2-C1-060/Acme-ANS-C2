@@ -24,5 +24,6 @@ acme.validation.flight.selftransfer.message = Los vuelos con auto-trasbordo debe
 
 acme.validation.activityLog.invalidLeg = El tramo de vuelo tiene que haber dado tiempo
 
+acme.validation.agent.duplicated.message = El código de empleado debe ser único
 acme.validation.agent.employeecode.message = Las dos primeras letras deben corresponder a las iniciales del agente
 acme.validation.agent.workStartMoment.message = La fecha en la que se comenzó a trabajar en la aerolínea debe ser posterior a su fecha de fundación

@@ -39,7 +39,7 @@ public class AgentValidator extends AbstractValidator<ValidAgent, Agent> {
 				existingAgent = this.repository.findAgentByEmployeeCode(agent.getEmployeeCode());
 				uniqueAgent = existingAgent == null || existingAgent.equals(agent);
 
-				super.state(context, uniqueAgent, "employeeCode", "acme.validation.job.duplicated-employeeCode.message");
+				super.state(context, uniqueAgent, "employeeCode", "acme.validation.agent.duplicated.message");
 			}
 			{
 				boolean matchingCode;
