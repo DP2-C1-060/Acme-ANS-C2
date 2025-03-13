@@ -20,7 +20,7 @@ import acme.constraints.ValidOptionalLongText;
 import acme.constraints.ValidShortText;
 import acme.constraints.flight.ValidFlight;
 import acme.entities.legs.Leg;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
 import lombok.Getter;
 import lombok.Setter;
 

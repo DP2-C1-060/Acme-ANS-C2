@@ -50,12 +50,12 @@ public class Booking extends AbstractEntity {
 	private TravelClass			travelClass;
 
 	@Mandatory
-	@ValidMoney
+	@ValidMoney(min = 0.01, max = 1000000)
 	@Automapped
 	private Money				price;
 
 	@Optional
-	@ValidString(pattern = "\\d{4}$")
+	@ValidString(min = 4, max = 4, pattern = "[0-9]{4}")
 	@Automapped
 	private String				lastNibble;
 

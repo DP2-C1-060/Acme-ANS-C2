@@ -47,12 +47,20 @@ class ValidLegValidator extends AbstractValidator<ValidLeg, Leg> {
 				super.state(context, validDates, "scheduledArrival", "acme.validation.leg.dates.message");
 			}
 
+			// Validación existente basada en los últimos cuatro dígitos del flightNumber
 			if (leg.getFlightNumber() != null && leg.getFlightNumber().length() >= 7) {
 				String flightNumber = leg.getFlightNumber();
 				String lastFourDigits = flightNumber.substring(3);
 				Leg existingLeg = this.legRepository.findLegByLastFourDigits(lastFourDigits);
 				boolean unique = existingLeg == null || existingLeg.equals(leg);
 				super.state(context, unique, "flightNumber", "acme.validation.leg.number.message");
+			}
+
+			// Nueva validación: flightNumber debe ser único en su totalidad
+			if (leg.getFlightNumber() != null) {
+				Leg existingLegByFlightNumber = this.legRepository.findLegByFlightNumber(leg.getFlightNumber());
+				boolean uniqueFlightNumber = existingLegByFlightNumber == null || existingLegByFlightNumber.equals(leg);
+				super.state(context, uniqueFlightNumber, "flightNumber", "acme.validation.leg.uniqueFlightNumber.message");
 			}
 		}
 		return !super.hasErrors(context);
