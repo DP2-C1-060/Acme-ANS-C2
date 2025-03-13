@@ -38,7 +38,7 @@ public class CrewMemberValidator extends AbstractValidator<ValidCrewMember, Flig
 				existingAgent = this.repository.findFlightCrewMemberByEmployeeCode(member.getEmployeeCode());
 				uniqueAgent = existingAgent == null || existingAgent.equals(member);
 
-				super.state(context, uniqueAgent, "employeeCode", "acme.validation.agent.duplicated.message");
+				super.state(context, uniqueAgent, "employeeCode", "acme.validation.member.duplicated.message");
 			}
 			{
 				boolean matchingCode;
@@ -49,7 +49,7 @@ public class CrewMemberValidator extends AbstractValidator<ValidCrewMember, Flig
 
 				matchingCode = Objects.equals(employeeCodePrefix, employeeFirstInitial + employeeSecondInitial);
 
-				super.state(context, matchingCode, "employeeCode", "acme.validation.agent.employeecode.message");
+				super.state(context, matchingCode, "employeeCode", "acme.validation.member.employeecode.message");
 			}
 		}
 

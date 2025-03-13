@@ -14,7 +14,8 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
-import acme.constraints.ValidOptionalLongText;
+import acme.constraints.ValidLongText;
+import acme.constraints.claim.ValidRegistrationMoment;
 import acme.realms.agent.Agent;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidRegistrationMoment
 public class Claim extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -32,7 +34,6 @@ public class Claim extends AbstractEntity {
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	@Automapped
 	private Date				registrationMoment;
 
 	@Mandatory
@@ -41,7 +42,7 @@ public class Claim extends AbstractEntity {
 	private String				email;
 
 	@Mandatory
-	@ValidOptionalLongText
+	@ValidLongText
 	@Automapped
 	private String				description;
 
@@ -51,9 +52,8 @@ public class Claim extends AbstractEntity {
 	private ClaimType			type;
 
 	@Mandatory
-	@Valid
 	@Automapped
-	private Boolean				accepted			= false;
+	private boolean				accepted;
 
 	// Relationships ----------------------------------------------------------
 
