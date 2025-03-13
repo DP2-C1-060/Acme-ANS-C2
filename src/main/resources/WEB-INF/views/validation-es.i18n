@@ -19,6 +19,7 @@ acme.validation.leg.prefix.message = El prefijo del número de vuelo debe coinci
 acme.validation.leg.number.message = El número de vuelo ya existe en el sistema (los últimos 4 dígitos deben ser únicos)
 acme.validation.leg.flight.number.message = El número de vuelo debe constar de tres letras mayúsculas seguidas de cuatro dígitos (por ejemplo, "ABC1234").
 acme.validation.leg.uniqueFlightNumber.message = El número de vuelo debe ser único
+acme.validation.leg.airline.mismatch.message = El manager y el avión deben pertenecer a la misma aerolínea.
 
 acme.validation.flight.null.message = El vuelo no debe ser nulo
 acme.validation.flight.message = El vuelo contiene datos inválidos
