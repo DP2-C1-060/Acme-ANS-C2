@@ -5,7 +5,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
@@ -14,6 +13,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.client.components.validation.ValidUrl;
 import acme.entities.airport.Airport;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,12 +39,11 @@ public class Recommendations extends AbstractEntity {
 	private RecommendationCategory	category;
 
 	@Optional
-	@ValidString(min = 0, max = 512)
+	@ValidUrl
 	private String					bookingLink;
 
 	@Optional
-	@ValidString(min = 0, max = 5000)
-	@Lob
+	@ValidUrl
 	private String					pictures;
 
 	@Optional
