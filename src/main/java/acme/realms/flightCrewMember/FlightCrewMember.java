@@ -45,8 +45,8 @@ public class FlightCrewMember extends AbstractRole {
 	private String				languageSkills;
 
 	@Mandatory
-	@Automapped
 	@Valid
+	@Automapped
 	private AvailabilityStatus	availabilityStatus;
 
 	@Mandatory
