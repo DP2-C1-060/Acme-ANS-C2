@@ -42,3 +42,7 @@ acme.validation.manager.identifier.unique = The identifier must be unique
 acme.validation.past.message = FoundationDate must be in the past.
 acme.validation.phone.message = Phone must have between 6 and 15 digits.
 
+acme.validation.activityLogMoment.wrong.message = Registration moment must be after land.
+acme.validation.member.employeecode.message = Employee code is not like the pattern.
+acme.validation.member.duplicated.message = Employee code is duplicated.
+
