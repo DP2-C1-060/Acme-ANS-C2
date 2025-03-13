@@ -1,14 +1,14 @@
 key,tag,self-transfer,cost,description,key:manager,draftMode
 flight-01,"Lorem ipsum dolor sit ame",TRUE,EUR 500000.01,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01,FALSE
-flight-02,"L",FALSE,EUR 0.01,"",manager-02,TRUE
-flight-03,"Lo",TRUE,EUR 0.02,,manager-02,FALSE
+flight-02,"L",FALSE,EUR 0.01,"",manager-01,TRUE
+flight-03,"Lo",TRUE,EUR 0.02,,manager-01,FALSE
 flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",FALSE,EUR 999999.99,"L",manager-01,TRUE
-flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,EUR 1000000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager-02,FALSE
+flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",TRUE,EUR 1000000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager-01,FALSE
 flight-06,"โลเร็ม อิปซัม",FALSE,GBP 500.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",manager-01,TRUE
-flight-07,"لوريم إيبسوم",TRUE,USD 0.01,"โลเร็ม อิปซัม",manager-01,FALSE
+flight-07,"لوريم إيبسوم",TRUE,USD 0.01,"โลเร็ม อิปซัม",manager-02,FALSE
 flight-08,"洛伦·伊普森",FALSE,EUR 250.00,"لوريم إيبسوم",manager-02,TRUE
-flight-09,"<marquee>Hacked</marquee>",TRUE,EUR 300.00,"洛伦·伊普森",manager-01,FALSE
+flight-09,"<marquee>Hacked</marquee>",TRUE,EUR 300.00,"洛伦·伊普森",manager-02,FALSE
 flight-10,"<script>alert(‘Hacked!’);</script>",FALSE,EUR 120.00,"<marquee>Hacked</marquee>",manager-02,TRUE
-flight-11,"' or 'A' = 'A ",TRUE,EUR 0.01,"<script>alert(‘Hacked!’);</script>",manager-01,FALSE
+flight-11,"' or 'A' = 'A ",TRUE,EUR 0.01,"<script>alert(‘Hacked!’);</script>",manager-02,FALSE
 flight-12,"MAXIMUM COST",FALSE,EUR 999999.99,"' or 'A' = 'A ",manager-02,TRUE
-flight-13,"ECONOMY",TRUE,EUR 199.99,"Standard international flight with high demand. 经济舱",manager-01,FALSE
+flight-13,"ECONOMY",TRUE,EUR 199.99,"Standard international flight with high demand. 经济舱",manager-02,FALSE

@@ -19,6 +19,8 @@ acme.validation.leg.prefix.message = The flight number prefix must match the air
 acme.validation.leg.number.message = The flight number already exists in the system (the last 4 digits must be unique)
 acme.validation.leg.flight.number.message = The flight number must consist of three uppercase letters followed by four digits (e.g., "ABC1234").
 acme.validation.leg.uniqueFlightNumber.message = The flight number must be unique
+acme.validation.leg.airline.mismatch.message = The manager and the aircraft must belong to the same airline.
+
 
 acme.validation.flight.null.message = The flight must not be null
 acme.validation.flight.message = The flight contains invalid data
