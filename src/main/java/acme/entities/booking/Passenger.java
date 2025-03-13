@@ -14,12 +14,14 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.constraints.passenger.ValidPassportNumber;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidPassportNumber
 public class Passenger extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -39,7 +41,6 @@ public class Passenger extends AbstractEntity {
 	private String				email;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
 	@Automapped
 	private String				passportNumber;
 
