@@ -15,6 +15,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidPast;
 import acme.constraints.ValidPhone;
 import acme.constraints.ValidShortText;
 import lombok.Getter;
@@ -35,7 +36,7 @@ public class Airline extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2}X$")
+	@ValidString(pattern = "^[A-Z]{3}$")
 	@Column(unique = true)
 	private String				iataCode;
 
@@ -50,6 +51,7 @@ public class Airline extends AbstractEntity {
 
 	@Mandatory
 	@Temporal(TemporalType.DATE)
+	@ValidPast
 	private Date				foundationDate;
 
 	@Optional

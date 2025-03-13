@@ -18,7 +18,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = ValidPhone.PhoneNumberValidatorImpl.class)
 public @interface ValidPhone {
 
-	String message() default "El número de teléfono debe seguir el patrón: + seguido de 6 a 15 dígitos.";
+	String message() default "acme.validation.phone.message";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 
