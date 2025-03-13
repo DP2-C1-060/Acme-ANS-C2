@@ -25,6 +25,7 @@ acme.validation.flight.message = El vuelo contiene datos inválidos
 acme.validation.flight.legs.order.message = Los tramos del vuelo deben estar ordenados cronológicamente sin solapamientos
 acme.validation.flight.published.message = Los vuelos publicados deben tener al menos un tramo y ningún tramo en modo borrador
 acme.validation.flight.selftransfer.message = Los vuelos con auto-trasbordo deben tener al menos dos tramos
+acme.validation.flight.airports.different.message=El aeropuerto de salida del primer tramo y el aeropuerto de llegada del último tramo deben ser diferentes.
 
 acme.validation.activityLog.invalidLeg = El tramo de vuelo tiene que haber dado tiempo
 
