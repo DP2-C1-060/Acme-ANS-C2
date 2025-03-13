@@ -31,7 +31,10 @@ acme.validation.agent.duplicated.message = El código de empleado debe ser únic
 acme.validation.agent.employeecode.message = Las dos primeras letras deben corresponder a las iniciales del agente
 acme.validation.agent.workStartMoment.message = La fecha en la que se comenzó a trabajar en la aerolínea debe ser posterior a su fecha de fundación
 
-javax.validation.constraints.NotNull.message = no debe ser nulo
-acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento.
+acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento
+acme.validation.manager.age.tooYoung = La edad mínima para trabajar es de 16 años
+acme.validation.manager.identifier.invalid = El identificador debe comenzar con la primera letra del nombre y la primera letra del apellido
+
+
 acme.validation.past.message = La fecha de fundacion debe ser uan fecha pasada.
 acme.validation.phone.message = El numero de telefono debe tener entre 6 y 15 digitos

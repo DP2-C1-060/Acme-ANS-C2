@@ -12,11 +12,11 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidManagerExperienceValidator.class)
+@Constraint(validatedBy = ValidManagerValidator.class)
 @Documented
-public @interface ValidManagerExperience {
+public @interface ValidManager {
 
-	String message() default "{acme.validation.manager.experience.message}";
+	String message() default "{}";
 
 	Class<?>[] groups() default {};
 
