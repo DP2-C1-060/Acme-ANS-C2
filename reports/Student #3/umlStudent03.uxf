@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>685</x>
+      <y>350</y>
+      <w>405</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Leg
+--
++ flightNumber: String {Mandatory, ValidShortText, Automapped, Column(unique=true), ValidString(pattern = "^[A-Z]{2}\\d{4}$")}
++ scheduledDeparture: Date {Mandatory, ValidMoment, Temporal(TIMESTAMP), Automapped}
++ scheduledArrival: Date {Mandatory, ValidMoment, Temporal(TIMESTAMP), Automapped}
++ status: LegStatus {Mandatory, Automapped}
++ draftMode: boolean {Mandatory, Automapped}
+--
++ duration: double {Transient}
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>165</y>
+      <w>260</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+FlightAssignment
+--
++ flightCrewDuty: FlightCrewDuty {Mandatory, Valid, Automapped}
++ lastUpdate: Date {Mandatory, ValidMoment(past = true), Temporal(TIMESTAMP)}
++ assignmentStatus: AssignmentStatus {Mandatory, Valid, Automapped}
++ remarks: String {Optional, ValidOptionalLongText, Automapped}
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>160</y>
+      <w>275</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+ActivityLog
+--
++ registrationMoment: Date{Mandatory, ValidMoment(past = true), Temporal}
++ typeOfIncident: String{Mandatory, ValidString(min = 1, max = 50), Automapped}
++ description: String{Mandatory, ValidString(min = 1, max = 50), Automapped}
++ severityLevel: Integer {Mandatory, ValidNumber(min = 0, max = 10), Automapped}
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>350</y>
+      <w>345</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+FlightCrewMember
+--
++ employeeCode: String {Mandatory, ValidString(pattern = "^[A-Z]{2,3}\\d{6}$"), Column(unique = true)}
++ phoneNumber: String {Mandatory, ValidPhone, Automapped}
++ languageSkills: String {Mandatory, ValidLongText, Automapped}
++ availabilityStatus: AvailabilityStatus {Mandatory, Valid, Automapped}
++ salary: Money {Mandatory, ValidMoney(min = 1, max = 1000000), Automapped}
++ yearsExperience: Integer {Optional, ValidYearsOfExperience, Automapped}
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>155</y>
+      <w>295</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airline
+--
++ name: String {Mandatory, ValidShortText, Automapped}
++ iataCode: String {Mandatory, ValidString(pattern = "^[A-Z]{3}$"), Column(unique = true)}
++ webSite: String {Optional, ValidUrl, Automapped}
++ type: AirlineType {Mandatory, Automapped}
++ foundationDate: Date {Mandatory, ValidPast, Temporal(TemporalType.DATE)}
++ email: String {Optional, ValidEmail, Automapped}
++ phone: String {Optional, ValidPhone, Automapped}
+bg=green
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>225</x>
+      <y>15</y>
+      <w>80</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AvailabilityStatus
+--
++ AVAILABLE
++ ON_VACATION
++ ON_LEAVE
+bg=LIGHT_GRAY
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>365</x>
+      <y>80</y>
+      <w>80</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AssignmentStatus
+--
++ PILOT
++ COPILOT
++ LEADATTENDANT
++ CABINATTENDANT
+bg=LIGHT_GRAY
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>80</y>
+      <w>80</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidOptionalLongText
+--
++ Length(max=255)
+bg=RED
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>20</y>
+      <w>80</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidPhone
+--
++ Matches regex: ^\+?\d{6,15}$
+bg=RED
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>10</y>
+      <w>115</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidFlightActivityLog
+--
++ Leg must be landed
++ ActivityLog can´t be null
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>5</y>
+      <w>215</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidLeg
+--
++ Departure and arrival airports must be different
++ Flight number prefix must equal the airline's IATA code
++ Scheduled arrival must be after scheduled departure
++ Flight number must be unique (based on its last four digits)
++ The manager and the aircraft must belong to the same airline
+bg=RED
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>975</x>
+      <y>0</y>
+      <w>180</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+FlightCrewMember
+--
++ serialVersionUID: long
++ lastFiveDestinations: List&lt;String&gt;
++ legsWithLowSeverityIncidents: Integer
++ legsWithMediumSeverityIncidents: Integer
++ legsWithHighSeverityIncidents: Integer
++ lastLegCrewMembers: List&lt;String&gt;
++ flightAssignmentsByStatus: Map&lt;AvailabilityStatus, List&lt;String&gt;&gt;
++ avgFlightAssignmentsLastMonth: Double
++ minFlightAssignmentsLastMonth: Integer
++ maxFlightAssignmentsLastMonth: Integer
++ stdDevFlightAssignmentsLastMonth: Double
+bg=cyan
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>80</y>
+      <w>80</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AirLineType
+--
++ LUXURY
++ STANDARD
++ LOW_COST
+bg=LIGHT_GRAY
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>175</x>
+      <y>80</y>
+      <w>75</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+LegStatus
+--
++ ON_TIME
++ DELAYED
++ CANCELLED
++ LANDED
+bg=LIGHT_GRAY
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>15</y>
+      <w>80</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AssignmentStatus
+--
++ CONFIRMED
++ PENDING
++ CANCELLED
+bg=LIGHT_GRAY
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>510</x>
+      <y>20</y>
+      <w>80</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidLongText
+--
++ Length(max=255)
+bg=RED
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>230</y>
+      <w>20</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>220</y>
+      <w>20</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;260.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>655</x>
+      <y>220</y>
+      <w>175</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>320.0;10.0;320.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>90</y>
+      <w>20</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;260.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>220</y>
+      <w>285</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;260.0;520.0;160.0;550.0;10.0</additional_attributes>
+  </element>
+</diagram>
