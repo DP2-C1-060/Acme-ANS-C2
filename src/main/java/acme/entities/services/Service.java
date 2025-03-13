@@ -13,6 +13,7 @@ import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidPromoteCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,7 +44,7 @@ public class Service extends AbstractEntity {
 	private double				averageDwellTime;
 
 	@Optional
-	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
+	@ValidPromoteCode
 	@Column(unique = true)
 	private String				promotionCode;
 

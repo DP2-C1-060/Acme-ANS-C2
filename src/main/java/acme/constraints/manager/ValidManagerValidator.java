@@ -7,13 +7,20 @@ import java.util.Date;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.MomentHelper;
-import acme.realms.Manager;
+import acme.realms.manager.Manager;
+import acme.realms.manager.ManagerRepository;
 
 @Validator
 public class ValidManagerValidator extends AbstractValidator<ValidManager, Manager> {
+
+	@Autowired
+	private ManagerRepository managerRepository;
+
 
 	@Override
 	protected void initialise(final ValidManager annotation) {
@@ -35,6 +42,13 @@ public class ValidManagerValidator extends AbstractValidator<ValidManager, Manag
 			String expectedPrefix = name.substring(0, 1).toUpperCase() + surname.substring(0, 1).toUpperCase();
 			if (!identifier.substring(0, 2).equals(expectedPrefix))
 				super.state(context, false, "identifier", "acme.validation.manager.identifier.invalid");
+		}
+
+		// Nueva validación: el identifier debe ser único
+		if (identifier != null) {
+			Manager existingManager = this.managerRepository.findManagerByIdentifier(identifier);
+			boolean uniqueIdentifier = existingManager == null || existingManager.equals(manager);
+			super.state(context, uniqueIdentifier, "identifier", "acme.validation.manager.identifier.unique");
 		}
 
 		Date dob = manager.getDateOfBirth();

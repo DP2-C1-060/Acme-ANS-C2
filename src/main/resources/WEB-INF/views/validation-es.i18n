@@ -18,6 +18,7 @@ acme.validation.leg.airports.message = Los aeropuertos de salida y llegada deben
 acme.validation.leg.prefix.message = El prefijo del número de vuelo debe coincidir con el código IATA de la aerolínea
 acme.validation.leg.number.message = El número de vuelo ya existe en el sistema (los últimos 4 dígitos deben ser únicos)
 acme.validation.leg.flight.number.message = El número de vuelo debe constar de tres letras mayúsculas seguidas de cuatro dígitos (por ejemplo, "ABC1234").
+acme.validation.leg.uniqueFlightNumber.message = El número de vuelo debe ser único
 
 acme.validation.flight.null.message = El vuelo no debe ser nulo
 acme.validation.flight.message = El vuelo contiene datos inválidos
@@ -34,7 +35,8 @@ acme.validation.agent.workStartMoment.message = La fecha en la que se comenzó a
 acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento
 acme.validation.manager.age.tooYoung = La edad mínima para trabajar es de 16 años
 acme.validation.manager.identifier.invalid = El identificador debe comenzar con la primera letra del nombre y la primera letra del apellido
-
+acme.validation.manager.identifier.unique = El identificador debe ser único
 
 acme.validation.past.message = La fecha de fundacion debe ser uan fecha pasada.
 acme.validation.phone.message = El numero de telefono debe tener entre 6 y 15 digitos
+
