@@ -45,41 +45,51 @@ public class WeatherConditions extends AbstractEntity {
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				tempMax;
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				tempMin;
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				feelsLikeMax;
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				feelsLikeMin;
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				humidity;
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				windSpeed;
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				windGust;
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				windDirection;
 
 	@Optional
 	@ValidNumber
+	@Automapped
 	private Float				precipProbability;
 
 	@Optional
 	@ValidOptionalLongText
+	@Automapped
 	private String				conditions;
 }
