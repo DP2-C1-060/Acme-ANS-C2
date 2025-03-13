@@ -14,7 +14,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = AgentValidator.class)
 public @interface ValidAgent {
 
-	String message() default "{acme.validation.agent.code.message}";
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
