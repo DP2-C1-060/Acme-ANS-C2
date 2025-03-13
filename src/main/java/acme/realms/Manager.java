@@ -12,10 +12,10 @@ import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidDateOfBirth;
 import acme.constraints.manager.ValidManagerExperience;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,7 +42,7 @@ public class Manager extends AbstractRole {
 	private int					yearsOfExperience;
 
 	@Mandatory
-	@ValidDateOfBirth
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.DATE)
 	private Date				dateOfBirth;
 
