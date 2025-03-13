@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Past;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -16,6 +15,8 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidPast;
+import acme.constraints.ValidPhone;
 import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,9 +36,8 @@ public class Airline extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2}X$")
+	@ValidString(pattern = "^[A-Z]{3}$")
 	@Column(unique = true)
-	@Automapped
 	private String				iataCode;
 
 	@Optional
@@ -49,8 +49,9 @@ public class Airline extends AbstractEntity {
 	@Automapped
 	private AirLineType			type;
 
+	@Mandatory
 	@Temporal(TemporalType.DATE)
-	@Past(message = "La fecha de fundación debe estar en el pasado.")
+	@ValidPast
 	private Date				foundationDate;
 
 	@Optional
@@ -59,7 +60,7 @@ public class Airline extends AbstractEntity {
 	private String				email;
 
 	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhone
 	@Automapped
 	private String				phone;
 

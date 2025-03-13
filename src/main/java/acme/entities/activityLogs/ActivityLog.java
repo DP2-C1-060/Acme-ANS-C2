@@ -36,12 +36,12 @@ public class ActivityLog extends AbstractEntity {
 	private Date				registrationMoment;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				typeOfIndicent;
 
 	@Mandatory
-	@ValidString
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				description;
 
@@ -49,11 +49,6 @@ public class ActivityLog extends AbstractEntity {
 	@ValidNumber(min = 0, max = 10)
 	@Automapped
 	private Integer				severityLevel;
-
-	@Mandatory
-	@Valid
-	@Automapped
-	private Boolean				draftMode;
 
 	//Relationships ---------------------------------
 	@Mandatory

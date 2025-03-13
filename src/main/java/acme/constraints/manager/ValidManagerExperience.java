@@ -1,5 +1,5 @@
 
-package acme.constraints.leg;
+package acme.constraints.manager;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -12,12 +12,13 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = FlightNumberPrefixValidator.class)
+@Constraint(validatedBy = ValidManagerExperienceValidator.class)
 @Documented
-public @interface ValidFlightNumberPrefix {
+public @interface ValidManagerExperience {
 
-	String message() default "{acme.validation.leg.prefix.message}";
+	String message() default "{acme.validation.manager.experience.message}";
 
 	Class<?>[] groups() default {};
+
 	Class<? extends Payload>[] payload() default {};
 }

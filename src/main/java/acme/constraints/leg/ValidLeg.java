@@ -12,11 +12,11 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ScheduledDatesValidator.class)
+@Constraint(validatedBy = ValidLegValidator.class)
 @Documented
-public @interface ValidScheduledDates {
+public @interface ValidLeg {
 
-	String message() default "{acme.validation.leg.dates.message}";
+	String message() default "{acme.validation.leg.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
