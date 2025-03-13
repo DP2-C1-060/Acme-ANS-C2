@@ -50,8 +50,8 @@ public class Airline extends AbstractEntity {
 	private AirLineType			type;
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
 	@ValidPast
+	@Temporal(TemporalType.DATE)
 	private Date				foundationDate;
 
 	@Optional
