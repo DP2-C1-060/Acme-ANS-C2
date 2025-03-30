@@ -37,9 +37,9 @@ acme.validation.agent.workStartMoment.message = La fecha en la que se comenzó a
 
 acme.validation.claim.registrationMoment.message = La fecha de registro de la reclamación debe ser posterior a la fecha en la que el agente comenzó a trabajar en la aerolínea
 
-acme.validation.trackingLog.indicator.message = El estado debe ser coherente con el porcentaje de resolución: PENDING si es menor a 100%, ACCEPTED o REJECTED si es 100
-acme.validation.trackingLog.resolution.message = La resolución debe estar presente cuando el porcentaje de resolución sea 100%
-acme.validation.trackingLog.resolutionPercentage.message = El porcentaje debe ser mayor o igual al anterior
+acme.validation.log.indicator.message = El estado debe ser coherente con el porcentaje de resolución: PENDING si es menor a 100%, ACCEPTED o REJECTED si es 100
+acme.validation.log.resolution.message = La resolución debe estar presente cuando el porcentaje de resolución sea 100%
+acme.validation.log.resolutionPercentage.message = El porcentaje debe ser mayor o igual al anterior
 
 acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento
 acme.validation.manager.age.tooYoung = La edad mínima para trabajar es de 16 años
