@@ -1,5 +1,5 @@
 
-package acme.constraints.trackingLogs;
+package acme.constraints.log;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,8 +11,8 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = TrackingLogsValidator.class)
-public @interface ValidTrackingLogs {
+@Constraint(validatedBy = LogValidator.class)
+public @interface ValidLog {
 
 	String message() default "";
 

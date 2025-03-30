@@ -37,9 +37,9 @@ acme.validation.agent.workStartMoment.message = The date work began at the airli
 
 acme.validation.claim.registrationMoment.message = The claim registration date must be after the date the agent started working at the airline
 
-acme.validation.trackingLog.indicator.message = The status must be consistent with the resolution percentage: PENDING if it is less than 100%, ACCEPTED or REJECTED if it is 100%
-acme.validation.trackingLog.resolution.message = Resolution must be provided when the resolution percentage is 100%
-acme.validation.trackingLog.resolutionPercentage.message = The percentage must be greater than or equal to the previous one
+acme.validation.log.indicator.message = The status must be consistent with the resolution percentage: PENDING if it is less than 100%, ACCEPTED or REJECTED if it is 100%
+acme.validation.log.resolution.message = Resolution must be provided when the resolution percentage is 100%
+acme.validation.log.resolutionPercentage.message = The percentage must be greater than or equal to the previous one
 
 acme.validation.constraints.NotNull.message = must not be null
 
