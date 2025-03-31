@@ -1,5 +1,5 @@
 
-package acme.constraints.log;
+package acme.constraints.tracking;
 
 import java.util.Date;
 import java.util.List;
@@ -11,23 +11,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.entities.claim.Claim;
-import acme.entities.logs.Log;
-import acme.entities.logs.LogRepository;
-import acme.entities.logs.LogStatus;
+import acme.entities.tracking.Tracking;
+import acme.entities.tracking.TrackingRepository;
+import acme.entities.tracking.TrackingStatus;
 
-public class LogValidator extends AbstractValidator<ValidLog, Log> {
+public class TrackingValidator extends AbstractValidator<ValidTracking, Tracking> {
 
 	@Autowired
-	private LogRepository repository;
+	private TrackingRepository repository;
 
 
 	@Override
-	protected void initialise(final ValidLog annotation) {
+	protected void initialise(final ValidTracking annotation) {
 		assert annotation != null;
 	}
 
 	@Override
-	public boolean isValid(final Log log, final ConstraintValidatorContext context) {
+	public boolean isValid(final Tracking log, final ConstraintValidatorContext context) {
 		assert context != null;
 
 		boolean result;
@@ -38,13 +38,13 @@ public class LogValidator extends AbstractValidator<ValidLog, Log> {
 			{
 				boolean correctStatus = false;
 
-				LogStatus status = log.getIndicator();
+				TrackingStatus status = log.getIndicator();
 				Double percentage = log.getResolutionPercentage();
 
-				if (percentage < 100 && status == LogStatus.PENDING || percentage == 100 && (status == LogStatus.ACCEPTED || status == LogStatus.REJECTED))
+				if (percentage < 100 && status == TrackingStatus.PENDING || percentage == 100 && (status == TrackingStatus.ACCEPTED || status == TrackingStatus.REJECTED))
 					correctStatus = true;
 
-				super.state(context, correctStatus, "pending", "acme.validation.trackingLog.indicator.message");
+				super.state(context, correctStatus, "pending", "acme.validation.log.indicator.message");
 			}
 			{
 				Double percentage = log.getResolutionPercentage();
@@ -58,9 +58,9 @@ public class LogValidator extends AbstractValidator<ValidLog, Log> {
 				Double resolutionPercentage = log.getResolutionPercentage();
 				Date lastUpdateMoment = log.getLastUpdateMoment();
 				Claim claim = log.getClaim();
-				List<Log> previousLogs = this.repository.findByClaimIdAndDateBefore(claim.getId(), lastUpdateMoment);
+				List<Tracking> previousTracking = this.repository.findByClaimIdAndDateBefore(claim.getId(), lastUpdateMoment);
 
-				Optional<Double> maxPercentage = previousLogs.stream().map(Log::getResolutionPercentage).max(Double::compareTo);
+				Optional<Double> maxPercentage = previousTracking.stream().map(Tracking::getResolutionPercentage).max(Double::compareTo);
 
 				boolean isPercentageGreaterThanPrevious = resolutionPercentage == 0 || resolutionPercentage > maxPercentage.orElse(0.0);
 
