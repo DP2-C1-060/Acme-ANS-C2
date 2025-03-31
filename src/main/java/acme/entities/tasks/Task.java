@@ -42,4 +42,8 @@ public class Task extends AbstractEntity {
 	@ValidNumber(min = 1, max = 1000)
 	@Automapped
 	private Integer				estimatedDuration;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 }

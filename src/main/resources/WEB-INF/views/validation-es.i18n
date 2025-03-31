@@ -46,9 +46,11 @@ acme.validation.manager.age.tooYoung = La edad mínima para trabajar es de 16 a�
 acme.validation.manager.identifier.invalid = El identificador debe comenzar con la primera letra del nombre y la primera letra del apellido
 acme.validation.manager.identifier.unique = El identificador debe ser único
 
-acme.validation.past.message = La fecha de fundacion debe ser uan fecha pasada.
+acme.validation.past.message = La fecha de fundacion debe ser una fecha pasada.
 acme.validation.phone.message = El numero de telefono debe tener entre 6 y 15 digitos
 
 acme.validation.activityLogMoment.wrong.message = El momento de registro debe ser después de aterrizar.
 acme.validation.member.employeecode.message = El código de empleado debe ser seguir el patrón especificado.
 acme.validation.member.duplicated.message = El código de empleado está duplicado.
+
+acme.validation.technician.duplicated-license-number.message = Los técnicos deben tener Números de licencia únicos.
