@@ -1,5 +1,5 @@
 
-package acme.entities.trackinglogs;
+package acme.entities.tracking;
 
 import java.util.Date;
 
@@ -17,7 +17,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.constraints.ValidOptionalLongText;
 import acme.constraints.ValidShortText;
-import acme.constraints.trackingLogs.ValidTrackingLogs;
+import acme.constraints.tracking.ValidTracking;
 import acme.entities.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,8 +25,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@ValidTrackingLogs
-public class TrackingLogs extends AbstractEntity {
+@ValidTracking
+public class Tracking extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
 	private static final long	serialVersionUID	= 1L;
@@ -51,7 +51,7 @@ public class TrackingLogs extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private TrackingLogStatus	indicator;
+	private TrackingStatus			indicator;
 
 	@Optional
 	@ValidOptionalLongText

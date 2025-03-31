@@ -1,0 +1,8 @@
+agent.claim.list.title = Listing of claims
+
+agent.claim.list.label.description = Description
+agent.claim.list.label.type = Type
+agent.claim.list.label.email = Email
+agent.claim.list.label.registrationMoment = Registration Moment
+
+agent.claim.list.button.create = Create
