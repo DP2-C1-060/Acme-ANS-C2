@@ -1,0 +1,34 @@
+key,lastUpdateMoment,step,resolutionPercentage,indicator,resolution,key:claim
+tracking-01,2024/09/03 08:30,Se ha recibido la reclamación,25,PENDING,,claim-01
+tracking-02,2024/09/03 12:00,Se está trabajando en la reclamación,50,PENDING,"",claim-01
+tracking-03,2024/09/03 12:00,Se ha resuelto la reclamación,100,ACCEPTED,"Se ofrece una compensación de 300€ por la pérdida del equipaje, de acuerdo con la normativa vigente. Además, se reembolsarán los gastos esenciales hasta un máximo de 100€, presentando los recibos correspondientes",claim-01
+tracking-04,2024/09/05 09:30,Se ha recibido la reclamación,25,PENDING,,claim-02
+tracking-05,2024/09/05 10:40,Se está trabajando en la reclamación,50,PENDING,,claim-02
+tracking-06,2024/09/05 11:00,Se ha resuelto la reclamación,100,REJECTED,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-02
+tracking-07,2000/01/01 0:00,Se ha resuelto la reclamación,1,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-03
+tracking-08,2000/01/01 0:01,Se ha resuelto la reclamación,2,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-03
+tracking-09,2024/12/31 23:59,Se ha resuelto la reclamación,3,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-03
+tracking-10,2025/01/01 00:00,Se ha resuelto la reclamación,4,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-03
+tracking-11,2024/09/05 11:00,L,5,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-12,2024/09/05 11:01,Lo,6,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-13,2024/09/05 11:02,"Lorem ipsum dolor sit amet,consectetur adipiscin",7,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-14,2024/09/05 11:03,"Lorem ipsum dolor sit amet,consectetur adipiscing",8,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-15,2024/09/05 11:04,โลเร็ม อิปซัม,9,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-16,2024/09/05 11:05,لوريم إيبسوم,11,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-17,2024/09/05 11:06,洛伦·伊普森,12,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-18,2024/09/05 11:07,<marquee>Hacked</marquee>,13,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-19,2024/09/05 11:08,<script>alert(‘Hacked!’);</script>,14,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-20,2024/09/05 11:09,' or 'A' = 'A,15,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-04
+tracking-21,2024/09/05 11:10,Se ha resuelto la reclamación,0,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-05
+tracking-22,2024/09/05 11:11,Se ha resuelto la reclamación,1,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-05
+tracking-23,2024/09/05 11:12,Se ha resuelto la reclamación,99,PENDING,El retraso del vuelo estuvo dentro de los límites permitidos por la normativa vigente y fue causado por circunstancias excepcionales fuera del control de la aerolínea. No se ofrece compensación,claim-05
+tracking-24,2024/09/05 11:13,Se ha resuelto la reclamación,16,PENDING,L,claim-04
+tracking-25,2024/09/05 11:14,Se ha resuelto la reclamación,17,PENDING,Lo,claim-04
+tracking-26,2024/09/05 11:15,Se ha resuelto la reclamación,18,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",claim-04
+tracking-27,2024/09/05 11:16,Se ha resuelto la reclamación,19,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",claim-04
+tracking-28,2024/09/05 11:17,Se ha resuelto la reclamación,20,PENDING,โลเร็ม อิปซัม,claim-04
+tracking-29,2024/09/05 11:18,Se ha resuelto la reclamación,21,PENDING,لوريم إيبسوم,claim-04
+tracking-30,2024/09/05 11:19,Se ha resuelto la reclamación,22,PENDING,洛伦·伊普森,claim-04
+tracking-31,2024/09/05 11:20,Se ha resuelto la reclamación,23,PENDING,<marquee>Hacked</marquee>,claim-04
+tracking-32,2024/09/05 11:21,Se ha resuelto la reclamación,24,PENDING,<script>alert(‘Hacked!’);</script>,claim-04
+tracking-33,2024/09/05 11:22,Se ha resuelto la reclamación,25,PENDING,' or 'A' = 'A,claim-04
