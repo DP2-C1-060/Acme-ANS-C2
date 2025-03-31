@@ -19,6 +19,8 @@ acme.validation.leg.prefix.message = The flight number prefix must match the air
 acme.validation.leg.number.message = The flight number already exists in the system (the last 4 digits must be unique)
 acme.validation.leg.flight.number.message = The flight number must consist of three uppercase letters followed by four digits (e.g., "ABC1234").
 acme.validation.leg.uniqueFlightNumber.message = The flight number must be unique
+acme.validation.leg.airline.mismatch.message = The manager and the aircraft must belong to the same airline.
+
 
 acme.validation.flight.null.message = The flight must not be null
 acme.validation.flight.message = The flight contains invalid data
@@ -32,7 +34,12 @@ acme.validation.activityLog.invalidLeg = The leg must have taken place
 acme.validation.agent.duplicated.message = The employee code must be unique
 acme.validation.agent.employeecode.message = The first two letters must match the agent's initials
 acme.validation.agent.workStartMoment.message = The date work began at the airline must be after its founding date
+
 acme.validation.claim.registrationMoment.message = The claim registration date must be after the date the agent started working at the airline
+
+acme.validation.log.indicator.message = The status must be consistent with the resolution percentage: PENDING if it is less than 100%, ACCEPTED or REJECTED if it is 100%
+acme.validation.log.resolution.message = Resolution must be provided when the resolution percentage is 100%
+acme.validation.log.resolutionPercentage.message = The percentage must be greater than or equal to the previous one
 
 acme.validation.constraints.NotNull.message = must not be null
 
