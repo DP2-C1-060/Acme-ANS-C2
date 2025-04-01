@@ -45,7 +45,6 @@ public class AgentClaimListService extends AbstractGuiService<Agent, Claim> {
 
 		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		claims = this.repository.findClaimsByAgentId(agentId);
-		System.out.println(agentId);
 
 		super.getBuffer().addData(claims);
 	}
