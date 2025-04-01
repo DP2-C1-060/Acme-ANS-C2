@@ -13,4 +13,4 @@ customer.passenger.list.label.email = Email
 customer.passenger.list.label.passportNumber = Passport Number
 customer.passenger.list.label.birthDate = Date Of Birth
 customer.passenger.list.label.specialNeeds = Special Needs
-customer.passenger.list.label.isPublished = Is this Passenger Published?
+customer.passenger.list.label.published = Published

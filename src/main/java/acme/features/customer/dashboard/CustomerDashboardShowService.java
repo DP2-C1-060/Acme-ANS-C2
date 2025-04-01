@@ -10,7 +10,7 @@ import acme.forms.CustomerDashboard;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerDashboardService extends AbstractGuiService<Customer, CustomerDashboard> {
+public class CustomerDashboardShowService extends AbstractGuiService<Customer, CustomerDashboard> {
 
 	// Internal state ---------------------------------------------------------
 

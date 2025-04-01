@@ -27,11 +27,9 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 		Integer passengerId = super.getRequest().getData("id", int.class);
 		Passenger passenger = this.customerPassengerRepository.getPassengerById(passengerId);
 
-		status = status && passenger != null;
-
 		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		status = status && passenger.getCustomer().getId() == customerId && !passenger.getIsPublished();
+		status = status && passenger.getCustomer().getId() == customerId;
 
 		super.getResponse().setAuthorised(status);
 	}

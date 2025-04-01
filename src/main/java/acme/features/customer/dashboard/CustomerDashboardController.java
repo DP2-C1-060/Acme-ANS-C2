@@ -27,14 +27,14 @@ public class CustomerDashboardController extends AbstractGuiController<Customer,
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerDashboardService customerDashboardService;
+	private CustomerDashboardShowService customerDashboardShowService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("show", this.customerDashboardService);
+		super.addBasicCommand("show", this.customerDashboardShowService);
 	}
 
 }

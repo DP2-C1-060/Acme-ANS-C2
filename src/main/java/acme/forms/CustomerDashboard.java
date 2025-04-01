@@ -16,19 +16,20 @@ public class CustomerDashboard extends AbstractForm {
 	private static final long	serialVersionUID	= 1L;
 
 	private List<String>		lastFiveDestinations;
-	private Money				moneySpentLastYear;
+	private Money				spentMoneyLastYear;
 	private Integer				businessBookings;
 	private Integer				economyBookings;
 
-	private Money				bookingCostCount;
-	private Money				bookingCostAverage;
-	private Money				bookingCostMin;
-	private Money				bookingCostMax;
-	private Money				bookingCostStdDev;
+	private Money				bookingCountCost;
+	private Money				bookingAverageCost;
+	private Money				bookingMinimumCost;
+	private Money				bookingMaximumCost;
+	private Money				bookingDeviationCost;
 
-	private Integer				bookingPassengersCount;
-	private Double				bookingPassengersAverage;
-	private Integer				bookingPassengersMin;
-	private Integer				bookingPassengersMax;
-	private Double				bookingPassengersStdDev;
+	private Integer				bookingCountPassengers;
+	private Double				bookingAveragePassengers;
+	private Integer				bookingMinimumPassengers;
+	private Integer				bookingMaximumPassengers;
+	private Double				bookingDeviationPassengers;
+
 }

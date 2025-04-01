@@ -56,3 +56,4 @@ master.menu.customer = Customer
 master.menu.customer.dashboard = Dashboard
 master.menu.customer.list-bookings = My Bookings 
 master.menu.customer.list-passengers = My Passengers
+master.menu.customer.list-booking-records = My Booking Records

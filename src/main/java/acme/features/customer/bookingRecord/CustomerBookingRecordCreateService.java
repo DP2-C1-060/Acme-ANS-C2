@@ -23,57 +23,43 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void authorise() {
-		Boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
-		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
-		Integer bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.customerBookingRecordRepository.getBookingById(bookingId);
-
-		Integer passengerId = super.getRequest().getData("passengerId", int.class);
-		Passenger passenger = this.customerBookingRecordRepository.getPassengerById(passengerId);
-
-		status = booking != null && passenger != null && customerId == booking.getCustomer().getId();
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Integer bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.customerBookingRecordRepository.getBookingById(bookingId);
-		BookingRecord BookingRecord = new BookingRecord();
-		BookingRecord.setBooking(booking);
-		super.getBuffer().addData(BookingRecord);
-	}
-
-	@Override
-	public void bind(final BookingRecord BookingRecord) {
-		super.bindObject(BookingRecord, "passenger", "booking");
-	}
-
-	@Override
-	public void validate(final BookingRecord BookingRecord) {
 
 	}
 
 	@Override
-	public void perform(final BookingRecord BookingRecord) {
-		this.customerBookingRecordRepository.save(BookingRecord);
+	public void bind(final BookingRecord bookingRecord) {
+		super.bindObject(bookingRecord, "passenger", "booking");
 	}
 
 	@Override
-	public void unbind(final BookingRecord BookingRecord) {
-		assert BookingRecord != null;
+	public void validate(final BookingRecord bookingRecord) {
+
+	}
+
+	@Override
+	public void perform(final BookingRecord bookingRecord) {
+		this.customerBookingRecordRepository.save(bookingRecord);
+	}
+
+	@Override
+	public void unbind(final BookingRecord bookingRecord) {
+		assert bookingRecord != null;
 
 		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		Integer bookingId = super.getRequest().getData("bookingId", int.class);
-
-		Collection<Passenger> alreadyAddedPassengers = this.customerBookingRecordRepository.getPassengersInBooking(bookingId);
-		Collection<Passenger> noAddedPassengers = this.customerBookingRecordRepository.getAllPassengersByCustomerId(customerId).stream().filter(p -> !alreadyAddedPassengers.contains(p)).toList();
-		SelectChoices passengerChoices = SelectChoices.from(noAddedPassengers, "fullName", BookingRecord.getPassenger());
-
-		Dataset dataset = super.unbindObject(BookingRecord, "passenger", "booking");
+		Collection<Passenger> passengers = this.customerBookingRecordRepository.getAllPassengersByCustomer(customerId);
+		Collection<Booking> bookings = this.customerBookingRecordRepository.getBookingsByCustomerId(customerId);
+		SelectChoices passengerChoices = SelectChoices.from(passengers, "id", bookingRecord.getPassenger());
+		SelectChoices bookingChoices = SelectChoices.from(bookings, "id", bookingRecord.getBooking());
+		Dataset dataset = super.unbindObject(bookingRecord, "passenger", "booking");
 		dataset.put("passengers", passengerChoices);
+		dataset.put("bookings", bookingChoices);
 
 		super.getResponse().addData(dataset);
 

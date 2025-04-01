@@ -48,12 +48,9 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 			Integer bookingId = super.getRequest().getData("bookingId", int.class);
 			passengers = this.customerPassengerRepository.findPassengerByBookingId(bookingId);
 		}
-		super.getBuffer().addData(passengers);
-	}
 
-	@Override
-	public void validate(final Passenger passenger) {
-		;
+		super.getBuffer().addData(passengers);
+		System.out.println(super.getBuffer());
 	}
 
 	@Override
