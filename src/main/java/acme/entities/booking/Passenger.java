@@ -4,8 +4,10 @@ package acme.entities.booking;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -15,6 +17,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.constraints.passenger.ValidPassportNumber;
+import acme.realms.Customer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -54,8 +57,18 @@ public class Passenger extends AbstractEntity {
 	@Automapped
 	private String				specialNeeds;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				isPublished;
+
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = true)
+	private Customer			customer;
 
 }

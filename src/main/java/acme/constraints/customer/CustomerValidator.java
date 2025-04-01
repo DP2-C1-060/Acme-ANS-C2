@@ -3,13 +3,20 @@ package acme.constraints.customer;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.principals.DefaultUserIdentity;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.features.authenticated.customer.CustomerRepository;
 import acme.realms.Customer;
 
 @Validator
 public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer> {
+
+	@Autowired
+	private CustomerRepository repository;
+
 
 	@Override
 	protected void initialise(final ValidCustomer annotation) {
@@ -20,10 +27,8 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 	public boolean isValid(final Customer customer, final ConstraintValidatorContext context) {
 
 		String identifier = customer.getIdentifier();
-
-		if (identifier == null || !identifier.matches("^[A-Z]{2,3}\\d{6}$")) {
-			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("{acme.validation.identifier.nullornotpattern.message}").addConstraintViolation();
+		if (identifier == null) {
+			super.state(context, false, "*", "{acme.validation.identifier.nullornotpattern.message}");
 			return false;
 		}
 
@@ -31,25 +36,22 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 		String inicialNombre = String.valueOf(identity.getName().charAt(0)).toUpperCase();
 		String inicial1Apellido = String.valueOf(identity.getSurname().charAt(0)).toUpperCase();
-		String inicial2Apellido = "";
 		Integer initialsLenght = 2;
 
-		if (identity.getSurname().contains(" ")) {
-			inicial2Apellido = String.valueOf(identity.getSurname().split(" ")[1].charAt(0)).toUpperCase();
-			initialsLenght++;
-		}
-
-		String iniciales = inicialNombre + inicial1Apellido + inicial2Apellido;
+		String iniciales = inicialNombre + inicial1Apellido;
 
 		String identifierInitials = identifier.substring(0, initialsLenght);
 
 		if (!iniciales.equals(identifierInitials)) {
-			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("{acme.validation.identifier.notInitials.message}").addConstraintViolation();
+			super.state(context, false, "*", "{acme.validation.identifier.notInitials.message}");
 			return false;
 		}
 
+		Customer customerWithSameIdentifier = this.repository.findCustomerByIdentifier(identifier);
+		if (customerWithSameIdentifier != null && customerWithSameIdentifier.getId() != customer.getId()) {
+			super.state(context, false, "*", "{acme.validation.identifier.repeated.message}: " + identifier);
+			return false;
+		}
 		return true;
 	}
-
 }

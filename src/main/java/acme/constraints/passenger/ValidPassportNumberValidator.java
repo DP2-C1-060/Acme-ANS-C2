@@ -10,14 +10,14 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.entities.booking.Passenger;
-import acme.entities.booking.PassengerRepository;
+import acme.features.customer.passenger.CustomerPassengerRepository;
 
 public class ValidPassportNumberValidator implements ConstraintValidator<ValidPassportNumber, Passenger> {
 
-	private static final Pattern	PASSPORT_PATTERN	= Pattern.compile("^[A-Z0-9]{6,9}$");
+	private static final Pattern			PASSPORT_PATTERN	= Pattern.compile("^[A-Z0-9]{6,9}$");
 
 	@Autowired
-	protected PassengerRepository	passengerRepository;
+	protected CustomerPassengerRepository	passengerRepository;
 
 
 	@Override

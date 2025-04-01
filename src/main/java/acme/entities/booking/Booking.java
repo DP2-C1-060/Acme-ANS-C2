@@ -1,6 +1,7 @@
 
 package acme.entities.booking;
 
+import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,9 +17,11 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
+import acme.constraints.booking.ValidBooking;
 import acme.entities.flights.Flight;
+import acme.features.customer.passenger.CustomerPassengerRepository;
 import acme.realms.Customer;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +29,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidBooking
 public class Booking extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
@@ -35,7 +39,7 @@ public class Booking extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
+	@ValidString(pattern = "^[A-Z0-9]{6,8}$", message = "{acme.validation.locatorCode.notPattern.message}")
 	@Column(unique = true)
 	private String				locatorCode;
 
@@ -49,28 +53,48 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private TravelClass			travelClass;
 
-	@Mandatory
-	@ValidMoney(min = 0.01, max = 1000000)
-	@Automapped
-	private Money				price;
-
 	@Optional
-	@ValidString(min = 4, max = 4, pattern = "[0-9]{4}")
+	@ValidString(min = 4, max = 4, pattern = "[0-9]{4}", message = "{acme.validation.lastNibble.notPattern.message}")
 	@Automapped
 	private String				lastNibble;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				isPublished;
+
+
 	// Derived attributes -----------------------------------------------------
+	@Transient
+	public Money getPrice() {
+		Money price = new Money();
+
+		CustomerPassengerRepository customerPassengerRepository = SpringHelper.getBean(CustomerPassengerRepository.class);
+
+		if (this.getFlight() == null) {
+			price.setAmount(0.0);
+			price.setCurrency("EUR");
+		} else {
+			Flight flight = this.getFlight();
+			Integer numberOfPassenger = customerPassengerRepository.findPassengerByBookingId(this.getId()).size();
+			price.setAmount(flight.getCost().getAmount() * numberOfPassenger);
+			price.setCurrency(flight.getCost().getCurrency());
+		}
+
+		return price;
+	}
 
 	// Relationships ----------------------------------------------------------
 
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Customer			customer;
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private Flight				flight;
+	private Customer	customer;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Flight		flight;
 
 }

@@ -1,32 +1,27 @@
-key,key:flight,key:customer,locatorCode,purchaseMoment,travelClass,price,lastNibble
-
+key,key:flight,key:customer,locatorCode,purchaseMoment,travelClass,lastNibble,isPublished
 # BASE
-booking-00,flight-01,customer-01,ABC123,2023/02/28 23:59,ECONOMY,EUR 1.00,4362
-
+booking-00,flight-01,customer-01,ABC123,2023/02/28 23:59,ECONOMY,4362,false
 # LOCATORCODE
-booking-01,flight-01,customer-01,FSD854,2023/02/28 23:59,ECONOMY,EUR 1.00,
-booking-02,flight-01,customer-01,D6V9L0,2023/02/28 23:59,ECONOMY,EUR 1.00,
-booking-03,flight-01,customer-02,QWERTY,2023/02/28 23:59,ECONOMY,EUR 1.00,
-booking-04,flight-01,customer-03,123456,2023/02/28 23:59,ECONOMY,EUR 1.00,
-booking-05,flight-01,customer-04,ABCDEFGH,2023/02/28 23:59,ECONOMY,EUR 1.00,
-booking-06,flight-02,customer-05,12345678,2023/02/28 23:59,ECONOMY,EUR 1.00,
-booking-07,flight-03,customer-06,A1B2C3D4,2023/02/28 23:59,ECONOMY,EUR 1.00,
-
-# PURCHASEMOMENT
-booking-08,flight-04,customer-06,DEF456,2000/01/01 00:00,BUSINESS,EUR 1.00,
-booking-09,flight-05,customer-07,GHI789,2024/06/15 12:30,BUSINESS,EUR 1.00,
-booking-10,flight-06,customer-08,JKL512,1900/01/01 00:00,BUSINESS,EUR 1.00,
-booking-11,flight-07,customer-09,JKL712,1900/01/01 00:01,BUSINESS,EUR 1.00,
-booking-12,flight-08,customer-09,JKL912,2025/01/01 00:00,BUSINESS,EUR 1.00,
-booking-13,flight-09,customer-11,JKL3212,2024/12/31 23:59,BUSINESS,EUR 1.00,
-
+booking-01,flight-01,customer-01,FSD854,2023/02/28 23:59,ECONOMY,,true
+booking-02,flight-01,customer-01,D6V9L0,2023/02/28 23:59,ECONOMY,,true
+booking-03,flight-01,customer-02,QWERTY,2023/02/28 23:59,ECONOMY,,true
+booking-04,flight-01,customer-01,123456,2023/02/28 23:59,ECONOMY,,true
+booking-05,flight-01,customer-01,ABCDEFGH,2023/02/28 23:59,ECONOMY,,true
+booking-06,flight-02,customer-02,12345678,2023/02/28 23:59,ECONOMY,,true
+booking-07,flight-03,customer-01,A1B2C3D4,2023/02/28 23:59,ECONOMY,,true
+# PURCHASEMOMENT,"","","","",""
+booking-08,flight-04,customer-02,DEF456,2000/01/01 00:00,BUSINESS,,true
+booking-09,flight-05,customer-02,GHI789,2024/06/15 12:30,BUSINESS,,true
+booking-10,flight-06,customer-01,JKL512,1900/01/01 00:00,BUSINESS,,true
+booking-11,flight-07,customer-01,JKL712,1900/01/01 00:01,BUSINESS,,true
+booking-12,flight-08,customer-02,JKL912,2025/01/01 00:00,BUSINESS,,true
+booking-13,flight-09,customer-02,JKL3212,2024/12/31 23:59,BUSINESS,,true
 # PRICE-TRAVELCLASS
-booking-14,flight-10,customer-12,MNO345,2024/12/31 23:59,ECONOMY,EUR 0.01,
-booking-15,flight-11,customer-13,PQR678,2024/12/31 23:59,BUSINESS,EUR 0.02,
-booking-16,flight-12,customer-14,STU901,2024/12/31 23:59,ECONOMY,EUR 1000000.00,
-booking-17,flight-13,customer-15,VWX234,2024/12/31 23:59,ECONOMY,EUR 999999.99,
-
+booking-14,flight-10,customer-02,MNO345,2024/12/31 23:59,ECONOMY,,true
+booking-15,flight-11,customer-01,PQR678,2024/12/31 23:59,BUSINESS,,true
+booking-16,flight-12,customer-01,STU901,2024/12/31 23:59,ECONOMY,,true
+booking-17,flight-13,customer-01,VWX234,2024/12/31 23:59,ECONOMY,,true
 # LASTNIBBLE
-booking-18,flight-13,customer-15,EFG123,2024/12/31 23:59,ECONOMY,EUR 1.00,0000
-booking-19,flight-13,customer-16,HIJ456,2024/12/31 23:59,ECONOMY,EUR 1.00,9999
-booking-20,flight-13,customer-17,KLM789,2024/12/31 23:59,ECONOMY,EUR 1.00,
+booking-18,flight-13,customer-02,EFG123,2024/12/31 23:59,ECONOMY,,true
+booking-19,flight-13,customer-02,HIJ456,2024/12/31 23:59,ECONOMY,,true
+booking-20,flight-13,customer-02,KLM789,2024/12/31 23:59,ECONOMY,,true
