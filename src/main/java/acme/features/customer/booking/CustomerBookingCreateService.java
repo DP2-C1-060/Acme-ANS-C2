@@ -63,17 +63,29 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "flight", "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
+		try {
+			super.bindObject(booking, "flight", "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
+			if (booking.getPurchaseMoment() != null)
+				System.out.println("purchaseMoment class: " + booking.getPurchaseMoment().getClass());
+			else
+				System.out.println("purchaseMoment is null");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		boolean status = this.customerBookingRepository.findBookingByLocatorCode(booking.getLocatorCode()) == null;
-		super.state(status, "locatorCode", "acme.validation.identifier.repeated.message");
+
 	}
 
 	@Override
 	public void perform(final Booking booking) {
+		Date today = MomentHelper.getCurrentMoment();
+		if (today instanceof java.sql.Date && !(today instanceof java.sql.Timestamp))
+			today = new java.sql.Timestamp(today.getTime());
+		booking.setPurchaseMoment(today);
 		this.customerBookingRepository.save(booking);
 	}
 

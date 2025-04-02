@@ -1,5 +1,5 @@
 /*
- * CustomerDashboardController.java
+ * CustomerCustomerDashboardController.java
  *
  * Copyright (C) 2012-2025 Rafael Corchuelo.
  *
@@ -27,14 +27,14 @@ public class CustomerDashboardController extends AbstractGuiController<Customer,
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerDashboardShowService customerDashboardShowService;
+	private CustomerDashboardShowService customerDashboardService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("show", this.customerDashboardShowService);
+		super.addBasicCommand("show", this.customerDashboardService);
 	}
 
 }

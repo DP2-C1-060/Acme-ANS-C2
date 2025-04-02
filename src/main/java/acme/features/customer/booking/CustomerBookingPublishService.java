@@ -2,6 +2,7 @@
 package acme.features.customer.booking;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,8 +11,10 @@ import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
+import acme.entities.booking.Passenger;
 import acme.entities.booking.TravelClass;
 import acme.entities.flights.Flight;
+import acme.features.customer.passenger.CustomerPassengerRepository;
 import acme.realms.Customer;
 
 @GuiService
@@ -20,7 +23,10 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerBookingRepository customerBookingRepository;
+	private CustomerBookingRepository	customerBookingRepository;
+
+	@Autowired
+	private CustomerPassengerRepository	customerPassengerRepository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -34,7 +40,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		status = status && booking.getCustomer().getId() == customerId && booking.getIsPublished();
+		status = status && booking.getCustomer().getId() == customerId;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,11 +59,11 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void validate(final Booking booking) {
-		Booking bookingWithSameLocatorCode = this.customerBookingRepository.findBookingByLocatorCode(booking.getLocatorCode());
-		boolean status = bookingWithSameLocatorCode == null || bookingWithSameLocatorCode.getId() == booking.getId();
-		super.state(status, "locatorCode", "acme.validation.identifier.repeated.message");
-		status = !booking.getLastNibble().isBlank();
-		super.state(status, "locatorCode", "acme.validation.lastNibble.blank.message");
+		boolean status1 = !booking.getLastNibble().isBlank();
+		super.state(status1, "lastNibble", "customer.booking.form.error.lastNibble");
+		List<Passenger> passengers = this.customerPassengerRepository.findPassengerByBookingId(booking.getId());
+		boolean status2 = !passengers.isEmpty();
+		super.state(status2, "passengers", "customer.booking.form.error.passengers");
 	}
 
 	@Override
@@ -71,10 +77,12 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		Collection<Flight> flights = this.customerBookingRepository.findAllFlight();
 		SelectChoices flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+		List<Passenger> passengers = this.customerPassengerRepository.findPassengerByBookingId(booking.getId());
 
 		Dataset dataset = super.unbindObject(booking, "flight", "customer", "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble", "isPublished", "id");
 		dataset.put("travelClass", travelClasses);
 		dataset.put("flights", flightChoices);
+		dataset.put("passengers", passengers);
 
 		super.getResponse().addData(dataset);
 	}

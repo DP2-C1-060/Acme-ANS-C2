@@ -23,4 +23,8 @@ customer.booking.form.label.locatorCode = Código Localizador
 customer.booking.form.label.purchaseMoment = Momento de Compra
 customer.booking.form.label.travelClass = Clase de Viaje
 customer.booking.form.label.price = Precio
-customer.booking.form.label.lastNibble = Últimos Dígitos de la Tarjeta de Crédito (Opcional)
+customer.booking.form.label.lastNibble = Últimos 4 Dígitos de la Tarjeta de Crédito (Opcional)
+customer.booking.form.label.passengers = Pasajeros
+
+customer.booking.form.error.lastNibble = Para publicar la reserva debe introducir los 4 ultimos digitos de la tarjeta
+customer.booking.form.error.passengers = Para publicar la reserva debe añadir Pasajeros primero

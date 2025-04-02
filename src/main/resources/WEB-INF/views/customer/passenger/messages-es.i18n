@@ -13,4 +13,4 @@ customer.passenger.list.label.email = Correo Electrónico
 customer.passenger.list.label.passportNumber = Número de Pasaporte
 customer.passenger.list.label.birthDate = Fecha de Nacimiento
 customer.passenger.list.label.specialNeeds = Necesidades Especiales
-customer.passenger.list.label.published = Publicado
+customer.passenger.list.label.isPublished = ¿Está este Pasajero Publicado?

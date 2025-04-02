@@ -37,7 +37,7 @@ public class Booking extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,8}$", message = "{acme.validation.locatorCode.notPattern.message}")
+	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
 	@Column(unique = true)
 	private String				locatorCode;
 
@@ -52,7 +52,7 @@ public class Booking extends AbstractEntity {
 	private TravelClass			travelClass;
 
 	@Optional
-	@ValidString(min = 4, max = 4, pattern = "[0-9]{4}", message = "{acme.validation.lastNibble.notPattern.message}")
+	@ValidString(pattern = "\\d{4}$")
 	@Automapped
 	private String				lastNibble;
 
@@ -61,8 +61,9 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private Boolean				isPublished;
 
-
 	// Derived attributes -----------------------------------------------------
+
+
 	@Transient
 	public Money getPrice() {
 		Money price = new Money();

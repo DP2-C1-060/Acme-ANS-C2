@@ -1,15 +1,3 @@
-<%--
-- 
--
-- Copyright (C) 2012-2025 Rafael Corchuelo.
--
-- In keeping with the traditional purpose of furthering education and research, it is
-- the policy of the copyright owner to permit non-commercial use and redistribution of
-- this software. It has been tested carefully, but it is not guaranteed for any particular
-- purposes.  The copyright owner does not offer any warranties or representations, nor do
-- they accept any liabilities with respect to them.
---%>
-
 <%@page%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -22,20 +10,15 @@
 	<acme:input-select code="customer.booking.form.label.travelClass" path="travelClass" choices="${travelClass}" readonly="${isPublished}"/>	
 	<acme:input-textarea code="customer.booking.form.label.price" path="price" readonly="true"/>
 	<acme:input-textarea code="customer.booking.form.label.lastNibble" path="lastNibble" readonly="${isPublished}"/>
+	<acme:input-textbox code="customer.booking.form.label.passengers" path="passengers" readonly="true"/>
 
 	<jstl:choose>	 
-		<jstl:when test="${acme:anyOf(_command, 'show|update') && isPublished == false}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && isPublished == false}">
 			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
-			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
-			<acme:submit code="customer.booking.form.button.bookingRecord" action="/customer/bookingRecord/create"/>
-			
+			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>			
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="customer.booking.form.button.create" action="/customer/booking/create"/>
 		</jstl:when>		
 	</jstl:choose>
-	
-	<jstl:if test="${passengers.size() != 0 && _command != 'create'}">
-		<acme:submit code="customer.booking.form.button.passenger" action="/customer/passenger/list?bookingId=${id}"/>
-	</jstl:if>
 </acme:form>
