@@ -9,7 +9,6 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLogs.ActivityLog;
-import acme.entities.assignments.FlightAssignment;
 import acme.realms.flightCrewMember.FlightCrewMember;
 
 @GuiService
@@ -21,39 +20,25 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 
 	@Override
 	public void authorise() {
-		int masterId;
-		int memberId;
-		FlightAssignment flightAssignment;
-		boolean status;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		flightAssignment = this.repository.findFlightAssignmentById(masterId);
-
-		status = flightAssignment.getFlightCrewMember().getId() == memberId;
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		Collection<ActivityLog> logs;
-		int masterId;
+		FlightCrewMember member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		logs = this.repository.findActivityLogsByAssignmentId(masterId);
+		Collection<ActivityLog> logs = this.repository.findAllLogsByFlightCrewMemberId(member.getId());
+
 		super.getBuffer().addData(logs);
 	}
 
 	@Override
-	public void unbind(final ActivityLog activityLog) {
+	public void unbind(final ActivityLog log) {
 		Dataset dataset;
-		int masterId;
 
-		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "severityLevel");
-		masterId = super.getRequest().getData("masterId", int.class);
-
-		super.addPayload(dataset, activityLog, "draftMode");
-		super.getResponse().addGlobal("masterId", masterId);
+		dataset = super.unbindObject(log, "incidentType", "severity", "registrationMoment");
+		super.addPayload(dataset, log, "description");
 		super.getResponse().addData(dataset);
+
 	}
 }
