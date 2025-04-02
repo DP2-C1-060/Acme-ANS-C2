@@ -54,3 +54,10 @@ acme.validation.member.employeecode.message = El código de empleado debe ser se
 acme.validation.member.duplicated.message = El código de empleado está duplicado.
 
 acme.validation.technician.duplicated-license-number.message = Los técnicos deben tener Números de licencia únicos.
+
+
+acme.validation.flight-assignment.member-with-overlapping-legs.message = El miembro seleccionado tiene escaladas solapadas
+acme.validation.flight-assignment.leg-has-copilot.message = La escala seleccionada ya tiene un copiloto
+acme.validation.flight-assignment.leg-has-pilot.message = La escala seleccionada ya tiene un piloto
+acme.validation.flight-assignment.member-not-available.message = El miembro seleccionado no está disponible
+acme.validation.flight-assignment.leg-has-occurred.message = La escala seleccionada ya ha ocurrido 

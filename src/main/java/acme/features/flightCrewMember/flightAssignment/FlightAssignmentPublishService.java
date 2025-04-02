@@ -30,9 +30,7 @@ public class FlightAssignmentPublishService extends AbstractGuiService<FlightCre
 			return;
 
 		crewMember = flightAssignment.getFlightCrewMember();
-
-		status = super.getRequest().getPrincipal().hasRealm(crewMember) && flightAssignment.isDraftMode();
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
