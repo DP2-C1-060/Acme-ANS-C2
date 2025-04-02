@@ -4,7 +4,9 @@ package acme.entities.activityLogs;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -21,10 +23,14 @@ import acme.entities.assignments.FlightAssignment;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @ValidActivityLog
+
+@Table(indexes = {
+	@Index(columnList = "id")
+})
 public class ActivityLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -39,7 +45,7 @@ public class ActivityLog extends AbstractEntity {
 	@Mandatory
 	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				typeOfIncident;
+	private String				incidentType;
 
 	@Mandatory
 	@ValidLongText
@@ -49,7 +55,12 @@ public class ActivityLog extends AbstractEntity {
 	@Mandatory
 	@ValidNumber(min = 0, max = 10)
 	@Automapped
-	private Integer				severityLevel;
+	private Integer				severity;
+
+	@Mandatory
+	// HINT: @Valid by default.
+	@Automapped
+	private boolean				draftMode;
 
 	//Relationships ---------------------------------
 	@Mandatory
