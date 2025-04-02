@@ -1,9 +1,6 @@
 
 package acme.entities.legs;
 
-import java.time.Duration;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,8 +15,8 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
-import acme.constraints.leg.ValidFlightNumber;
-import acme.constraints.leg.ValidLeg;
+import acme.client.components.validation.ValidString;
+import acme.constraints.ValidLeg;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.flights.Flight;
@@ -38,7 +35,7 @@ public class Leg extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidFlightNumber
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
 	@Column(unique = true)
 	private String				flightNumber;
 
@@ -66,13 +63,11 @@ public class Leg extends AbstractEntity {
 
 	@Transient
 	public Double getDuration() {
-
-		ZonedDateTime departure = this.scheduledDeparture.toInstant().atZone(ZoneId.systemDefault());
-		ZonedDateTime arrival = this.scheduledArrival.toInstant().atZone(ZoneId.systemDefault());
-
-		Duration duration = Duration.between(departure, arrival);
-
-		return (double) duration.toMinutes();
+		if (this.scheduledDeparture == null || this.scheduledArrival == null)
+			return 0.0;
+		long diffMillis = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
+		double diffMinutes = diffMillis / 60000.0;
+		return diffMinutes;
 	}
 
 	// Relationships ----------------------------------------------------------
