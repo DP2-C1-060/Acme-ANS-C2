@@ -1,4 +1,4 @@
-key,name,iataCode,website,type,foundationDate,email,phone
+key,name,IATAcode,website,type,foundationDate,email,phone
 airline-01,Lorem ipsum dolor sit amet,IBX,ftp://a,STANDARD,1927/06/28 10:00,contacto@iberia.com,+34123456789
 airline-02,L,LHX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",LUXURY,1953/01/06 10:00,support@lufthansa.com,+49891234567
 airline-03,Lo,RYX,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",LOW_COST,1984/11/28 10:00,info@ryanair.com,+35312345678
