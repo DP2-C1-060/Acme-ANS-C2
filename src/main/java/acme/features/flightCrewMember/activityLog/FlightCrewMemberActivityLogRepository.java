@@ -9,22 +9,23 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.activityLogs.ActivityLog;
 import acme.entities.assignments.FlightAssignment;
+import acme.entities.legs.Leg;
 
 @Repository
 public interface FlightCrewMemberActivityLogRepository extends AbstractRepository {
 
-	@Query("SELECT al FROM ActivityLog al")
-	Collection<ActivityLog> findAllActivityLogs();
+	@Query("select al from ActivityLog al where al.flightAssignment.flightCrewMember.id = :memberId")
+	Collection<ActivityLog> findAllLogsByFlightCrewMemberId(int memberId);
 
-	@Query("select al from ActivityLog al where al.flightAssignment.id = ?1")
-	Collection<ActivityLog> findActivityLogsByAssignmentId(int id);
+	@Query("select al from ActivityLog al where al.id = :logId")
+	ActivityLog findActivityLogById(int logId);
 
-	@Query("select f from FlightAssignment f where f.id = ?1")
-	FlightAssignment findFlightAssignmentById(int id);
+	@Query("select fa from FlightAssignment fa")
+	Collection<FlightAssignment> findAllAssignments();
 
-	@Query("SELECT al FROM ActivityLog al WHERE al.id = :id")
-	ActivityLog findActivityLogById(int id);
+	@Query("select fa from FlightAssignment fa where fa.id = :assignmentId")
+	FlightAssignment findFlightAssignmentById(Integer assignmentId);
 
-	@Query("SELECT fa FROM FlightAssignment fa")
-	Collection<FlightAssignment> findAllFlightAssignments();
+	@Query("select l from Leg l where l.id = :legId")
+	Leg findLegById(int legId);
 }
