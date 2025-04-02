@@ -36,7 +36,7 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 		flightAssignment = new FlightAssignment();
 		flightAssignment.setFlightCrewMember(flightCrewMember);
 		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
-		flightAssignment.setDraftMode(false);
+		flightAssignment.setDraftMode(true);
 		super.getBuffer().addData(flightAssignment);
 
 	}
