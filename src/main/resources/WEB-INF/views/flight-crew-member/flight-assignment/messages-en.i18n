@@ -1,25 +1,35 @@
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes. The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
 
-flight-crew-member.flight-assignment.list.title = Flight Assignments
-flightCrewMember.flightAssignment.list.label.duty = Duty
-flightCrewMember.flightAssignment.list.label.status = Status
-flightCrewMember.flightAssignment.list.label.leg = Leg
-flightCrewMember.flightAssignment.list.label.flightCrewMember = Crew Member
-flightCrewMember.flightAssignment.list.label.lastUpdate = Last Update
-flightCrewMember.flightAssignment.list.label.remarks = Remarks
+# Titles
+flight-crew-members.flight-assignment.form.title = Flight assignment details
+flight-crew-members.flight-assignment.list.title = Listing of flight assignments
 
-flight-crew-member.flight-assignment.form.title = Flight Assignments
-flightCrewMember.flightAssignment.form.label.duty = Duty
-flightCrewMember.flightAssignment.form.label.lastUpdate = Last Update
-flightCrewMember.flightAssignment.form.label.status = Status
-flightCrewMember.flightAssignment.form.label.remarks = Remarks
-flightCrewMember.flightAssignment.form.label.leg = Leg
-flightCrewMember.flightAssignment.form.label.flightCrewMember = Crew Member
-acme.validation.confirmation.message.moreThanOnePilotOrCopilot = This leg has already a Pilot or Copilot assigned
-acme.validation.confirmation.message.crewMemberNotAvailable = This Crew Member is currently not available for assignment
-acme.validation.confirmation.message.crewMemberAlreadyInLeg = This Crew Member is already assigned to another Leg
+# Labels (form)
+flight-crew-members.flight-assignment.form.label.duty = Duty:
+flight-crew-members.flight-assignment.form.label.lastUpdate = Last update moment:
+flight-crew-members.flight-assignment.form.label.status = Status:
+flight-crew-members.flight-assignment.form.label.remarks = Remarks (Optional):
+flight-crew-members.flight-assignment.form.label.flightLeg = Leg:
+flight-crew-members.flight-assignment.form.label.flightCrewMember= Flight crew member:
 
-flightCrewMember.flightAssignment.list.button.create = Create Flight Assignment
-flightCrewMember.flightAssignment.form.button.create = Create
-flightCrewMember.flightAssignment.form.button.update = Update
-flightCrewMember.flightAssignment.form.button.delete = Delete
-flightCrewMember.flightAssignment.form.button.publish = Publish
+# List Labels
+flight-crew-members.flight-assignment.list.label.duty = Duty:
+flight-crew-members.flight-assignment.list.label.lastUpdate = Last update moment:
+flight-crew-members.flight-assignment.list.label.status = Status:
+
+# Buttons
+flight-crew-members.flight-assignment.form.button.create = Create
+flight-crew-members.flight-assignment.form.button.update = Update
+flight-crew-members.flight-assignment.form.button.delete = Delete
+flight-crew-members.flight-assignment.form.button.publish = Publish
+flight-crew-members.flight-assignment.form.label.confirmation = Confirm that the flight assignment is correct.
+flight-crew-members.flight-assignment.form.button.flightLeg = Leg
+flight-crew-members.flight-assignment.form.button.member = Member
+flight-crew-members.flight-assignment.list.button.create = Create
