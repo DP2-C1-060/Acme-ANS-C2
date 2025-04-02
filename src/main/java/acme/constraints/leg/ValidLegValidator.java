@@ -36,8 +36,8 @@ class ValidLegValidator extends AbstractValidator<ValidLeg, Leg> {
 				&& leg.getFlight().getManager().getAirline() != null) {
 
 				String flightNumberPrefix = leg.getFlightNumber().substring(0, 3);
-				String aircraftIata = leg.getAircraft().getAirline().getIataCode();
-				String managerIata = leg.getFlight().getManager().getAirline().getIataCode();
+				String aircraftIata = leg.getAircraft().getAirline().getIATAcode();
+				String managerIata = leg.getFlight().getManager().getAirline().getIATAcode();
 
 				if (!aircraftIata.equals(managerIata))
 					super.state(context, false, "*", "acme.validation.leg.airline.mismatch.message");
