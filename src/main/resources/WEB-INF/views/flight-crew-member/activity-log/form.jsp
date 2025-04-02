@@ -16,19 +16,19 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-select code="flight-crew-members.activity-log.form.label.flightAssignment" path="assignment" choices="${assignments}"/>
+	<acme:input-select code="flight-crew-members.activity-log.form.label.flightAssignment" path="flightAssignment" choices="${assignments}"/>
 	<acme:input-textbox code="flight-crew-members.activity-log.form.label.incidentType" path="incidentType"/>
 	<acme:input-textarea code="flight-crew-members.activity-log.form.label.description" path="description"/>
 	<acme:input-integer code="flight-crew-members.activity-log.form.label.severity" path="severity"/>
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
-			<acme:submit code="flight-crew-members.activity-log.form.button.update" action="/flight-crew-members/activity-log/update"/>
-			<acme:submit code="flight-crew-members.activity-log.form.button.delete" action="/flight-crew-members/activity-log/delete"/>
-			<acme:submit code="flight-crew-members.activity-log.form.button.publish" action="/flight-crew-members/activity-log/publish"/>
+			<acme:submit code="flight-crew-members.activity-log.form.button.update" action="/flight-crew-member/activity-log/update"/>
+			<acme:submit code="flight-crew-members.activity-log.form.button.delete" action="/flight-crew-member/activity-log/delete"/>
+			<acme:submit code="flight-crew-members.activity-log.form.button.publish" action="/flight-crew-member/activity-log/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="flight-crew-members.activity-log.form.button.create" action="/flight-crew-members/activity-log/create"/>
+			<acme:submit code="flight-crew-members.activity-log.form.button.create" action="/flight-crew-member/activity-log/create"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>
