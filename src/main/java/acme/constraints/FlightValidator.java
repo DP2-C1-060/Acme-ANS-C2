@@ -58,7 +58,7 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 				List<Leg> flightLegs = this.repository.findLegsByFlightId(flight.getId());
 
-				publishedLegs = flight.isDraftMode() ? true : flightLegs.stream().allMatch(l -> !l.isDraftMode());
+				publishedLegs = flight.isDraftMode() || flightLegs.stream().allMatch(l -> !l.isDraftMode());
 
 				super.state(context, publishedLegs, "*", "acme.validation.flight.unpublished-legs.message");
 			}
@@ -76,14 +76,11 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 			{
 				boolean validSelfTransfer = true;
 
-				if (!flight.isDraftMode()) {
+				List<Leg> flightLegs = this.repository.findLegsByFlightId(flight.getId());
+				List<Leg> publishedLegs = flightLegs.stream().filter(l -> !l.isDraftMode()).collect(Collectors.toList());
 
-					List<Leg> flightLegs = this.repository.findLegsByFlightId(flight.getId());
-					List<Leg> publishedLegs = flightLegs.stream().filter(l -> !l.isDraftMode()).collect(Collectors.toList());
-
-					if (publishedLegs.size() == 1)
-						validSelfTransfer = !flight.isSelfTransfer();
-				}
+				if (publishedLegs.size() == 1)
+					validSelfTransfer = !flight.isSelfTransfer();
 
 				super.state(context, validSelfTransfer, "selfTransfer", "acme.validation.flight.invalid-selftransfer.message");
 			}
