@@ -28,7 +28,7 @@
 			
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.flight">
+		<acme:menu-option code="master.menu.flight" access="hasRealm('Any')">
 			<acme:menu-suboption code="master.menu.anonymous.list-flights" action="/any/flight/list" />
 		</acme:menu-option>
 

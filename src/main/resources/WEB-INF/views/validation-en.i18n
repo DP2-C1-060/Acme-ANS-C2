@@ -8,17 +8,14 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-acme.validation.header.message = Must have from 1 to 75 characters
-acme.validation.text.message = Must have from 1 to 255 characters
+acme.validation.header.message = Must have from 1 to 50 characters
+acme.validation.text.message = Must have from 0 to 255 characters
 acme.validation.dateofbirth.message = The date of birth must indicate an age between 18 and 100 years and must not be in the future.
 
-acme.validation.flight.null.message = The flight must not be null
-acme.validation.flight.message = The flight contains invalid data
-acme.validation.flight.legs.order.message = Flight legs must be ordered chronologically without overlaps
-acme.validation.flight.published.message = Published flights must have at least one leg and no legs in draft mode
-acme.validation.flight.selftransfer.message = Self-transfer flights must have at least two legs
-acme.validation.flight.airports.different.message = The departure airport of the first leg and the arrival airport of the last leg must be different.
-acme.validation.flight.delete = The flight can only be deleted if it has no published legs.
+acme.validation.flight.no-legs.message = A flight must have at least one leg defined.
+acme.validation.flight.unpublished-legs.message = A flight cannot be published if it contains unpublished legs.
+acme.validation.flight.invalid-currency.message = The currency specified for the flight cost is not valid.
+acme.validation.flight.invalid-selftransfer.message = A flight with a single leg cannot be marked as self-transfer.
 
 
 acme.validation.leg.message = The leg contains invalid data
