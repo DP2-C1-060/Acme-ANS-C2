@@ -18,14 +18,33 @@ master.menu.anonymous.juanunsan = 77016136S: Núñez Sánchez, Juan
 master.menu.anonymous.serconbaj = 53769621Z: Conde Bajo, Sergio Manuel
 master.menu.anonymous.ivafrurai = 54182365T: Frutos Raigón, Iván
 
+# master.menu.flight #######################################################
+
+
+master.menu.flight = Published Flights
+master.menu.anonymous.list-flights = Flights
+master.menu.manager.show-dashboard = Manager dashboard
+
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
 master.menu.administrator.list-airlines = List airlines
+master.menu.administrator.list-bookings = List bookings
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
+
+
+# master.menu.technician ##########################################################
+
+master.menu.technician = Technician
+master.menu.technician.list-maintenanceRecord = List all maintenance records
+master.menu.technician.list-mine-maintenanceRecord = List my maintenance records
+master.menu.technician.list-task = List all tasks
+master.menu.technician.list-mine-task = List my tasks
+
 
 # master.menu.provider ########################################################
 
@@ -51,9 +70,34 @@ master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
 
+master.menu.user-account.become-customer = Become a customer
+master.menu.user-account.customer-profile = Customer profile
+
+
+# master.menu.customer ##########################################################
+
+master.menu.customer = Customer
+master.menu.customer.dashboard = Dashboard
+master.menu.customer.list-bookings = My Bookings 
+master.menu.customer.list-passengers = My Passengers
+master.menu.customer.list-booking-records = My Booking Records
+master.menu.user-account.become-manager = Become a manager
+master.menu.user-account.manager-profile = Manager profile
+
+
 # master.menu.flight-crew-member ####################################################
+
+master.menu.flight-crew-member.list-my-completed-flights-assignments = Completed flight assignments
+master.menu.flight-crew-member.list-my-planned-flights-assignments = Planned Flight assignments
+
+
+# master.menu.manager ##########################################################
+
+master.menu.manager = Manager
+master.menu.manager.flight-list = Flights
 master.menu.member = Flight Crew Member
 master.menu.member.completedlist-flightAssignment= Completed Flight Assignments List
 master.menu.member.notCompletedlist-flightAssignment = Not Completed Flight Assignments List
 master.menu.member.myCompletedList-flightAssignment = My Completed Flight Assignments List
 master.menu.member.myNotCompletedList-flightAssignment = My Not Completed Flight Assignments List
+

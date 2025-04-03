@@ -25,10 +25,16 @@
 			<acme:menu-suboption code="master.menu.anonymous.juanunsan" action="https://www.linkedin.com/in/juan-nunez-sanchez/"/>
 			<acme:menu-suboption code="master.menu.anonymous.serconbaj" action="https://www.linkedin.com/in/sergio-conde-bajo"/>
 			<acme:menu-suboption code="master.menu.anonymous.ivafrurai" action="https://www.linkedin.com/in/ivan-frutos-raigon"/>
+			
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.flight" access="hasRealm('Any')">
+			<acme:menu-suboption code="master.menu.anonymous.list-flights" action="/any/flight/list" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
+			<acme:menu-suboption code="master.menu.administrator.list-bookings" action="/administrator/booking/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-airlines" action="/administrator/airline/list"/>
 			<acme:menu-separator/>
@@ -37,13 +43,34 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
+			<acme:menu-suboption code="master.menu.technician.list-maintenanceRecord" action="/technician/maintenance-record/list"/>
+			<acme:menu-suboption code="master.menu.technician.list-mine-maintenanceRecord" action="/technician/maintenance-record/list-mine"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.technician.list-task" action="/technician/task/list"/>
+			<acme:menu-suboption code="master.menu.technician.list-mine-task" action="/technician/task/list-mine"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRealm('Provider')">
 			<acme:menu-suboption code="master.menu.provider.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
+			<acme:menu-suboption code="master.menu.manager.flight-list" action="/manager/flight/list"/>
+			<acme:menu-separator />
+			<acme:menu-suboption code="master.menu.manager.show-dashboard" action="/manager/manager-dashboard/show" />
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.customer" access="hasRealm('Customer')">
+			<acme:menu-suboption code="master.menu.customer.dashboard" action="/customer/customer-dashboard/show"/>
+			<acme:menu-suboption code="master.menu.customer.list-bookings" action="/customer/booking/list"/>
+			<acme:menu-suboption code="master.menu.customer.list-passengers" action="/customer/passenger/list"/>
+			<acme:menu-suboption code="master.menu.customer.list-booking-records" action="/customer/booking-record/list"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.agent" access="hasRealm('Agent')">
@@ -67,6 +94,10 @@
 			<acme:menu-suboption code="master.menu.user-account.provider-profile" action="/authenticated/provider/update" access="hasRealm('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRealm('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer-profile" action="/authenticated/consumer/update" access="hasRealm('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-customer" action="/authenticated/customer/create" access="!hasRealm('Customer')"/>
+ 			<acme:menu-suboption code="master.menu.user-account.customer-profile" action="/authenticated/customer/update" access="hasRealm('Customer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRealm('Manager')"/>
+			<acme:menu-suboption code="master.menu.user-account.manager-profile" action="/authenticated/manager/update" access="hasRealm('Manager')"/>
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>

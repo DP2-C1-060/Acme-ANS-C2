@@ -1,12 +1,12 @@
-key,taskType,description,priority,estimatedDuration,draft_mode
-task-01,MAINTENANCE,Engine oil replacement,2,120,TRUE
-task-02,INSPECTION,Landing gear check,5,90,TRUE
-task-03,REPAIR,Hydraulic system fix,8,180,TRUE
-task-04,SYSTEM_CHECK,Avionics diagnostics,4,60,FALSE
-task-05,MAINTENANCE,Cabin air filter replacement,1,30,FALSE
-task-06,INSPECTION,Electrical wiring inspection,6,75,TRUE
-task-07,REPAIR,Fuel pump replacement,9,200,FALSE
-task-08,SYSTEM_CHECK,Autopilot calibration,3,50,TRUE
-task-09,MAINTENANCE,Brake system check,4,110,TRUE
-task-10,INSPECTION,Engine vibration analysis,7,95,FALSE
-task-11,REPAIR,Rudder control adjustment,5,140,FALSE
+key,taskType,description,priority,estimatedDuration,draft_mode,key:technician
+task-01,MAINTENANCE,Engine oil replacement,2,120,true,technician-01
+task-02,INSPECTION,Landing gear check,5,90,true,technician-01
+task-03,REPAIR,Hydraulic system fix,8,180,false,technician-01
+task-04,SYSTEM_CHECK,Avionics diagnostics,4,60,true,technician-01
+task-05,MAINTENANCE,Cabin air filter replacement,1,30,true,technician-01
+task-06,INSPECTION,Electrical wiring inspection,6,75,true,technician-01
+task-07,REPAIR,Fuel pump replacement,9,200,false,technician-01
+task-08,SYSTEM_CHECK,Autopilot calibration,3,50,true,technician-01
+task-09,MAINTENANCE,Brake system check,4,110,true,technician-01
+task-10,INSPECTION,Engine vibration analysis,7,95,true,technician-01
+task-11,REPAIR,Rudder control adjustment,5,140,false,technician-01
