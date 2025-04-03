@@ -1,8 +1,23 @@
 agent.claim.list.title = Listing of claims
 
-agent.claim.list.label.description = Description
+agent.claim.list.label.flightNumber = Leg flight number
 agent.claim.list.label.type = Type
-agent.claim.list.label.email = Email
 agent.claim.list.label.registrationMoment = Registration Moment
+agent.claim.list.label.indicator = Status
 
 agent.claim.list.button.create = Create
+
+agent.claim.form.title = Claim form
+
+agent.claim.form.label.description = Description
+agent.claim.form.label.email = Email
+agent.claim.form.label.registrationMoment = Registration Moment
+agent.claim.form.label.type = Type
+agent.claim.form.label.leg = Leg
+
+agent.claim.form.button.trackings = Tracking logs
+agent.claim.form.button.update = Update
+agent.claim.form.button.delete = Delete
+agent.claim.form.button.publish = Publish
+
+agent.claim.form.button.create = Create
