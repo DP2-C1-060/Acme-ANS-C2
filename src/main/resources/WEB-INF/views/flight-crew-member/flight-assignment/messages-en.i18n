@@ -1,7 +1,7 @@
 # messages-en.i18n
 
-member.flight-assignment.form.title = flightAssignment form 
-member.flight-assignment.list.title = Listing of flightAssignments
+flight-crew-member.flight-assignment.form.title = Flight Assignment Form 
+flight-crew-member.flight-assignment.list.title = Listing of Flight Assignments
 
 member.flight-assignment.form.label.duty = Duty:
 member.flight-assignment.form.label.moment = Moment: 

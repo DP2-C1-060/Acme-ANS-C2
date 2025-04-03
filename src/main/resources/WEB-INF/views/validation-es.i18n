@@ -56,8 +56,13 @@ acme.validation.member.duplicated.message = El código de empleado está duplica
 acme.validation.technician.duplicated-license-number.message = Los técnicos deben tener Números de licencia únicos.
 
 
-acme.validation.flight-assignment.member-with-overlapping-legs.message = El miembro seleccionado tiene escaladas solapadas
-acme.validation.flight-assignment.leg-has-copilot.message = La escala seleccionada ya tiene un copiloto
-acme.validation.flight-assignment.leg-has-pilot.message = La escala seleccionada ya tiene un piloto
-acme.validation.flight-assignment.member-not-available.message = El miembro seleccionado no está disponible
-acme.validation.flight-assignment.leg-has-occurred.message = La escala seleccionada ya ha ocurrido 
+acme.validation.member.nullornotpattern.message = El identificador no debe ser nulo y debe seguir el patrón correcto
+acme.validation.member.notInitials.message = El employee code debe comenzar con las iniciales del usuario
+acme.validation.member.repeated.message = Ya existe una entidad diferente con este employeeCode:
+
+acme.validation.activityLog.wrongMoment.message = ActivityLog registrationMoment debe ser posterior a la finalización de leg
+acme.validation.FlightAssignment.memberNotAvailable.message = Ese miembro de la tripulacion no está disponible, por lo que la asignación de vuelo no puede ser creada
+acme.validation.FlightAssignment.memberHasIncompatibleLegs.message = Ese miembro tiene tramos de vuelo incompatibles
+acme.validation.FlightAssignment.hasPilot.message = Ese tramo de vuelo ya tiene piloto
+acme.validation.FlightAssignment.hasCopilot.message = Ese tramo de vuelo ya tiene copiloto
+acme.validation.FlightAssignment.notValidLeg.message = Ese tramo de vuelo no es válido
