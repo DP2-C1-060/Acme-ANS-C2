@@ -24,7 +24,7 @@ public class InvolvedIn extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private MaintenanceRecord	maintenanceRecords;
+	private MaintenanceRecord	maintenanceRecord;
 
 	@Mandatory
 	@Valid
