@@ -29,7 +29,7 @@ import lombok.Setter;
 @ValidActivityLog
 
 @Table(indexes = {
-	@Index(columnList = "id")
+	@Index(columnList = "draftMode")
 })
 public class ActivityLog extends AbstractEntity {
 

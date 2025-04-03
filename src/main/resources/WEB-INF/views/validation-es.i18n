@@ -24,6 +24,16 @@ acme.validation.leg.prefix.message = El prefijo del número de vuelo debe coinci
 acme.validation.leg.number.message = El número de vuelo ya existe en el sistema (los últimos 4 dígitos deben ser únicos)
 acme.validation.leg.flight.number.message = El número de vuelo debe consistir en tres letras mayúsculas seguidas de cuatro dígitos (por ejemplo, "ABC1234")
 acme.validation.leg.uniqueFlightNumber.message = El número de vuelo debe ser único
+
+acme.validation.leg.airline.mismatch.message = El manager y el avión deben pertenecer a la misma aerolínea.
+acme.validation.passenger.passportNumber.pattern = Must pattern "^[A-Z0-9]{6,8}$
+acme.validation.flight.null.message = El vuelo no debe ser nulo
+acme.validation.flight.message = El vuelo contiene datos inválidos
+acme.validation.flight.legs.order.message = Los tramos del vuelo deben estar ordenados cronológicamente sin solapamientos
+acme.validation.flight.published.message = Los vuelos publicados deben tener al menos un tramo y ningún tramo en modo borrador
+acme.validation.flight.selftransfer.message = Los vuelos con auto-trasbordo deben tener al menos dos tramos
+acme.validation.flight.airports.different.message=El aeropuerto de salida del primer tramo y el aeropuerto de llegada del último tramo deben ser diferentes.
+
 acme.validation.leg.airline.mismatch.message = El gerente y la aeronave deben pertenecer a la misma aerolínea.
 acme.validation.leg.overlaped-aircraft.message = La aeronave tiene Trayectos solapados
 acme.validation.leg.wrong-date-order.message = La fecha de llegada debe ser posterior a la fecha de salida
@@ -48,6 +58,7 @@ acme.validation.manager.identifier.unique = El identificador debe ser único
 
 acme.validation.manager.duplicated-identifier.message = El identificador del gestor ya está en uso. Por favor, utilice un identificador único.
 acme.validators.manager.correct-pattern = El identificador del gestor debe comenzar con la primera letra del nombre seguida de la primera letra del apellido.
+
 
 acme.validation.activityLog.invalidLeg = El Trayecto de vuelo tiene que haber dado tiempo
 
@@ -87,3 +98,6 @@ acme.validation.FlightAssignment.memberHasIncompatibleLegs.message = Ese miembro
 acme.validation.FlightAssignment.hasPilot.message = Ese tramo de vuelo ya tiene piloto
 acme.validation.FlightAssignment.hasCopilot.message = Ese tramo de vuelo ya tiene copiloto
 acme.validation.FlightAssignment.notValidLeg.message = Ese tramo de vuelo no es válido
+acme.validation.FlightAssignment.pastLeg.message = El tramo de vuelo debe estar en el futuro
+acme.validation.FlightAssignment.notPublishedLeg.message = El tramo de vuelo debe estar publicado
+acme.validation.FlightAssignment.notValidMember.message = Miembro no válido
