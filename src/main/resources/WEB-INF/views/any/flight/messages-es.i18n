@@ -1,0 +1,21 @@
+any.flight.form.label.tag = Etiqueta
+any.flight.form.label.selfTransfer = Auto-transferencia
+any.flight.form.label.cost = Costo
+any.flight.form.label.description = Descripción
+any.flight.form.label.scheduledDeparture = Salida programada
+any.flight.form.label.scheduledArrival = Llegada programada
+any.flight.form.label.departureCity = Ciudad de salida
+any.flight.form.label.arrivalCity = Ciudad de llegada
+any.flight.form.label.layovers = Escalas
+any.flight.form.title = Vuelo
+any.flight.form.label.manager = Gerente
+
+any.flight.form.button.legs = Trayectos
+
+any.flight.list.label.tag = Etiqueta
+any.flight.list.title = Vuelos
+
+any.flight.list.label.selfTransfer = Auto-transferencia
+any.flight.list.label.cost = Costo
+any.flight.list.label.departure-arrival = Salida - Llegada
+any.flight.list.label.manager = Gerente

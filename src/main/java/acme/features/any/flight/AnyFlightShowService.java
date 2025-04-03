@@ -1,24 +1,21 @@
 
-package acme.features.manager.flight;
-
-import java.util.List;
+package acme.features.any.flight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Any;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flights.Flight;
-import acme.entities.legs.Leg;
-import acme.realms.manager.Manager;
 
 @GuiService
-public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flight> {
+public class AnyFlightShowService extends AbstractGuiService<Any, Flight> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerFlightRepository repository;
+	private AnyFlightRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -28,12 +25,11 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 		boolean status;
 		int flightId;
 		Flight flight;
-		Manager manager;
 
 		flightId = super.getRequest().getData("id", int.class);
 		flight = this.repository.findFlightById(flightId);
-		manager = flight == null ? null : flight.getManager();
-		status = flight != null && super.getRequest().getPrincipal().hasRealm(manager) && flight.isDraftMode();
+		status = flight != null && !flight.isDraftMode();
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -49,41 +45,16 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 	}
 
 	@Override
-	public void bind(final Flight flight) {
-
-		super.bindObject(flight, "tag", "selfTransfer", "cost", "description");
-	}
-
-	@Override
-	public void validate(final Flight flight) {
-		if (flight != null) {
-			List<Leg> publishedLegs = this.repository.findPublishedLegsByFlightId(flight.getId());
-			boolean canDelete = publishedLegs.isEmpty();
-			super.state(canDelete, "*", "acme.validation.flight.delete");
-
-		}
-	}
-
-	@Override
-	public void perform(final Flight flight) {
-		List<Leg> flightLegs = this.repository.findLegsByFlight(flight.getId());
-
-		this.repository.deleteAll(flightLegs);
-		this.repository.delete(flight);
-	}
-
-	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
+		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description");
 		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		dataset.put("scheduledArrival", flight.getScheduledArrival());
 		dataset.put("departureCity", flight.getOriginCity());
 		dataset.put("arrivalCity", flight.getDestinationCity());
 		dataset.put("layovers", flight.getLayoverCount());
-
+		dataset.put("manager", flight.getManager().getUserAccount().getUsername() + " | " + flight.getManager().getIdentifier());
 		super.getResponse().addData(dataset);
 	}
-
 }

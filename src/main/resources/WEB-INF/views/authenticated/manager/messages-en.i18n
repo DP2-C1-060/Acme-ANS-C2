@@ -1,0 +1,15 @@
+# Form Title
+authenticated.manager.form.title = Manager Form
+
+# Form Labels
+authenticated.manager.form.label.identifier = Identifier
+authenticated.manager.form.label.years-of-experience = Years of Experience
+authenticated.manager.form.label.date-of-birth = Date of Birth
+authenticated.manager.form.label.picture-url = Picture URL
+manager.leg.form.label.airline = Airline
+
+# Form Buttons
+authenticated.manager.form.button.create = Create
+authenticated.manager.form.button.update = Update
+authenticated.manager.form.button.delete = Delete
+authenticated.manager.form.button.publish = Publish
