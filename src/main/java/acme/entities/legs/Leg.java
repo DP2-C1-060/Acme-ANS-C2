@@ -15,8 +15,8 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
-import acme.constraints.leg.ValidFlightNumber;
-import acme.constraints.leg.ValidLeg;
+import acme.client.components.validation.ValidString;
+import acme.constraints.ValidLeg;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.flights.Flight;
@@ -35,7 +35,7 @@ public class Leg extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidFlightNumber
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
 	@Column(unique = true)
 	private String				flightNumber;
 

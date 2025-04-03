@@ -23,9 +23,20 @@ master.menu.anonymous.ivafrurai = 54182365T: Frutos Raigón, Iván
 
 master.menu.administrator = Administrador
 master.menu.administrator.list-user-accounts = Ver cuentas de usuario
+master.menu.administrator.list-airlines = Ver aerolineas
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)
 master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-system-down = Parar el sistema
+
+
+# master.menu.technician ##########################################################
+
+master.menu.technician = Technician
+master.menu.technician.list-maintenanceRecord = Ver todos los registros de mantenimiento
+master.menu.technician.list-mine-maintenanceRecord = Ver mis registros de mantenimiento
+master.menu.technician.list-task = Ver todas las tareas
+master.menu.technician.list-mine-task = Ver mis tareas
+
 
 # master.menu.provider ########################################################
 
@@ -50,3 +61,23 @@ master.menu.user-account.become-provider = Hacerse proveedor
 master.menu.user-account.provider-profile = Perfil de proveedor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.consumer-profile = Perfil de consumidor
+master.menu.user-account.become-manager = Hazte gerente
+master.menu.user-account.manager-profile = Perfil de gerente
+
+# master.menu.flight #######################################################
+
+master.menu.flight = Vuelos Publicados
+master.menu.anonymous.list-flights = Vuelos
+master.menu.manager.show-dashboard = Panel del gerente
+
+# master.menu.manager ##########################################################
+
+master.menu.manager = Gerente
+master.menu.manager.flight-list = Vuelos
+
+# master.menu.flight-crew-member ####################################################
+master.menu.member = Miembro de la tripulación de vuelo
+master.menu.member.completedlist-flightAssignment= Lista de Asignaciones de Vuelos Completados
+master.menu.member.notCompletedlist-flightAssignment = Lista de Asignaciones de Vuelos No Completados
+master.menu.member.myCompletedList-flightAssignment = Mi Lista de Asignaciones de Vuelos Completados
+master.menu.member.myNotCompletedList-flightAssignment = Mi Lista de Asignaciones de Vuelos No Completados

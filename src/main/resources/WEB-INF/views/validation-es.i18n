@@ -8,27 +8,48 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-acme.validation.header.message = Debe tener entre 1 y 75 caracteres
-acme.validation.text.message = Debe tener entre 1 y 255 caracteres
+acme.validation.header.message = Debe tener entre 1 y 50 caracteres
+acme.validation.text.message = Debe tener entre 0 y 255 caracteres
 acme.validation.dateofbirth.message = La fecha de nacimiento debe indicar una edad entre 18 y 100 años y no puede estar en el futuro
 
-acme.validation.leg.message = El tramo contiene datos inválidos
-acme.validation.leg.dates.message = La fecha de llegada debe ser posterior a la fecha de salida
-acme.validation.leg.airports.message = Los aeropuertos de salida y llegada deben ser distintos
+acme.validation.flight.no-legs.message = Un vuelo debe tener al menos un tramo definido.
+acme.validation.flight.unpublished-legs.message = Un vuelo no puede publicarse si contiene tramos sin publicar.
+acme.validation.flight.invalid-currency.message = La moneda especificada para el costo del vuelo no es válida.
+acme.validation.flight.invalid-selftransfer.message = Un vuelo con un único tramo no puede estar marcado como autotransferencia.
+
+acme.validation.leg.message = El Trayecto contiene datos inválidos
+acme.validation.leg.dates.message = La llegada programada debe ser posterior a la salida programada
+acme.validation.leg.airports.message = Los aeropuertos de salida y llegada deben ser diferentes
 acme.validation.leg.prefix.message = El prefijo del número de vuelo debe coincidir con el código IATA de la aerolínea
 acme.validation.leg.number.message = El número de vuelo ya existe en el sistema (los últimos 4 dígitos deben ser únicos)
-acme.validation.leg.flight.number.message = El número de vuelo debe constar de tres letras mayúsculas seguidas de cuatro dígitos (por ejemplo, "ABC1234").
+acme.validation.leg.flight.number.message = El número de vuelo debe consistir en tres letras mayúsculas seguidas de cuatro dígitos (por ejemplo, "ABC1234")
 acme.validation.leg.uniqueFlightNumber.message = El número de vuelo debe ser único
-acme.validation.leg.airline.mismatch.message = El manager y el avión deben pertenecer a la misma aerolínea.
+acme.validation.leg.airline.mismatch.message = El gerente y la aeronave deben pertenecer a la misma aerolínea.
+acme.validation.leg.overlaped-aircraft.message = La aeronave tiene Trayectos solapados
+acme.validation.leg.wrong-date-order.message = La fecha de llegada debe ser posterior a la fecha de salida
+acme.validation.leg.wrong-iata.message = El prefijo del número de vuelo no coincide con el código IATA de la aerolínea
+acme.validation.leg.wrong-duration.message = La duración del vuelo debe estar entre 1 y 1000 minutos
+acme.validation.leg.same-airport.message = Los aeropuertos de salida y llegada deben ser diferentes
+acme.validation.leg.last4-digits-not-unique.message = Los últimos 4 dígitos del número de vuelo deben ser únicos
+acme.validation.leg.invalid-time-link.message = Los Trayectos consecutivos deben tener tiempos de salida y llegada coherentes
+acme.validation.leg.invalid-airport-link.previous.selfTransfer.message = En vuelos con autotransferencia, el aeropuerto de llegada del Trayecto anterior y el aeropuerto de salida del Trayecto actual deben ser diferentes
+acme.validation.leg.invalid-airport-link.previous.message = El aeropuerto de llegada del Trayecto anterior y el aeropuerto de salida del Trayecto actual deben ser el mismo
+acme.validation.leg.invalid-airport-link.next.selfTransfer.message = En vuelos con autotransferencia, el aeropuerto de llegada del Trayecto actual y el aeropuerto de salida del siguiente Trayecto deben ser diferentes
+acme.validation.leg.invalid-airport-link.next.message = El aeropuerto de llegada del Trayecto actual y el aeropuerto de salida del siguiente Trayecto deben ser el mismo
+acme.validation.leg.repeated-airport.message = Los aeropuertos no deben repetirse en la secuencia de vuelo
+acme.validation.leg.inactive-aircraft.message = La aeronave debe estar activa
+acme.validation.flight.delete = El vuelo solo se puede borrar si no tiene Trayectos publicados.
 
-acme.validation.flight.null.message = El vuelo no debe ser nulo
-acme.validation.flight.message = El vuelo contiene datos inválidos
-acme.validation.flight.legs.order.message = Los tramos del vuelo deben estar ordenados cronológicamente sin solapamientos
-acme.validation.flight.published.message = Los vuelos publicados deben tener al menos un tramo y ningún tramo en modo borrador
-acme.validation.flight.selftransfer.message = Los vuelos con auto-trasbordo deben tener al menos dos tramos
-acme.validation.flight.airports.different.message=El aeropuerto de salida del primer tramo y el aeropuerto de llegada del último tramo deben ser diferentes.
 
-acme.validation.activityLog.invalidLeg = El tramo de vuelo tiene que haber dado tiempo
+acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento
+acme.validation.manager.age.tooYoung = La edad mínima para trabajar es de 16 años
+acme.validation.manager.identifier.invalid = El identificador debe comenzar con la primera letra del nombre y la primera letra del apellido
+acme.validation.manager.identifier.unique = El identificador debe ser único
+
+acme.validation.manager.duplicated-identifier.message = El identificador del gestor ya está en uso. Por favor, utilice un identificador único.
+acme.validators.manager.correct-pattern = El identificador del gestor debe comenzar con la primera letra del nombre seguida de la primera letra del apellido.
+
+acme.validation.activityLog.invalidLeg = El Trayecto de vuelo tiene que haber dado tiempo
 
 acme.validation.agent.duplicated.message = El código de empleado debe ser único
 acme.validation.agent.employeecode.message = Las dos primeras letras deben corresponder a las iniciales del agente
@@ -37,18 +58,32 @@ acme.validation.agent.workStartMoment.message = La fecha en la que se comenzó a
 
 acme.validation.claim.registrationMoment.message = La fecha de registro de la reclamación debe ser posterior a la fecha en la que el agente comenzó a trabajar y posterior a la llegada del tramo
 
-acme.validation.trackingLog.indicator.message = El estado debe ser coherente con el porcentaje de resolución: PENDING si es menor a 100%, ACCEPTED o REJECTED si es 100
-acme.validation.trackingLog.resolution.message = La resolución debe estar presente cuando el porcentaje de resolución sea 100%
-acme.validation.trackingLog.resolutionPercentage.message = El porcentaje debe ser mayor o igual al anterior
+acme.validation.log.indicator.message = El estado debe ser coherente con el porcentaje de resolución: PENDING si es menor a 100%, ACCEPTED o REJECTED si es 100
+acme.validation.log.resolution.message = La resolución debe estar presente cuando el porcentaje de resolución sea 100%
+acme.validation.log.resolutionPercentage.message = El porcentaje debe ser mayor o igual al anterior
 
 acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento
 acme.validation.manager.age.tooYoung = La edad mínima para trabajar es de 16 años
 acme.validation.manager.identifier.invalid = El identificador debe comenzar con la primera letra del nombre y la primera letra del apellido
 acme.validation.manager.identifier.unique = El identificador debe ser único
 
-acme.validation.past.message = La fecha de fundacion debe ser uan fecha pasada.
+acme.validation.past.message = La fecha de fundacion debe ser una fecha pasada.
 acme.validation.phone.message = El numero de telefono debe tener entre 6 y 15 digitos
 
 acme.validation.activityLogMoment.wrong.message = El momento de registro debe ser después de aterrizar.
 acme.validation.member.employeecode.message = El código de empleado debe ser seguir el patrón especificado.
 acme.validation.member.duplicated.message = El código de empleado está duplicado.
+
+acme.validation.technician.duplicated-license-number.message = Los técnicos deben tener Números de licencia únicos.
+
+
+acme.validation.member.nullornotpattern.message = El identificador no debe ser nulo y debe seguir el patrón correcto
+acme.validation.member.notInitials.message = El employee code debe comenzar con las iniciales del usuario
+acme.validation.member.repeated.message = Ya existe una entidad diferente con este employeeCode:
+
+acme.validation.activityLog.wrongMoment.message = ActivityLog registrationMoment debe ser posterior a la finalización de leg
+acme.validation.FlightAssignment.memberNotAvailable.message = Ese miembro de la tripulacion no está disponible, por lo que la asignación de vuelo no puede ser creada
+acme.validation.FlightAssignment.memberHasIncompatibleLegs.message = Ese miembro tiene tramos de vuelo incompatibles
+acme.validation.FlightAssignment.hasPilot.message = Ese tramo de vuelo ya tiene piloto
+acme.validation.FlightAssignment.hasCopilot.message = Ese tramo de vuelo ya tiene copiloto
+acme.validation.FlightAssignment.notValidLeg.message = Ese tramo de vuelo no es válido

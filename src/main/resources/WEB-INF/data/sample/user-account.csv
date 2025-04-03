@@ -17,12 +17,10 @@ user-account-agent-03,true,"UserIdentity{name: 'Max', surname: 'Agent', email: '
 user-account-technician-01,true,"UserIdentity{name: 'Luis', surname: 'González', email: 'luis@acme.com'}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: 'Marta', surname: 'Sánchez Pérez', email: 'marta@acme.com'}",technician2,technician2
 user-account-technician-03,true,"UserIdentity{name: 'José', surname: 'Ramírez Fernández', email: 'jose@acme.com'}",technician3,technician3
-user-account-flightCrewMember-01, true, "UserIdentity{name: 'Gerardo', surname: 'CrewMember', email: 'gerardo@acme.com'}",member1,member1
-user-account-flightCrewMember-02, true, "UserIdentity{name: 'Joan', surname: 'CrewMember', email: 'joan@acme.com'}",member2,member2
-user-account-flightCrewMember-03, true, "UserIdentity{name: 'Ibai', surname: 'CrewMember', email: 'ibai@acme.com'}",member3,member3
-user-account-flightCrewMember-04, true, "UserIdentity{name: 'Adobo', surname: 'CrewMember', email: 'adobo@acme.com'}",member4,member4
-user-account-flightCrewMember-05, true, "UserIdentity{name: 'Martin', surname: 'CrewMember', email: 'martin@acme.com'}",member,member
-
-
+user-account-member-01,true,"UserIdentity{name: 'Gerardo', surname: 'CrewMember', email: 'gerardo@acme.com'}",member1,member1
+user-account-member-02,true,"UserIdentity{name: 'Joan', surname: 'CrewMember', email: 'joan@acme.com'}",member2,member2
+user-account-member-03,true,"UserIdentity{name: 'Ibai', surname: 'CrewMember', email: 'ibai@acme.com'}",member3,member3
+user-account-member-04,true,"UserIdentity{name: 'Adobo', surname: 'CrewMember', email: 'adobo@acme.com'}",member4,member4
+user-account-member-05,true,"UserIdentity{name: 'Martin', surname: 'CrewMember', email: 'martin@acme.com'}",member,member
 user-account-administrator-02,true,"UserIdentity{name: 'Administrator1', surname: 'Prueba', email: 'administrator1@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'Administrator2', surname: 'Prueba', email: 'administrator2@acme.com'}",administrator2,administrator2
