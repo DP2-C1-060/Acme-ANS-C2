@@ -1,12 +1,10 @@
 
 package acme.features.flightCrewMember.activityLog;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLogs.ActivityLog;
@@ -22,43 +20,49 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int logId;
-		FlightCrewMember member;
-		ActivityLog log;
+		ActivityLog activityLog;
+		int id;
 
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
-		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-		status = member != null && super.getRequest().getPrincipal().hasRealm(member);
+		id = super.getRequest().getData("id", int.class);
+		activityLog = this.repository.findActivityLogById(id);
+		boolean correctMember = activityLog.getFlightAssignment().getMember().getId() == super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean flightAssignmentPublished = !activityLog.getFlightAssignment().isDraftMode();
+		boolean inPast = MomentHelper.isPast(activityLog.getFlightAssignment().getLeg().getScheduledArrival());
 
+		boolean status = correctMember && flightAssignmentPublished && inPast;
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		ActivityLog log;
-		int logId;
+		ActivityLog activityLog;
+		int id;
 
-		logId = super.getRequest().getData("id", int.class);
-		log = this.repository.findActivityLogById(logId);
+		id = super.getRequest().getData("id", int.class);
+		activityLog = this.repository.findActivityLogById(id);
 
-		super.getBuffer().addData(log);
+		super.getBuffer().addData(activityLog);
 	}
 
 	@Override
-	public void unbind(final ActivityLog log) {
+	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
-		SelectChoices selectedAssignments;
-		Collection<FlightAssignment> assignments;
 
-		assignments = this.repository.findAllAssignments();
-		selectedAssignments = SelectChoices.from(assignments, "id", log.getFlightAssignment());
+		FlightAssignment flightAssignment;
+		final boolean showCreate;
 
-		dataset = super.unbindObject(log, "registrationMoment", "incidentType", "description", "severity", "draftMode");
-		dataset.put("assignments", selectedAssignments);
-		dataset.put("assignment", selectedAssignments.getSelected().getKey());
+		flightAssignment = activityLog.getFlightAssignment();
 
+		dataset = super.unbindObject(activityLog, "registrationMoment", "incidentType", "description", "severity", "draftMode");
+
+		boolean inPast = MomentHelper.isPast(flightAssignment.getLeg().getScheduledArrival());
+		boolean correctMember = super.getRequest().getPrincipal().getActiveRealm().getId() == flightAssignment.getMember().getId();
+		showCreate = !flightAssignment.isDraftMode() && activityLog.isDraftMode() && inPast && correctMember;
+
+		dataset.put("masterId", activityLog.getFlightAssignment().getId());
+		dataset.put("buttonsAvaiable", showCreate);
 		super.getResponse().addData(dataset);
+
 	}
+
 }

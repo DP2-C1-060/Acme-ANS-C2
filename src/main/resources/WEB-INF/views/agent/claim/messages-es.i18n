@@ -1,8 +1,23 @@
 agent.claim.list.title = Lista de reclamaciones
 
-agent.claim.list.label.description = Descripción
+agent.claim.list.label.flightNumber = Número de vuelo del tramo
 agent.claim.list.label.type = Tipo
-agent.claim.list.label.email = Email
 agent.claim.list.label.registrationMoment = Momento de registro
+agent.claim.list.label.indicator = Estado
 
 agent.claim.list.button.create = Crear
+
+agent.claim.form.title = Detalles de reclamación
+
+agent.claim.form.label.description = Descripción
+agent.claim.form.label.email = Email
+agent.claim.form.label.registrationMoment = Momento de registro
+agent.claim.form.label.type = Tipo
+agent.claim.form.label.leg = Tramo
+
+agent.claim.form.button.trackings = Registros de seguimiento
+agent.claim.form.button.update = Actualizar
+agent.claim.form.button.delete = Borrar
+agent.claim.form.button.publish = Publicar
+
+agent.claim.form.button.create = Crear

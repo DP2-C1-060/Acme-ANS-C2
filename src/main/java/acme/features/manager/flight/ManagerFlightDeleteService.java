@@ -56,8 +56,12 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void validate(final Flight flight) {
-		// Si tiene algun leg publicado validacion de que no se puede borrar
-		;
+		if (flight != null) {
+			List<Leg> publishedLegs = this.repository.findPublishedLegsByFlightId(flight.getId());
+			boolean canDelete = publishedLegs.isEmpty();
+			super.state(canDelete, "*", "acme.validation.flight.delete");
+
+		}
 	}
 
 	@Override

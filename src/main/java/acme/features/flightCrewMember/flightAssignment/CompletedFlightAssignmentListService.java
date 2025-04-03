@@ -1,11 +1,13 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.assignments.FlightAssignment;
@@ -15,7 +17,7 @@ import acme.realms.flightCrewMember.FlightCrewMember;
 public class CompletedFlightAssignmentListService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
-	private FlightAssignmentRepository flightAssignmentRepository;
+	private FlightAssignmentRepository repository;
 
 
 	@Override
@@ -25,19 +27,18 @@ public class CompletedFlightAssignmentListService extends AbstractGuiService<Fli
 
 	@Override
 	public void load() {
-		int crewMemberId;
-		List<FlightAssignment> flightAssignments;
+		Collection<FlightAssignment> flightAssignments;
 
-		crewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		flightAssignments = this.flightAssignmentRepository.findFlightAssignmentCompletedLeg(crewMemberId);
+		Date currentMoment;
+		currentMoment = MomentHelper.getCurrentMoment();
+		flightAssignments = this.repository.findCompletedPublishedFlightAssignments(currentMoment);
+
 		super.getBuffer().addData(flightAssignments);
 	}
 
 	@Override
 	public void unbind(final FlightAssignment flightAssignment) {
-		Dataset dataset;
-
-		dataset = super.unbindObject(flightAssignment, "duty", "status", "remarks", "lastUpdate", "leg.flightNumber", "flightCrewMember.employeeCode");
+		Dataset dataset = super.unbindObject(flightAssignment, "duty", "moment", "assignmentStatus", "remarks", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
