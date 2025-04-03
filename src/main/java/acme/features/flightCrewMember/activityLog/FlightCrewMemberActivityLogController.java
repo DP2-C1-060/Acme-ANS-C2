@@ -13,8 +13,6 @@ import acme.realms.flightCrewMember.FlightCrewMember;
 @GuiController
 public class FlightCrewMemberActivityLogController extends AbstractGuiController<FlightCrewMember, ActivityLog> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private FlightCrewMemberActivityLogListService		listService;
 
@@ -32,8 +30,6 @@ public class FlightCrewMemberActivityLogController extends AbstractGuiController
 
 	@Autowired
 	private FlightCrewMemberActivityLogDeleteService	deleteService;
-
-	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct

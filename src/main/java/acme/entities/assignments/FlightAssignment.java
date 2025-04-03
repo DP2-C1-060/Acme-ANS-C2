@@ -17,7 +17,6 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.constraints.flightAssignment.ValidFlightAssignment;
 import acme.entities.legs.Leg;
 import acme.realms.flightCrewMember.FlightCrewMember;
 import lombok.Getter;
@@ -29,7 +28,6 @@ import lombok.Setter;
 @Table(indexes = {
 	@Index(columnList = "draftMode")
 })
-@ValidFlightAssignment
 public class FlightAssignment extends AbstractEntity {
 	// Serialisation version --------------------------------------------------
 
