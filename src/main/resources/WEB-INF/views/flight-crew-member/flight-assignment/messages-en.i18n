@@ -1,35 +1,26 @@
-#
-# Copyright (C) 2012-2025 Rafael Corchuelo.
-#
-# In keeping with the traditional purpose of furthering education and research, it is
-# the policy of the copyright owner to permit non-commercial use and redistribution of
-# this software. It has been tested carefully, but it is not guaranteed for any particular
-# purposes. The copyright owner does not offer any warranties or representations, nor do
-# they accept any liabilities with respect to them.
+# messages-en.i18n
 
-# Titles
-flight-crew-members.flight-assignment.form.title = Flight assignment details
-flight-crew-members.flight-assignment.list.title = Listing of flight assignments
+flight-crew-member.flight-assignment.form.title = Flight Assignment Form 
+flight-crew-member.flight-assignment.list.title = Listing of Flight Assignments
 
-# Labels (form)
-flight-crew-members.flight-assignment.form.label.duty = Duty:
-flight-crew-members.flight-assignment.form.label.lastUpdate = Last update moment:
-flight-crew-members.flight-assignment.form.label.status = Status:
-flight-crew-members.flight-assignment.form.label.remarks = Remarks (Optional):
-flight-crew-members.flight-assignment.form.label.flightLeg = Leg:
-flight-crew-members.flight-assignment.form.label.flightCrewMember= Flight crew member:
+member.flight-assignment.form.label.duty = Duty:
+member.flight-assignment.form.label.moment = Moment: 
+member.flight-assignment.form.label.assignmentStatus = AssignmentStatus:
+member.flight-assignment.form.label.remarks = Remarks:
+member.flight-assignment.form.label.leg = Leg:
+member.flight-assignment.form.label.member = Member:
+member.flight-assignment.form.label.confirmation = Confirm that the flightAssignment is correct
+		
+member.flight-assignment.form.button.update = Update
+member.flight-assignment.form.button.publish = Publish
+member.flight-assignment.form.button.delete = Delete
+member.flight-assignment.form.button.create = Create
+member.flight-assignment.form.button.activity-log = ActivityLogs
 
-# List Labels
-flight-crew-members.flight-assignment.list.label.duty = Duty:
-flight-crew-members.flight-assignment.list.label.lastUpdate = Last update moment:
-flight-crew-members.flight-assignment.list.label.status = Status:
+member.flight-assignment.list.label.duty = Duty
+member.flight-assignment.list.label.moment = Moment
+member.flight-assignment.list.label.assignmentStatus = AssignmentStatus
+member.flight-assignment.list.label.remarks = Remarks
+member.flight-assignment.list.label.draftMode = DraftMode
 
-# Buttons
-flight-crew-members.flight-assignment.form.button.create = Create
-flight-crew-members.flight-assignment.form.button.update = Update
-flight-crew-members.flight-assignment.form.button.delete = Delete
-flight-crew-members.flight-assignment.form.button.publish = Publish
-flight-crew-members.flight-assignment.form.label.confirmation = Confirm that the flight assignment is correct.
-flight-crew-members.flight-assignment.form.button.flightLeg = Leg
-flight-crew-members.flight-assignment.form.button.member = Member
-flight-crew-members.flight-assignment.list.button.create = Create
+member.flight-assignment.list.button.create = Create

@@ -12,22 +12,44 @@ acme.validation.header.message = Must have from 1 to 75 characters
 acme.validation.text.message = Must have from 1 to 255 characters
 acme.validation.dateofbirth.message = The date of birth must indicate an age between 18 and 100 years and must not be in the future.
 
-acme.validation.leg.message = The leg contains invalid data
-acme.validation.leg.dates.message = The scheduled arrival must be after the scheduled departure
-acme.validation.leg.airports.message = The departure and arrival airports must be different
-acme.validation.leg.prefix.message = The flight number prefix must match the airline's IATA code
-acme.validation.leg.number.message = The flight number already exists in the system (the last 4 digits must be unique)
-acme.validation.leg.flight.number.message = The flight number must consist of three uppercase letters followed by four digits (e.g., "ABC1234").
-acme.validation.leg.uniqueFlightNumber.message = The flight number must be unique
-acme.validation.leg.airline.mismatch.message = The manager and the aircraft must belong to the same airline.
-
-
 acme.validation.flight.null.message = The flight must not be null
 acme.validation.flight.message = The flight contains invalid data
 acme.validation.flight.legs.order.message = Flight legs must be ordered chronologically without overlaps
 acme.validation.flight.published.message = Published flights must have at least one leg and no legs in draft mode
 acme.validation.flight.selftransfer.message = Self-transfer flights must have at least two legs
-acme.validation.flight.airports.different.message=The departure airport of the first leg and the arrival airport of the last leg must be different.
+acme.validation.flight.airports.different.message = The departure airport of the first leg and the arrival airport of the last leg must be different.
+acme.validation.flight.delete = The flight can only be deleted if it has no published legs.
+
+
+acme.validation.leg.message = The leg contains invalid data
+acme.validation.leg.dates.message = The scheduled arrival must be after the scheduled departure
+acme.validation.leg.airports.message = The departure and arrival airports must be different
+acme.validation.leg.prefix.message = The flight number prefix must match the airline's IATA code
+acme.validation.leg.number.message = The flight number already exists in the system (the last 4 digits must be unique)
+acme.validation.leg.flight.number.message = The flight number must consist of three uppercase letters followed by four digits (e.g., "ABC1234")
+acme.validation.leg.uniqueFlightNumber.message = The flight number must be unique
+acme.validation.leg.airline.mismatch.message = The manager and the aircraft must belong to the same airline.
+acme.validation.leg.overlaped-aircraft.message = The aircraft has overlapping legs
+acme.validation.leg.wrong-date-order.message = The arrival date must be after the departure date
+acme.validation.leg.wrong-iata.message = The flight number prefix does not match the airline's IATA code
+acme.validation.leg.wrong-duration.message = The flight duration must be between 1 and 1000 minutes
+acme.validation.leg.same-airport.message = The departure and arrival airports must be different
+acme.validation.leg.last4-digits-not-unique.message = The last 4 digits of the flight number must be unique
+acme.validation.leg.invalid-time-link.message = Consecutive legs must have consistent departure and arrival times
+acme.validation.leg.invalid-airport-link.previous.selfTransfer.message = In self-transfer flights, the arrival airport of the previous leg and the departure airport of the current leg must be different
+acme.validation.leg.invalid-airport-link.previous.message = The arrival airport of the previous leg and the departure airport of the current leg must be the same
+acme.validation.leg.invalid-airport-link.next.selfTransfer.message = In self-transfer flights, the arrival airport of the current leg and the departure airport of the next leg must be different
+acme.validation.leg.invalid-airport-link.next.message = The arrival airport of the current leg and the departure airport of the next leg must be the same
+acme.validation.leg.repeated-airport.message = Airports must not be repeated in the flight sequence
+acme.validation.leg.inactive-aircraft.message = The aircraft must be active
+
+acme.validation.manager.experience.message = Years of experience exceed the allowed maximum based on the date of birth
+acme.validation.manager.age.tooYoung = The minimum age to work is 16 years
+acme.validation.manager.identifier.invalid = The identifier must start with the first letter of the name and the first letter of the surname
+acme.validation.manager.identifier.unique = The identifier must be unique
+
+acme.validation.manager.duplicated-identifier.message = The manager identifier is already in use. Please use a unique identifier.
+acme.validators.manager.correct-pattern = The manager identifier must start with the first letter of the name followed by the first letter of the surname.
 
 acme.validation.activityLog.invalidLeg = The leg must have taken place
 
@@ -57,9 +79,14 @@ acme.validation.member.duplicated.message = Employee code is duplicated.
 
 acme.validation.technician.duplicated-license-number.message = Technicians must have unique licenseNumber.
 
-acme.validation.flight-assignment.leg-has-occurred.message = The selected leg already has occurred 
-acme.validation.flight-assignment.member-not-available.message = Message not available
-acme.validation.flight-assignment.member-with-overlapping-legs.message = There selected member has overlapping legs
-acme.validation.flight-assignment.leg-has-pilot.message = The selected leg has already have a pilot
-acme.validation.flight-assignment.leg-has-copilot.message = The selected leg has already have a copilot.
+acme.validation.member.nullornotpattern.message = The identifier must not be null and must follow the correct pattern  
+acme.validation.member.notInitials.message = The employee code must start with the user's initials  
+acme.validation.member.repeated.message = A different entity already exists with this employeeCode:  
+
+acme.validation.activityLog.wrongMoment.message = ActivityLog registrationMoment must be after the completion of leg 
+acme.validation.FlightAssignment.memberNotAvailable.message = That member is not available, flightAssignment can not be created
+acme.validation.FlightAssignment.memberHasIncompatibleLegs.message = That member has incompatible legs
+acme.validation.FlightAssignment.hasPilot.message = That leg already has a pilot
+acme.validation.FlightAssignment.hasCopilot.message = That leg already has a copilot
+acme.validation.FlightAssignment.notValidLeg.message = That leg is not valid
 

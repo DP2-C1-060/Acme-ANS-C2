@@ -1,7 +1,6 @@
 
-package acme.constraints.leg;
+package acme.constraints;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -13,18 +12,20 @@ import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
-@Documented
-@Constraint(validatedBy = {})
-@Target({
-	ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE
-})
+@Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = {})
 @ReportAsSingleViolation
-@NotBlank(message = "{acme.validation.leg.flight.number.message}")
-@Pattern(regexp = "^[A-Z]{3}\\d{4}$", message = "{acme.validation.leg.flight.number.message}")
-public @interface ValidFlightNumber {
 
-	String message() default "{acme.validation.leg.flight.number.message}";
+@NotBlank
+@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
+
+public @interface ValidIdentifier {
+
+	// Standard validation properties -----------------------------------------
+
+	String message() default "{acme.validation.manager.identifier.message}";
+
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 }

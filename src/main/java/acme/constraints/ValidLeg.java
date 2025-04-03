@@ -1,7 +1,6 @@
 
-package acme.constraints.flight;
+package acme.constraints;
 
-import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,12 +11,15 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidFlightValidator.class)
-@Documented
-public @interface ValidFlight {
+@Constraint(validatedBy = LegValidator.class)
+
+public @interface ValidLeg {
+
+	// Standard validation properties -----------------------------------------
 
 	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
+
 }
