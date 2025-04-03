@@ -1,18 +1,28 @@
-# messages-en.i18n
+# General Indicators
+client.dashboard.form.title.general-indicators=General Indicators
+customer.customer-dashboard.form.title=Customer Dashboard
 
-customer.customer-dashboard.form.title = Customer Dashboard
+# Labels for destinations and spending
+client.dashboard.form.label.last-five-destinations-last-year=Last Five Destinations (Last Year)
+client.dashboard.form.label.spent-money-last-year=Spent Money (Last Year)
 
-customer.customer-dashboard.form.label.last-five-destinations-last-year = Last Five Destinations
-customer.customer-dashboard.form.label.spent-money-last-year = Money Spent in bookings during the last year
-customer.customer-dashboard.form.label.economy-bookings = Economy Class Bookings
-customer.customer-dashboard.form.label.business-bookings = Business Class Bookings
-customer.customer-dashboard.form.label.booking-count-cost = Total Cost of Bookings
-customer.customer-dashboard.form.label.booking-average-cost = Average Cost of Bookings
-customer.customer-dashboard.form.label.booking-minimum-cost = Minimum Cost of Bookings
-customer.customer-dashboard.form.label.booking-maximum-cost = Maximum Cost of Bookings
-customer.customer-dashboard.form.label.booking-deviation-cost = Standard Deviation of Booking Costs
-customer.customer-dashboard.form.label.booking-count-passengers = Total Number of Passengers
-customer.customer-dashboard.form.label.booking-average-passengers = Average Number of Passengers per Booking
-customer.customer-dashboard.form.label.booking-minimum-passengers = Minimum Number of Passengers per Booking
-customer.customer-dashboard.form.label.booking-maximum-passengers = Maximum Number of Passengers per Booking
-customer.customer-dashboard.form.label.booking-deviation-passengers = Standard Deviation of Passengers per Booking
+# Labels for bookings
+client.dashboard.form.label.economy-bookings=Economy Bookings
+client.dashboard.form.label.business-bookings=Business Bookings
+
+# Labels for booking cost indicators
+client.dashboard.form.label.booking-count-cost=Booking Count Cost
+client.dashboard.form.label.booking-average-cost=Booking Average Cost
+client.dashboard.form.label.booking-minimum-cost=Booking Minimum Cost
+client.dashboard.form.label.booking-maximum-cost=Booking Maximum Cost
+client.dashboard.form.label.booking-deviation-cost=Booking Deviation Cost
+client.dashboard.form.label.booking-count-passengers=Booking Count Passengers
+client.dashboard.form.label.booking-average-passengers=Booking Average Passengers
+client.dashboard.form.label.booking-minimum-passengers=Booking Minimum Passengers
+client.dashboard.form.label.booking-maximum-passengers=Booking Maximum Passengers
+client.dashboard.form.label.booking-deviation-passengers=Booking Deviation Passengers
+
+
+# Labels for charts
+client.dashboard.form.label.bookings.distribution=Bookings Distribution
+client.dashboard.form.label.contract.cost=Contract Cost
