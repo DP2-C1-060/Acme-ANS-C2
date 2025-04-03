@@ -1,9 +1,6 @@
 
 package acme.entities.legs;
 
-import java.time.Duration;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -66,13 +63,11 @@ public class Leg extends AbstractEntity {
 
 	@Transient
 	public Double getDuration() {
-
-		ZonedDateTime departure = this.scheduledDeparture.toInstant().atZone(ZoneId.systemDefault());
-		ZonedDateTime arrival = this.scheduledArrival.toInstant().atZone(ZoneId.systemDefault());
-
-		Duration duration = Duration.between(departure, arrival);
-
-		return (double) duration.toMinutes();
+		if (this.scheduledDeparture == null || this.scheduledArrival == null)
+			return 0.0;
+		long diffMillis = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
+		double diffMinutes = diffMillis / 60000.0;
+		return diffMinutes;
 	}
 
 	// Relationships ----------------------------------------------------------

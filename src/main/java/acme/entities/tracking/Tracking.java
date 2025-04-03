@@ -51,12 +51,16 @@ public class Tracking extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private TrackingStatus			indicator;
+	private TrackingStatus		indicator;
 
 	@Optional
 	@ValidOptionalLongText
 	@Automapped
 	private String				resolution;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 	// Relationships ----------------------------------------------------------
 

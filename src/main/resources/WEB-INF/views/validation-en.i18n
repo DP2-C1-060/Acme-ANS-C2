@@ -35,7 +35,7 @@ acme.validation.agent.duplicated.message = The employee code must be unique
 acme.validation.agent.employeecode.message = The first two letters must match the agent's initials
 acme.validation.agent.workStartMoment.message = The date work began at the airline must be after its founding date
 
-acme.validation.claim.registrationMoment.message = The claim registration date must be after the date the agent started working at the airline
+acme.validation.claim.registrationMoment.message = The claim registration date must be after the date the agent started working at the airline and after the arrival date of the leg
 
 acme.validation.trackingLog.indicator.message = The status must be consistent with the resolution percentage: PENDING if it is less than 100%, ACCEPTED or REJECTED if it is 100%
 acme.validation.trackingLog.resolution.message = Resolution must be provided when the resolution percentage is 100%

@@ -2,11 +2,13 @@
 package acme.entities.claim;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -14,8 +16,13 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
+import acme.client.helpers.SpringHelper;
 import acme.constraints.ValidLongText;
 import acme.constraints.claim.ValidRegistrationMoment;
+import acme.entities.legs.Leg;
+import acme.entities.tracking.Tracking;
+import acme.entities.tracking.TrackingRepository;
+import acme.entities.tracking.TrackingStatus;
 import acme.realms.agent.Agent;
 import lombok.Getter;
 import lombok.Setter;
@@ -53,13 +60,33 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private boolean				accepted;
+	private boolean				draftMode;
+
+	// Derived attributes -----------------------------------------------------
+
+
+	@Transient
+	public TrackingStatus getIndicator() {
+		List<Tracking> results;
+		TrackingRepository trackingRepository;
+
+		trackingRepository = SpringHelper.getBean(TrackingRepository.class);
+		results = trackingRepository.findLastTrackingsByClaimId(this.getId());
+
+		return results.isEmpty() ? TrackingStatus.PENDING : results.get(0).getIndicator();
+	}
 
 	// Relationships ----------------------------------------------------------
 
+
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
-	private Agent				agent;
+	@ManyToOne(optional = false)
+	private Agent	agent;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Leg		leg;
 
 }

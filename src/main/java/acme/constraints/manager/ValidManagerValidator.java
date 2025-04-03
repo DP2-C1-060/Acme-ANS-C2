@@ -55,10 +55,18 @@ public class ValidManagerValidator extends AbstractValidator<ValidManager, Manag
 		if (dob == null)
 			return !super.hasErrors(context);
 
-		LocalDate birthDate = dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate birthDate;
+		if (dob instanceof java.sql.Date date)
+			birthDate = date.toLocalDate();
+		else
+			birthDate = dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 		Date currentMoment = MomentHelper.getCurrentMoment();
-		LocalDate today = currentMoment.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate today;
+		if (currentMoment instanceof java.sql.Date date)
+			today = date.toLocalDate();
+		else
+			today = currentMoment.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 		if (!birthDate.isBefore(today))
 			return !super.hasErrors(context);
