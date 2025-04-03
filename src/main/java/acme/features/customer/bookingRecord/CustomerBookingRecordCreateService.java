@@ -29,6 +29,9 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void load() {
+		BookingRecord bookingRecord = new BookingRecord();
+
+		super.getBuffer().addData(bookingRecord);
 
 	}
 
@@ -49,14 +52,13 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-		assert bookingRecord != null;
 
 		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		Collection<Passenger> passengers = this.customerBookingRecordRepository.getAllPassengersByCustomer(customerId);
 		Collection<Booking> bookings = this.customerBookingRecordRepository.getBookingsByCustomerId(customerId);
 		SelectChoices passengerChoices = SelectChoices.from(passengers, "id", bookingRecord.getPassenger());
-		SelectChoices bookingChoices = SelectChoices.from(bookings, "id", bookingRecord.getBooking());
+		SelectChoices bookingChoices = SelectChoices.from(bookings, "locatorCode", bookingRecord.getBooking());
 		Dataset dataset = super.unbindObject(bookingRecord, "passenger", "booking");
 		dataset.put("passengers", passengerChoices);
 		dataset.put("bookings", bookingChoices);
