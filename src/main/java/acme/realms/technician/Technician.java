@@ -1,5 +1,5 @@
 
-package acme.realms;
+package acme.realms.technician;
 
 import javax.persistence.Entity;
 
@@ -12,12 +12,14 @@ import acme.constraints.ValidOptionalLongText;
 import acme.constraints.ValidPhone;
 import acme.constraints.ValidShortText;
 import acme.constraints.ValidYearsOfExperience;
+import acme.constraints.technician.ValidTechnician;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidTechnician
 public class Technician extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------

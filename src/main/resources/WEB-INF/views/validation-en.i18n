@@ -55,3 +55,11 @@ acme.validation.activityLogMoment.wrong.message = Registration moment must be af
 acme.validation.member.employeecode.message = Employee code is not like the pattern.
 acme.validation.member.duplicated.message = Employee code is duplicated.
 
+acme.validation.technician.duplicated-license-number.message = Technicians must have unique licenseNumber.
+
+acme.validation.flight-assignment.leg-has-occurred.message = The selected leg already has occurred 
+acme.validation.flight-assignment.member-not-available.message = Message not available
+acme.validation.flight-assignment.member-with-overlapping-legs.message = There selected member has overlapping legs
+acme.validation.flight-assignment.leg-has-pilot.message = The selected leg has already have a pilot
+acme.validation.flight-assignment.leg-has-copilot.message = The selected leg has already have a copilot.
+

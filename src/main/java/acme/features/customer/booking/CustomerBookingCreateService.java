@@ -42,6 +42,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		AbstractRealm principal = super.getRequest().getPrincipal().getActiveRealm();
 		int customerId = principal.getId();
 		Customer customer = this.customerBookingRepository.findCustomerById(customerId);
+
 		Date date = MomentHelper.getCurrentMoment();
 
 		String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -82,10 +83,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void perform(final Booking booking) {
-		Date today = MomentHelper.getCurrentMoment();
-		if (today instanceof java.sql.Date && !(today instanceof java.sql.Timestamp))
-			today = new java.sql.Timestamp(today.getTime());
-		booking.setPurchaseMoment(today);
+
 		this.customerBookingRepository.save(booking);
 	}
 
