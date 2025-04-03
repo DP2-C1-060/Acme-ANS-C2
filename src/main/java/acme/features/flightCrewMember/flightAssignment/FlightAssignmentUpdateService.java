@@ -1,7 +1,7 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,83 +22,108 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 	@Autowired
 	private FlightAssignmentRepository repository;
 
+	// AbstractService<Member, FlightAssignment> -------------------------------------
+
 
 	@Override
 	public void authorise() {
 		boolean status;
 		int id;
-		FlightAssignment assignment;
+		int memberId;
+		FlightAssignment flightAssignment;
+		FlightCrewMember member;
 
 		id = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findFlightAssignmentById(id);
+		memberId = super.getRequest().getData("member", int.class);
+		flightAssignment = this.repository.findFlightAssignmentById(id);
+		member = this.repository.findMemberById(memberId);
 
-		status = assignment.isDraftMode();
+		boolean correctMember = super.getRequest().getPrincipal().getActiveRealm().getId() == member.getId();
+		boolean futureLeg = !MomentHelper.isPast(flightAssignment.getLeg().getScheduledArrival());
+		boolean legPublished = !flightAssignment.getLeg().isDraftMode();
+		status = flightAssignment.isDraftMode() && correctMember && futureLeg && legPublished;
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		FlightAssignment assignment;
+		FlightAssignment flightAssignment;
 		int id;
 		id = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findFlightAssignmentById(id);
-		super.getBuffer().addData(assignment);
+		flightAssignment = this.repository.findFlightAssignmentById(id);
+		flightAssignment.setMoment(MomentHelper.getCurrentMoment());
+		super.getBuffer().addData(flightAssignment);
 	}
 
 	@Override
-	public void bind(final FlightAssignment assignment) {
-		int legId;
+	public void bind(final FlightAssignment flightAssignment) {
+		Integer legId;
 		Leg leg;
-		int memberId;
+
+		Integer memberId;
 		FlightCrewMember member;
 
 		legId = super.getRequest().getData("leg", int.class);
 		leg = this.repository.findLegById(legId);
-		memberId = super.getRequest().getData("flightCrewMember", int.class);
-		member = this.repository.findCrewMemberById(memberId);
 
-		super.bindObject(assignment, "duty", "status", "remarks");
-		assignment.setLastUpdate(MomentHelper.getCurrentMoment());
-		assignment.setLeg(leg);
-		assignment.setFlightCrewMember(member);
+		super.bindObject(flightAssignment, "duty", "assignmentStatus", "remarks");
+		flightAssignment.setLeg(leg);
 	}
 
 	@Override
-	public void validate(final FlightAssignment assignment) {
-		;
+	public void validate(final FlightAssignment flightAssignment) {
+		if (flightAssignment.getLeg() != null) {
+			boolean futureLeg = !MomentHelper.isPast(flightAssignment.getLeg().getScheduledArrival());
+			super.state(futureLeg, "leg", "acme.validation.FlightAssignment.pastLeg.message");
+
+			boolean legPublished = !flightAssignment.getLeg().isDraftMode();
+			super.state(legPublished, "leg", "acme.validation.FlightAssignment.notPublishedLeg.message");
+		}
+	}
+	private boolean legIsCompatible(final Leg legToIntroduce, final Leg legInTheDB) {
+		boolean departureIncompatible = MomentHelper.isInRange(legToIntroduce.getScheduledDeparture(), legInTheDB.getScheduledDeparture(), legInTheDB.getScheduledArrival());
+		boolean arrivalIncompatible = MomentHelper.isInRange(legToIntroduce.getScheduledArrival(), legInTheDB.getScheduledDeparture(), legInTheDB.getScheduledArrival());
+		return !departureIncompatible && !arrivalIncompatible;
 	}
 
 	@Override
-	public void perform(final FlightAssignment assignment) {
-		this.repository.save(assignment);
+	public void perform(final FlightAssignment flightAssignment) {
+		this.repository.save(flightAssignment);
 	}
 
 	@Override
-	public void unbind(final FlightAssignment assignment) {
+	public void unbind(final FlightAssignment flightAssignment) {
+		SelectChoices assignmentStatus;
+		SelectChoices duty;
+
+		List<Leg> legs;
+		SelectChoices legChoices;
+
 		Dataset dataset;
-		SelectChoices statuses;
-		SelectChoices duties;
-		Collection<Leg> legs;
-		SelectChoices selectedLegs;
-		Collection<FlightCrewMember> members;
-		SelectChoices selectedMembers;
 
-		legs = this.repository.findAllLegs();
-		members = this.repository.findAllCrewMembers();
+		legs = this.repository.findAllNotCompletedPublishedLegs(MomentHelper.getCurrentMoment());
+		try {
+			legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
+		} catch (Exception e) {
+			legChoices = SelectChoices.from(legs, "flightNumber", legs.get(0));
+		}
 
-		statuses = SelectChoices.from(AssignmentStatus.class, assignment.getStatus());
-		duties = SelectChoices.from(FlightCrewDuty.class, assignment.getDuty());
-		selectedLegs = SelectChoices.from(legs, "flightNumber", assignment.getLeg());
-		selectedMembers = SelectChoices.from(members, "employeeCode", assignment.getFlightCrewMember());
+		assignmentStatus = SelectChoices.from(AssignmentStatus.class, flightAssignment.getAssignmentStatus());
+		duty = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getDuty());
 
-		dataset = super.unbindObject(assignment, "duty", "lastUpdate", "status", "remarks", "draftMode");
-		dataset.put("statuses", statuses);
-		dataset.put("duties", duties);
-		dataset.put("leg", selectedLegs.getSelected().getKey());
-		dataset.put("legs", selectedLegs);
-		dataset.put("member", selectedMembers.getSelected().getKey());
-		dataset.put("members", selectedMembers);
+		dataset = super.unbindObject(flightAssignment, "duty", "assignmentStatus", "remarks", "draftMode");
+
+		dataset.put("confirmation", false);
+		dataset.put("readonly", false);
+		dataset.put("moment", flightAssignment.getMoment());
+		dataset.put("assignmentStatus", assignmentStatus);
+		dataset.put("duty", duty);
+		dataset.put("leg", legChoices.getSelected().getKey());
+		dataset.put("legs", legChoices);
+		dataset.put("member", flightAssignment.getMember());
 
 		super.getResponse().addData(dataset);
+
 	}
+
 }

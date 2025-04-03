@@ -1,4 +1,4 @@
-key,key:maintenanceRecords,key:task
+key,key:maintenanceRecord,key:task
 involvedIn-01,maintenanceRecord-01,task-01
 involvedIn-02,maintenanceRecord-02,task-02
 involvedIn-03,maintenanceRecord-03,task-03

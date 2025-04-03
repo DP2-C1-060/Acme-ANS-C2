@@ -1,0 +1,24 @@
+
+manager.manager-dashboard.form.title = Panel de gerente
+
+manager.dashboard.form.title.general-indicators = Indicadores generales
+manager.dashboard.form.label.ranking-position = Posición en el ranking
+manager.dashboard.form.label.years-to-retirement = Años para la jubilación
+
+manager.dashboard.form.title.legs-status = Estado de los tramos
+manager.dashboard.form.label.legs-on-time = Tramos a tiempo
+manager.dashboard.form.label.legs-delayed = Tramos retrasados
+manager.dashboard.form.label.legs-cancelled = Tramos cancelados
+manager.dashboard.form.label.legs-landed = Tramos aterrizados
+
+manager.dashboard.form.title.legs-ratios = Ratios de tramos
+
+manager.dashboard.form.title.flight-costs = Costos de vuelo
+manager.dashboard.form.label.average-flight-cost = Costo medio de vuelo
+manager.dashboard.form.label.min-flight-cost = Costo mínimo de vuelo
+manager.dashboard.form.label.max-flight-cost = Costo máximo de vuelo
+manager.dashboard.form.label.stddev-flight-cost = Desviación estándar del costo de vuelo
+
+manager.dashboard.form.title.airports = Aeropuertos
+manager.dashboard.form.label.most-popular-airport = Aeropuerto más popular
+manager.dashboard.form.label.least-popular-airport = Aeropuerto menos popular
