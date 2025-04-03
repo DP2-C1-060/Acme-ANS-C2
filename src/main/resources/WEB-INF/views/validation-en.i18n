@@ -62,4 +62,6 @@ acme.validation.flight-assignment.member-not-available.message = Message not ava
 acme.validation.flight-assignment.member-with-overlapping-legs.message = There selected member has overlapping legs
 acme.validation.flight-assignment.leg-has-pilot.message = The selected leg has already have a pilot
 acme.validation.flight-assignment.leg-has-copilot.message = The selected leg has already have a copilot.
+acme.validation.passenger.passportNumber.pattern= Must pattern "^[A-Z0-9]{6,8}$
+
 
