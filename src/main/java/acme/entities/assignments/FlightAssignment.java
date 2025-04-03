@@ -16,22 +16,26 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.constraints.ValidOptionalLongText;
+import acme.client.components.validation.ValidString;
+import acme.constraints.flightAssignment.ValidFlightAssignment;
 import acme.entities.legs.Leg;
 import acme.realms.flightCrewMember.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @Table(indexes = {
-	@Index(columnList = "id")
-
+	@Index(columnList = "draftMode")
 })
+@ValidFlightAssignment
 public class FlightAssignment extends AbstractEntity {
+	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
+
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
 	@Valid
@@ -41,31 +45,33 @@ public class FlightAssignment extends AbstractEntity {
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				lastUpdate;
+	private Date				moment;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private AssignmentStatus	status;
+	private AssignmentStatus	assignmentStatus;
 
 	@Optional
-	@ValidOptionalLongText
+	@ValidString(min = 0, max = 255)
 	@Automapped
 	private String				remarks;
 
 	@Mandatory
+	// HINT: @Valid by default.
 	@Automapped
 	private boolean				draftMode;
 
-	//Relationship -----------------------------------------------------
+	// Derived attributes -----------------------------------------------------
+
+	// Relationships ----------------------------------------------------------
 	@Mandatory
-	@Valid
 	@ManyToOne(optional = false)
-	private FlightCrewMember	flightCrewMember;
+	@Valid
+	private FlightCrewMember	member;
 
 	@Mandatory
-	@Valid
 	@ManyToOne(optional = false)
+	@Valid
 	private Leg					leg;
-
 }

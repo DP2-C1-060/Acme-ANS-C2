@@ -14,36 +14,45 @@ import acme.realms.flightCrewMember.FlightCrewMember;
 public class FlightAssignmentController extends AbstractGuiController<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
-	private FlightAssignmentCreateService			createService;
+	private CompletedFlightAssignmentListService		completedListService;
 
 	@Autowired
-	private FlightAssignmentShowService				showService;
+	private FlightAssignmentNotCompletedListService		notCompletedListService;
+	@Autowired
+	private FlightAssignmentMyCompletedListService		myCompletedListService;
 
 	@Autowired
-	private CompletedFlightAssignmentListService	listCompletedService;
+	private FlightAssignmentMyNotCompletedListService	myNotCompletedListService;
 
 	@Autowired
-	private PlannedFlightAssignmentListService		listPlannedService;
+	private FlightAssignmentCreateService				createService;
 
 	@Autowired
-	private FlightAssignmentUpdateService			updateService;
+	private FlightAssignmentUpdateService				updateService;
 
 	@Autowired
-	private FlightAssignmentPublishService			publishService;
+	private FlightAssignmentPublishService				publishService;
 
 	@Autowired
-	private FlightAssignmentDeleteService			deleteService;
+	private FlightAssignmentShowService					showService;
+
+	@Autowired
+	private FlightAssignmentDeleteService				deleteService;
+
+	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
-		super.addCustomCommand("publish", "update", this.publishService);
 
-		super.addCustomCommand("list-completed", "list", this.listCompletedService);
-		super.addCustomCommand("list-planned", "list", this.listPlannedService);
+		super.addCustomCommand("completedlist", "list", this.completedListService);
+		super.addCustomCommand("notCompletedlist", "list", this.notCompletedListService);
+		super.addCustomCommand("myCompletedList", "list", this.myCompletedListService);
+		super.addCustomCommand("myNotCompletedList", "list", this.myNotCompletedListService);
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 }
