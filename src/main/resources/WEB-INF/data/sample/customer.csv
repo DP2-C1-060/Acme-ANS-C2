@@ -1,4 +1,4 @@
-key,key:userAccount,identifier,phoneNumber,physicalAddress,city,country,earnedPoints
+key,key:userAccount,customerIdentifier,customerPhoneNumber,physicalAddress,city,country,earnedPoints
 
 # BASE
 customer-01,user-account-customer-01,BC564450,+1234567890,Calle Tajo,Ronda,España,4985

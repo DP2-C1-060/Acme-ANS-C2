@@ -26,30 +26,52 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 	@Override
 	public boolean isValid(final Customer customer, final ConstraintValidatorContext context) {
 
-		String identifier = customer.getIdentifier();
-		if (identifier == null) {
-			super.state(context, false, "*", "{acme.validation.identifier.nullornotpattern.message}");
+		// Recuperar y limpiar el identificador del customer
+		String identifier = customer.getCustomerIdentifier();
+		if (identifier == null || identifier.trim().isEmpty()) {
+			super.state(context, false, "customerIdentifier", "{acme.validation.identifier.nullornotpattern.message}");
 			return false;
 		}
+		identifier = identifier.trim();
 
+		// Validar que la identidad del usuario tenga nombre
 		DefaultUserIdentity identity = customer.getUserAccount().getIdentity();
-
-		String inicialNombre = String.valueOf(identity.getName().charAt(0)).toUpperCase();
-		String inicial1Apellido = String.valueOf(identity.getSurname().charAt(0)).toUpperCase();
-		Integer initialsLenght = 2;
-
-		String iniciales = inicialNombre + inicial1Apellido;
-
-		String identifierInitials = identifier.substring(0, initialsLenght);
-
-		if (!iniciales.equals(identifierInitials)) {
-			super.state(context, false, "*", "{acme.validation.identifier.notInitials.message}");
+		if (identity.getName() == null || identity.getName().trim().isEmpty()) {
+			super.state(context, false, "customerIdentifier", "{acme.validation.identifier.invalidIdentity.message}");
 			return false;
 		}
 
+		// Obtener la inicial del nombre
+		String nameInitial = String.valueOf(identity.getName().trim().charAt(0)).toUpperCase();
+		String expectedInitials;
+
+		// Si el apellido (surname) existe y no está vacío, se usa su inicial; de lo contrario, solo la del nombre.
+		if (identity.getSurname() != null && !identity.getSurname().trim().isEmpty()) {
+			String surnameInitial = String.valueOf(identity.getSurname().trim().charAt(0)).toUpperCase();
+			expectedInitials = nameInitial + surnameInitial;
+		} else
+			expectedInitials = nameInitial;
+
+		// Determinar la longitud requerida según las iniciales esperadas
+		int expectedLength = expectedInitials.length();
+
+		// Verificar que el identificador tenga la longitud mínima necesaria
+		if (identifier.length() < expectedLength) {
+			super.state(context, false, "customerIdentifier", "{acme.validation.identifier.tooShort.message}");
+			return false;
+		}
+
+		// Extraer la subcadena de 'identifier' y comparar con las iniciales esperadas
+		String identifierInitials = identifier.substring(0, expectedLength);
+		if (!expectedInitials.equals(identifierInitials)) {
+			super.state(context, false, "customerIdentifier", "{acme.validation.identifier.notInitials.message}");
+			return false;
+		}
+
+		// Verificar que no exista otro customer con el mismo identificador
 		Customer customerWithSameIdentifier = this.repository.findCustomerByIdentifier(identifier);
 		if (customerWithSameIdentifier != null && customerWithSameIdentifier.getId() != customer.getId()) {
-			super.state(context, false, "*", "{acme.validation.identifier.repeated.message}: " + identifier);
+			super.state(context, false, "customerIdentifier", "{acme.validation.identifier.repeated.message}: " + identifier);
 			return false;
 		}
 		return true;
