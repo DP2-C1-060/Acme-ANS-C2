@@ -61,10 +61,12 @@
 			<acme:menu-suboption code="master.menu.agent.list-claims" action="/agent/claim/list"/>
 		</acme:menu-option>
 		
-		<acme:menu-option code="master.menu.flight-crew-members" access="hasRealm('FlightCrewMember')">
-		    <acme:menu-suboption code="master.menu.flight-crew-members.flightAssignmentCompleted" action="/flight-crew-member/flight-assignment/list-completed"/>
-			<acme:menu-suboption code="master.menu.flight-crew-members.flightAssignmentPlanned" action="/flight-crew-member/flight-assignment/list-planned"/>
-			<acme:menu-suboption code="master.menu.flight-crew-members.activity-log" action="/flight-crew-member/activity-log/list"/>
+		<acme:menu-option code="master.menu.member" access="hasRealm('FlightCrewMember')">
+			<acme:menu-suboption code="master.menu.member.completedlist-flightAssignment" action="/flight-crew-member/flight-assignment/completedlist"/>
+			<acme:menu-suboption code="master.menu.member.notCompletedlist-flightAssignment" action="/flight-crew-member/flight-assignment/notCompletedlist"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.member.myCompletedList-flightAssignment" action="/flight-crew-member/flight-assignment/myCompletedList"/>
+			<acme:menu-suboption code="master.menu.member.myNotCompletedList-flightAssignment" action="/flight-crew-member/flight-assignment/myNotCompletedList"/>		
 		</acme:menu-option>
 		
 	</acme:menu-left>

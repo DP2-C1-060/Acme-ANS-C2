@@ -64,3 +64,10 @@ master.menu.manager.show-dashboard = Panel del gerente
 
 master.menu.manager = Gerente
 master.menu.manager.flight-list = Vuelos
+
+# master.menu.flight-crew-member ####################################################
+master.menu.member = Miembro de la tripulación de vuelo
+master.menu.member.completedlist-flightAssignment= Lista de Asignaciones de Vuelos Completados
+master.menu.member.notCompletedlist-flightAssignment = Lista de Asignaciones de Vuelos No Completados
+master.menu.member.myCompletedList-flightAssignment = Mi Lista de Asignaciones de Vuelos Completados
+master.menu.member.myNotCompletedList-flightAssignment = Mi Lista de Asignaciones de Vuelos No Completados

@@ -14,7 +14,7 @@ import acme.entities.assignments.FlightAssignment;
 import acme.realms.flightCrewMember.FlightCrewMember;
 
 @GuiService
-public class CompletedFlightAssignmentListService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
+public class FlightAssignmentMyNotCompletedListService extends AbstractGuiService<FlightCrewMember, FlightAssignment> {
 
 	@Autowired
 	private FlightAssignmentRepository repository;
@@ -31,7 +31,10 @@ public class CompletedFlightAssignmentListService extends AbstractGuiService<Fli
 
 		Date currentMoment;
 		currentMoment = MomentHelper.getCurrentMoment();
-		flightAssignments = this.repository.findCompletedPublishedFlightAssignments(currentMoment);
+		FlightCrewMember member;
+		member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
+
+		flightAssignments = this.repository.findMyNotCompletedFlightAssignments(currentMoment, member.getId());
 
 		super.getBuffer().addData(flightAssignments);
 	}
