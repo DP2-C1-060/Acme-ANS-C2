@@ -1,7 +1,6 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,8 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 
 		boolean correctMember = super.getRequest().getPrincipal().getActiveRealm().getId() == member.getId();
 		boolean futureLeg = !MomentHelper.isPast(flightAssignment.getLeg().getScheduledArrival());
-		status = flightAssignment.isDraftMode() && correctMember && futureLeg;
+		boolean legPublished = !flightAssignment.getLeg().isDraftMode();
+		status = flightAssignment.isDraftMode() && correctMember && futureLeg && legPublished;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -72,40 +72,13 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 
 	@Override
 	public void validate(final FlightAssignment flightAssignment) {
+		if (flightAssignment.getLeg() != null) {
+			boolean futureLeg = !MomentHelper.isPast(flightAssignment.getLeg().getScheduledArrival());
+			super.state(futureLeg, "leg", "acme.validation.FlightAssignment.pastLeg.message");
 
-		if (flightAssignment.getLeg() != null)
-			super.state(MomentHelper.isFuture(flightAssignment.getLeg().getScheduledArrival()), "leg", "acme.validation.FlightAssignment.notValidLeg.message");
-
-		//Restricción legs incompatibles
-		List<Leg> legsByMember;
-		legsByMember = this.repository.findLegsByMemberId(flightAssignment.getMember().getId());
-
-		if (flightAssignment.getLeg() != null)
-			for (Leg leg : legsByMember)
-				if (!this.legIsCompatible(flightAssignment.getLeg(), leg) && flightAssignment.getLeg().getId() != leg.getId()) {
-					super.state(false, "member", "acme.validation.FlightAssignment.memberHasIncompatibleLegs.message");
-					break;
-				}
-		//===========================
-		//Restricción piloto copiloto
-
-		if (flightAssignment.getLeg() != null && flightAssignment.getDuty() != null) {
-
-			List<FlightAssignment> flightAssignmentsByLeg;
-			flightAssignmentsByLeg = this.repository.findFlightAssignmentByLegId(flightAssignment.getLeg().getId());
-			boolean hasPilot = false;
-			boolean hasCopilot = false;
-			for (FlightAssignment fa : flightAssignmentsByLeg) {
-				if (fa.getDuty().equals(FlightCrewDuty.PILOT) && fa.getId() != flightAssignment.getId())
-					hasPilot = true;
-				if (fa.getDuty().equals(FlightCrewDuty.COPILOT) && fa.getId() != flightAssignment.getId())
-					hasCopilot = true;
-			}
-
-			super.state(!(flightAssignment.getDuty().equals(FlightCrewDuty.PILOT) && hasPilot), "duty", "acme.validation.FlightAssignment.hasPilot.message");
-			super.state(!(flightAssignment.getDuty().equals(FlightCrewDuty.COPILOT) && hasCopilot), "duty", "acme.validation.FlightAssignment.hasCopilot.message");
+			boolean legPublished = !flightAssignment.getLeg().isDraftMode();
+			super.state(legPublished, "leg", "acme.validation.FlightAssignment.notPublishedLeg.message");
 		}
-		//==============================
 	}
 	private boolean legIsCompatible(final Leg legToIntroduce, final Leg legInTheDB) {
 		boolean departureIncompatible = MomentHelper.isInRange(legToIntroduce.getScheduledDeparture(), legInTheDB.getScheduledDeparture(), legInTheDB.getScheduledArrival());
@@ -123,15 +96,18 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 		SelectChoices assignmentStatus;
 		SelectChoices duty;
 
-		Collection<Leg> legs;
+		List<Leg> legs;
 		SelectChoices legChoices;
 
 		Dataset dataset;
 
-		//legs = this.repository.findLegsByMemberId(memberId);
-		legs = this.repository.findAllLegs();
+		legs = this.repository.findAllNotCompletedPublishedLegs(MomentHelper.getCurrentMoment());
+		try {
+			legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
+		} catch (Exception e) {
+			legChoices = SelectChoices.from(legs, "flightNumber", legs.get(0));
+		}
 
-		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
 		assignmentStatus = SelectChoices.from(AssignmentStatus.class, flightAssignment.getAssignmentStatus());
 		duty = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getDuty());
 
@@ -149,4 +125,5 @@ public class FlightAssignmentUpdateService extends AbstractGuiService<FlightCrew
 		super.getResponse().addData(dataset);
 
 	}
+
 }
