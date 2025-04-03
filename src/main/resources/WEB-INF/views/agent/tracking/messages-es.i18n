@@ -1,0 +1,22 @@
+agent.tracking.list.title = Lista de registros de seguimiento
+
+agent.tracking.list.label.step = Paso
+agent.tracking.list.label.lastUpdateMoment = Última fecha de actualización
+agent.tracking.list.label.resolutionPercentage = Porcentaje de resolución
+
+agent.tracking.list.button.create = Crear
+
+agent.tracking.form.title = Detalles de registro de seguimiento
+
+agent.tracking.form.label.resolution = Resolución
+agent.tracking.form.label.resolutionPercentage = Porcentaje de resolución
+agent.tracking.form.label.indicator = Estado
+agent.tracking.form.label.step = Paso
+
+agent.tracking.form.placeholder.resolutionPercentage = 0.00 - 100.00
+
+agent.tracking.form.button.update = Actualizar
+agent.tracking.form.button.delete = Eliminar
+agent.tracking.form.button.publish = Publicar
+
+agent.tracking.form.button.create = Crear

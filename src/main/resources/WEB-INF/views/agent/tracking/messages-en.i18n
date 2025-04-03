@@ -1,0 +1,22 @@
+agent.tracking.list.title = Listing of tracking logs
+
+agent.tracking.list.label.step = Step
+agent.tracking.list.label.lastUpdateMoment = Last update moment
+agent.tracking.list.label.resolutionPercentage = Resolution percentage
+
+agent.tracking.list.button.create = Create
+
+agent.tracking.form.title = Tracking form
+
+agent.tracking.form.label.resolution = Resolution
+agent.tracking.form.label.resolutionPercentage = Resolution percentage
+agent.tracking.form.label.indicator = Status
+agent.tracking.form.label.step = Step
+
+agent.tracking.form.placeholder.resolutionPercentage = 0.00 - 100.00
+
+agent.tracking.form.button.update = Update
+agent.tracking.form.button.delete = Delete
+agent.tracking.form.button.publish = Publish
+
+agent.tracking.form.button.create = Create

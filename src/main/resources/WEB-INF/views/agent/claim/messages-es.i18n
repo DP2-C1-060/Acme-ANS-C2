@@ -17,7 +17,7 @@ agent.claim.form.label.leg = Tramo
 
 agent.claim.form.button.trackings = Registros de seguimiento
 agent.claim.form.button.update = Actualizar
-agent.claim.form.button.delete = Borrar
+agent.claim.form.button.delete = Eliminar
 agent.claim.form.button.publish = Publicar
 
 agent.claim.form.button.create = Crear
