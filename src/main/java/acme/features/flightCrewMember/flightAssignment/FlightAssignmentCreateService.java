@@ -25,6 +25,7 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 
 	@Override
 	public void authorise() {
+
 		super.getResponse().setAuthorised(true);
 	}
 
@@ -59,49 +60,20 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 	@Override
 	public void validate(final FlightAssignment flightAssignment) {
 
+		int memberId;
+
+		memberId = super.getRequest().getData("member", int.class);
+
+		boolean correctMember = super.getRequest().getPrincipal().getActiveRealm().getId() == memberId;
+		super.state(correctMember, "member", "acme.validation.FlightAssignment.notValidMember.message");
+
 		if (flightAssignment.getLeg() != null) {
+			boolean futureLeg = !MomentHelper.isPast(flightAssignment.getLeg().getScheduledArrival());
+			super.state(futureLeg, "leg", "acme.validation.FlightAssignment.pastLeg.message");
 
-			System.out.println("time  " + flightAssignment.getLeg().getScheduledArrival() + "getId = " + flightAssignment.getLeg().getId());
-			super.state(MomentHelper.isFuture(flightAssignment.getLeg().getScheduledArrival()), "leg", "acme.validation.FlightAssignment.notValidLeg.message");
-
-			System.out.println("time  " + flightAssignment.getLeg().getScheduledArrival() + "getId = " + flightAssignment.getLeg().getId());
+			boolean legPublished = !flightAssignment.getLeg().isDraftMode();
+			super.state(legPublished, "leg", "acme.validation.FlightAssignment.notPublishedLeg.message");
 		}
-
-		//Restricción legs incompatibles
-		List<Leg> legsByMember;
-		legsByMember = this.repository.findLegsByMemberId(flightAssignment.getMember().getId());
-
-		if (flightAssignment.getLeg() != null)
-			for (Leg leg : legsByMember)
-				if (!this.legIsCompatible(flightAssignment.getLeg(), leg)) {
-					super.state(false, "member", "acme.validation.FlightAssignment.memberHasIncompatibleLegs.message");
-					break;
-				}
-		//===========================
-		//Restricción piloto copiloto
-
-		if (flightAssignment.getLeg() != null && flightAssignment.getDuty() != null) {
-
-			List<FlightAssignment> flightAssignmentsByLeg;
-			flightAssignmentsByLeg = this.repository.findFlightAssignmentByLegId(flightAssignment.getLeg().getId());
-			boolean hasPilot = false;
-			boolean hasCopilot = false;
-			for (FlightAssignment fa : flightAssignmentsByLeg) {
-				if (fa.getDuty().equals(FlightCrewDuty.PILOT))
-					hasPilot = true;
-				if (fa.getDuty().equals(FlightCrewDuty.COPILOT))
-					hasCopilot = true;
-			}
-
-			super.state(!(flightAssignment.getDuty().equals(FlightCrewDuty.PILOT) && hasPilot), "duty", "acme.validation.FlightAssignment.hasPilot.message");
-			super.state(!(flightAssignment.getDuty().equals(FlightCrewDuty.COPILOT) && hasCopilot), "duty", "acme.validation.FlightAssignment.hasCopilot.message");
-		}
-		//==============================
-	}
-	private boolean legIsCompatible(final Leg legToIntroduce, final Leg legInTheDB) {
-		boolean departureIncompatible = MomentHelper.isInRange(legToIntroduce.getScheduledDeparture(), legInTheDB.getScheduledDeparture(), legInTheDB.getScheduledArrival());
-		boolean arrivalIncompatible = MomentHelper.isInRange(legToIntroduce.getScheduledArrival(), legInTheDB.getScheduledDeparture(), legInTheDB.getScheduledArrival());
-		return !departureIncompatible && !arrivalIncompatible;
 	}
 
 	@Override
@@ -120,12 +92,11 @@ public class FlightAssignmentCreateService extends AbstractGuiService<FlightCrew
 
 		Dataset dataset;
 
-		legs = this.repository.findAllNotCompletedLegs(MomentHelper.getCurrentMoment());
+		legs = this.repository.findAllNotCompletedPublishedLegs(MomentHelper.getCurrentMoment());
 		try {
 			legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
 		} catch (Exception e) {
 			legChoices = SelectChoices.from(legs, "flightNumber", legs.get(0));
-			System.out.println("leg  " + legs.get(0).getScheduledArrival() + "getId = " + legs.get(0).getId());
 		}
 
 		assignmentStatus = SelectChoices.from(AssignmentStatus.class, flightAssignment.getAssignmentStatus());

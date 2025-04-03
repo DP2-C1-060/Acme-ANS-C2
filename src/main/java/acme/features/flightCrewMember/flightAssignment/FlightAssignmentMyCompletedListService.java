@@ -44,6 +44,7 @@ public class FlightAssignmentMyCompletedListService extends AbstractGuiService<F
 		Dataset dataset = super.unbindObject(flightAssignment, "duty", "moment", "assignmentStatus", "remarks", "draftMode");
 
 		super.getResponse().addData(dataset);
+		System.out.println("DataListMyCompleted =" + super.getResponse());
 	}
 
 }
