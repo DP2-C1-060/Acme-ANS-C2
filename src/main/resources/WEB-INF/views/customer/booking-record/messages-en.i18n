@@ -1,0 +1,14 @@
+# messages-en.i18n
+
+customer.booking-record.form.title =  New Booking Record
+customer.booking-record.list.title = List of Booking Records
+
+
+customer.bookingPassenger.form.button.create = Create
+customer.bookingRecord.list.button.create = Create New Booking Record
+
+
+customer.bookingRecord.list.label.passenger = Passenger
+customer.bookingRecord.list.label.booking = Booking
+customer.bookingRecord.form.label.passenger = Passenger
+customer.bookingRecord.form.label.booking = Booking

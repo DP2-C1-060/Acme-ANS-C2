@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -16,9 +17,10 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.SpringHelper;
 import acme.entities.flights.Flight;
+import acme.features.customer.passenger.CustomerPassengerRepository;
 import acme.realms.Customer;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,28 +51,55 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private TravelClass			travelClass;
 
-	@Mandatory
-	@ValidMoney(min = 0.01, max = 1000000)
-	@Automapped
-	private Money				price;
-
 	@Optional
-	@ValidString(min = 4, max = 4, pattern = "[0-9]{4}")
+	@ValidString(pattern = "\\d{4}$")
 	@Automapped
 	private String				lastNibble;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				isPublished;
+
 	// Derived attributes -----------------------------------------------------
+
+
+	@Transient
+	public Money getPrice() {
+		Money price = new Money();
+
+		CustomerPassengerRepository customerPassengerRepository = SpringHelper.getBean(CustomerPassengerRepository.class);
+
+		if (this.getFlight() == null) {
+			price.setAmount(0.0);
+			price.setCurrency("EUR");
+		} else {
+			Flight flight = this.getFlight();
+			Integer numberOfPassenger = customerPassengerRepository.findPassengerByBookingId(this.getId()).size();
+			price.setAmount(flight.getCost().getAmount() * numberOfPassenger);
+			price.setCurrency(flight.getCost().getCurrency());
+		}
+
+		return price;
+	}
+
+	@Transient
+	public Integer getNumberOfPassengers() {
+		CustomerPassengerRepository customerPassengerRepository = SpringHelper.getBean(CustomerPassengerRepository.class);
+		return customerPassengerRepository.findPassengerByBookingId(this.getId()).size();
+	}
 
 	// Relationships ----------------------------------------------------------
 
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Customer			customer;
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private Flight				flight;
+	private Customer	customer;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Flight		flight;
 
 }

@@ -29,12 +29,12 @@ public class Customer extends AbstractRole {
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
-	private String				identifier;
+	private String				customerIdentifier;
 
 	@Mandatory
 	@ValidPhone
 	@Automapped
-	private String				phoneNumber;
+	private String				customerPhoneNumber;
 
 	@Mandatory
 	@ValidString(min = 1, max = 255)
