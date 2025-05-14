@@ -7,7 +7,6 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.claim.Claim;
 import acme.entities.tracking.Tracking;
 import acme.entities.tracking.TrackingStatus;
 import acme.realms.agent.Agent;
@@ -27,11 +26,11 @@ public class AgentTrackingDeleteService extends AbstractGuiService<Agent, Tracki
 	public void authorise() {
 		boolean status;
 		int trackingId;
-		Claim claim;
+		Tracking tracking;
 
 		trackingId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimByTrackingId(trackingId);
-		status = claim != null && claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		tracking = this.repository.findTrackingById(trackingId);
+		status = tracking != null && tracking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(tracking.getClaim().getAgent());
 
 		super.getResponse().setAuthorised(status);
 	}
