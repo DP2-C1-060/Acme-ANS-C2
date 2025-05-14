@@ -64,7 +64,7 @@ public class AgentTrackingListService extends AbstractGuiService<Agent, Tracking
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		claim = this.repository.findClaimById(masterId);
-		showCreate = claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		showCreate = super.getRequest().getPrincipal().hasRealm(claim.getAgent());
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);

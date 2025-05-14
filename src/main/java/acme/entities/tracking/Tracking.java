@@ -65,7 +65,7 @@ public class Tracking extends AbstractEntity {
 	// Relationships ----------------------------------------------------------
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
+	@ManyToOne(optional = false)
 	private Claim				claim;
 }
