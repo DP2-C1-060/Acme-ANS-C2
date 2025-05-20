@@ -22,7 +22,7 @@ public interface AgentTrackingRepository extends AbstractRepository {
 	@Query("select t from Tracking t where t.id = :id")
 	Tracking findTrackingById(int id);
 
-	@Query("select t from Tracking t where t.claim.id = :masterId")
-	Collection<Tracking> findTrackingsByMasterId(int masterId);
+	@Query("select t from Tracking t where t.claim.id = :claimId")
+	Collection<Tracking> findTrackingsByClaimId(int claimId);
 
 }

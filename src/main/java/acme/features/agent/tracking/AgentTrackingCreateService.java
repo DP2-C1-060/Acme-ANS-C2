@@ -27,11 +27,11 @@ public class AgentTrackingCreateService extends AbstractGuiService<Agent, Tracki
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int claimId;
 		Claim claim;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		claim = this.repository.findClaimById(masterId);
+		claimId = super.getRequest().getData("claimId", int.class);
+		claim = this.repository.findClaimById(claimId);
 		status = claim != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
 
 		super.getResponse().setAuthorised(status);
@@ -40,11 +40,11 @@ public class AgentTrackingCreateService extends AbstractGuiService<Agent, Tracki
 	@Override
 	public void load() {
 		Tracking tracking;
-		int masterId;
+		int claimId;
 		Claim claim;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		claim = this.repository.findClaimById(masterId);
+		claimId = super.getRequest().getData("claimId", int.class);
+		claim = this.repository.findClaimById(claimId);
 
 		tracking = new Tracking();
 		tracking.setDraftMode(true);
@@ -76,8 +76,9 @@ public class AgentTrackingCreateService extends AbstractGuiService<Agent, Tracki
 
 		stateChoices = SelectChoices.from(TrackingStatus.class, tracking.getIndicator());
 		dataset = super.unbindObject(tracking, "resolution", "resolutionPercentage", "step", "indicator", "lastUpdateMoment", "draftMode");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("claimId", super.getRequest().getData("claimId", int.class));
 		dataset.put("states", stateChoices);
+		dataset.put("claimDraftMode", tracking.getClaim().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

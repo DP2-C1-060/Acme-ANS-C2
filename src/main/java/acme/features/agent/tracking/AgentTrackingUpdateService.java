@@ -7,6 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.tracking.Tracking;
 import acme.entities.tracking.TrackingStatus;
 import acme.realms.agent.Agent;
@@ -26,11 +27,13 @@ public class AgentTrackingUpdateService extends AbstractGuiService<Agent, Tracki
 	public void authorise() {
 		boolean status;
 		int trackingId;
+		Claim claim;
 		Tracking tracking;
 
 		trackingId = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaimByTrackingId(trackingId);
 		tracking = this.repository.findTrackingById(trackingId);
-		status = tracking != null && tracking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(tracking.getClaim().getAgent());
+		status = claim != null && tracking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -68,8 +71,9 @@ public class AgentTrackingUpdateService extends AbstractGuiService<Agent, Tracki
 
 		stateChoices = SelectChoices.from(TrackingStatus.class, tracking.getIndicator());
 		dataset = super.unbindObject(tracking, "step", "resolution", "resolutionPercentage", "indicator", "lastUpdateMoment", "draftMode");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("claimId", tracking.getClaim().getId());
 		dataset.put("states", stateChoices);
+		dataset.put("claimDraftMode", tracking.getClaim().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

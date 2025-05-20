@@ -1,6 +1,7 @@
 
 package acme.constraints.tracking;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -35,36 +36,74 @@ public class TrackingValidator extends AbstractValidator<ValidTracking, Tracking
 		if (log == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
-			{
-				boolean correctStatus = false;
+			Double percentage = log.getResolutionPercentage();
+			if (percentage != null) {
+				{
+					boolean correctStatus = false;
 
-				TrackingStatus status = log.getIndicator();
-				Double percentage = log.getResolutionPercentage();
+					TrackingStatus status = log.getIndicator();
+					if (percentage < 100 && status == TrackingStatus.PENDING || percentage == 100 && (status == TrackingStatus.ACCEPTED || status == TrackingStatus.REJECTED))
+						correctStatus = true;
+					super.state(context, correctStatus, "resolutionPercentage", "acme.validation.log.indicator.message");
+				}
+				{
+					String resolution = log.getResolution();
 
-				if (percentage < 100 && status == TrackingStatus.PENDING || percentage == 100 && (status == TrackingStatus.ACCEPTED || status == TrackingStatus.REJECTED))
-					correctStatus = true;
-
-				super.state(context, correctStatus, "pending", "acme.validation.log.indicator.message");
-			}
-			{
-				Double percentage = log.getResolutionPercentage();
-				String resolution = log.getResolution();
-
-				boolean hasResolutionWhen100Percent = percentage < 100 || resolution != null && !resolution.isBlank();
-
-				super.state(context, hasResolutionWhen100Percent, "resolution", "acme.validation.log.resolution.message");
-			}
-			{
-				Double resolutionPercentage = log.getResolutionPercentage();
+					boolean hasResolutionWhen100Percent = percentage < 100 || !resolution.isBlank();
+					super.state(context, hasResolutionWhen100Percent, "resolution", "acme.validation.log.resolution.message");
+				}
 				Date lastUpdateMoment = log.getLastUpdateMoment();
 				Claim claim = log.getClaim();
-				List<Tracking> previousTracking = this.repository.findByClaimIdAndDateBefore(claim.getId(), lastUpdateMoment);
+				{
+					List<Tracking> previousTracking = this.repository.findByClaimIdAndDateBefore(claim.getId(), lastUpdateMoment);
+					previousTracking.removeIf(t -> t.equals(log));
 
-				Optional<Double> maxPercentage = previousTracking.stream().map(Tracking::getResolutionPercentage).max(Double::compareTo);
+					List<Double> sortedPercentages = previousTracking.stream().map(Tracking::getResolutionPercentage).sorted(Comparator.reverseOrder()).toList();
 
-				boolean isPercentageGreaterThanPrevious = resolutionPercentage == 0 || resolutionPercentage > maxPercentage.orElse(0.0);
+					Optional<Double> maxPercentage = sortedPercentages.stream().findFirst();
 
-				super.state(context, isPercentageGreaterThanPrevious, "resolutionPercentage", "acme.validation.log.resolutionPercentage.message");
+					boolean isPercentageGreaterThanPrevious = percentage >= maxPercentage.orElse(0.0);
+
+					super.state(context, isPercentageGreaterThanPrevious, "resolutionPercentage", "acme.validation.log.resolutionPercentage.message");
+				}
+				{
+					List<Tracking> previousTracking = this.repository.findTrackingsByClaimId(claim.getId());
+					previousTracking.removeIf(t -> t.equals(log));
+
+					List<Tracking> sortedTracking = previousTracking.stream().sorted(Comparator.comparing(Tracking::getResolutionPercentage).reversed()).toList();
+
+					List<Double> sortedPercentages = sortedTracking.stream().map(Tracking::getResolutionPercentage).toList();
+
+					Optional<Double> secondMaxPercentage = sortedPercentages.stream().skip(1).findFirst();
+
+					boolean isNotThird100 = !secondMaxPercentage.orElse(0.0).equals(100.0) || percentage != 100;
+
+					super.state(context, isNotThird100, "resolutionPercentage", "acme.validation.log.resolutionPercentage.exceptional");
+				}
+				{
+					List<Tracking> previousTracking = this.repository.findTrackingsByClaimId(claim.getId());
+					previousTracking.removeIf(t -> t.equals(log));
+
+					List<Tracking> sortedTracking = previousTracking.stream().sorted(Comparator.comparing(Tracking::getResolutionPercentage).reversed()).toList();
+
+					Tracking first = sortedTracking.get(0);
+					Tracking second = sortedTracking.get(1);
+
+					boolean firstIs100AndDiffIndicator = log.getResolutionPercentage() != 100 || first.getResolutionPercentage() != 100.0 || second.getResolutionPercentage() == 100.0 || first.getIndicator().equals(log.getIndicator());
+
+					super.state(context, firstIs100AndDiffIndicator, "indicator", "acme.validation.log.indicator.hundred");
+				}
+				{
+					List<Tracking> followingTracking = this.repository.findByClaimIdAndDateAfter(claim.getId(), lastUpdateMoment);
+
+					List<Double> sortedPercentages = followingTracking.stream().map(Tracking::getResolutionPercentage).sorted().toList();
+
+					Optional<Double> minPercentage = sortedPercentages.stream().findFirst();
+
+					boolean isPercentageLessThanFollowing = minPercentage.map(min -> percentage <= min).orElse(true);
+
+					super.state(context, isPercentageLessThanFollowing, "resolutionPercentage", "acme.validation.log.resolutionPercentage.following");
+				}
 			}
 		}
 
