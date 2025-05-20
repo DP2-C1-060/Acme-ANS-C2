@@ -2,6 +2,8 @@
 package acme.features.agent.tracking;
 
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,11 +28,11 @@ public class AgentTrackingListService extends AbstractGuiService<Agent, Tracking
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int claimId;
 		Claim claim;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		claim = this.repository.findClaimById(masterId);
+		claimId = super.getRequest().getData("claimId", int.class);
+		claim = this.repository.findClaimById(claimId);
 		status = claim != null && (!claim.isDraftMode() || super.getRequest().getPrincipal().hasRealm(claim.getAgent()));
 
 		super.getResponse().setAuthorised(status);
@@ -39,10 +41,10 @@ public class AgentTrackingListService extends AbstractGuiService<Agent, Tracking
 	@Override
 	public void load() {
 		Collection<Tracking> trackings;
-		int masterId;
+		int claimId;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		trackings = this.repository.findTrackingsByMasterId(masterId);
+		claimId = super.getRequest().getData("claimId", int.class);
+		trackings = this.repository.findTrackingsByClaimId(claimId);
 
 		super.getBuffer().addData(trackings);
 	}
@@ -58,15 +60,20 @@ public class AgentTrackingListService extends AbstractGuiService<Agent, Tracking
 
 	@Override
 	public void unbind(final Collection<Tracking> trackings) {
-		int masterId;
+		int claimId;
 		Claim claim;
 		final boolean showCreate;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		claim = this.repository.findClaimById(masterId);
-		showCreate = super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		claimId = super.getRequest().getData("claimId", int.class);
+		claim = this.repository.findClaimById(claimId);
 
-		super.getResponse().addGlobal("masterId", masterId);
+		Collection<Double> topTwoPercentages = trackings.stream().map(Tracking::getResolutionPercentage).sorted(Comparator.reverseOrder()).limit(2).collect(Collectors.toList());
+
+		boolean topTwoAreNotBoth100 = topTwoPercentages.stream().filter(p -> p == 100.0).count() < 2;
+
+		showCreate = super.getRequest().getPrincipal().hasRealm(claim.getAgent()) && topTwoAreNotBoth100;
+
+		super.getResponse().addGlobal("claimId", claimId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 

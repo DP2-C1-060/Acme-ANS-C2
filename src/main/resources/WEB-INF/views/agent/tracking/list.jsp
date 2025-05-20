@@ -11,5 +11,5 @@
 </acme:list>
 
 <jstl:if test="${showCreate}">
-	<acme:button code="agent.tracking.list.button.create" action="/agent/tracking/create?masterId=${masterId}"/>
+	<acme:button code="agent.tracking.list.button.create" action="/agent/tracking/create?claimId=${claimId}"/>
 </jstl:if>

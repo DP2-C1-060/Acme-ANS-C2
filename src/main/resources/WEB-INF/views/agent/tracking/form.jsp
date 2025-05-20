@@ -21,7 +21,7 @@
 			<acme:submit code="agent.claim.form.button.delete" action="/agent/tracking/delete"/>
 		</jstl:when>	
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="agent.tracking.form.button.create" action="/agent/tracking/create?masterId=${masterId}"/>
+			<acme:submit code="agent.tracking.form.button.create" action="/agent/tracking/create?claimId=${claimId}"/>
 		</jstl:when>		
 	</jstl:choose>		
 </acme:form>

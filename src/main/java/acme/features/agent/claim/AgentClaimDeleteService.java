@@ -40,12 +40,12 @@ public class AgentClaimDeleteService extends AbstractGuiService<Agent, Claim> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int claimId;
 		Claim claim;
 		Agent agent;
 
-		masterId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(masterId);
+		claimId = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaimById(claimId);
 		agent = claim == null ? null : claim.getAgent();
 		status = claim != null && claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(agent);
 

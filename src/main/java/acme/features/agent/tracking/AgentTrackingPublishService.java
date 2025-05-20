@@ -73,6 +73,7 @@ public class AgentTrackingPublishService extends AbstractGuiService<Agent, Track
 		dataset = super.unbindObject(tracking, "step", "resolution", "resolutionPercentage", "indicator", "lastUpdateMoment", "draftMode");
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 		dataset.put("states", stateChoices);
+		dataset.put("claimDraftMode", tracking.getClaim().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

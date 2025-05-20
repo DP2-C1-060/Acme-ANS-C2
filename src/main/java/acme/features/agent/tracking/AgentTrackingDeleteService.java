@@ -68,8 +68,9 @@ public class AgentTrackingDeleteService extends AbstractGuiService<Agent, Tracki
 
 		stateChoices = SelectChoices.from(TrackingStatus.class, tracking.getIndicator());
 		dataset = super.unbindObject(tracking, "resolution", "resolutionPercentage", "step", "indicator", "lastUpdateMoment", "draftMode");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("claimId", super.getRequest().getData("claimId", int.class));
 		dataset.put("states", stateChoices);
+		dataset.put("claimDraftMode", tracking.getClaim().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
