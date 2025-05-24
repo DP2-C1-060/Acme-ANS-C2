@@ -1,177 +1,179 @@
-<%@page%>
-
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<h2>
-	<acme:print code="manager.dashboard.form.title.general-indicators"/>
-</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><acme:print code="manager.manager-dashboard.form.title"/></title>
 
-<table class="table table-sm">
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.ranking-position"/>
-		</th>
-		<td>
-			<acme:print value="${rankingPosition}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.years-to-retirement"/>
-		</th>
-		<td>
-			<acme:print value="${yearsToRetirement}"/>
-		</td>
-	</tr>
-</table>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="container py-4">
 
-<h2>
-	<acme:print code="manager.dashboard.form.title.legs-status"/>
-</h2>
+    <h2 class="mb-3">
+        <acme:print code="manager.manager-dasboard.form.title.manager-data"/>
+    </h2>
+    <table class="table table-bordered w-50">
+        <tbody>
+        <tr>
+            <th scope="row"><acme:print code="manager.manager-dashboard.form.label.ranking"/></th>
+            <td><acme:print value="${ranking}"/></td>
+        </tr>
+        <tr>
+            <th scope="row"><acme:print code="manager.manager-dashboard.form.label.retire"/></th>
+            <td><acme:print value="${retire}"/></td>
+        </tr>
+        <tr>
+            <th scope="row"><acme:print code="manager.manager-dashboard.form.label.ratio"/></th>
+            <td>
+                <jstl:if test="${ratio >= 0}">
+                    <acme:print value="${ratio}"/>
+                </jstl:if>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
-<table class="table table-sm">
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.legs-on-time"/>
-		</th>
-		<td>
-			<acme:print value="${legsOnTime}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.legs-delayed"/>
-		</th>
-		<td>
-			<acme:print value="${legsDelayed}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.legs-cancelled"/>
-		</th>
-		<td>
-			<acme:print value="${legsCancelled}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.legs-landed"/>
-		</th>
-		<td>
-			<acme:print value="${legsLanded}"/>
-		</td>
-	</tr>
-</table>
+    <h2 class="mt-5 mb-3">
+        <acme:print code="manager.manager-dasboard.form.title.total-legs"/>
+    </h2>
 
-<h2>
-	<acme:print code="manager.dashboard.form.title.legs-ratios"/>
-</h2>
+    <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+            <canvas id="legsChart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-sm table-striped">
+                <tbody>
+                <tr>
+                    <th scope="row"><acme:print code="manager.manager-dashboard.form.label.total-time"/></th>
+                    <td><acme:print value="${totalOfOnTimeLegs}"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><acme:print code="manager.manager-dashboard.form.label.total-delayed"/></th>
+                    <td><acme:print value="${totalOfDelayed}"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><acme:print code="manager.manager-dashboard.form.label.total-canceled"/></th>
+                    <td><acme:print value="${totalOfCanceled}"/></td>
+                </tr>
+                <tr>
+                    <th scope="row"><acme:print code="manager.manager-dashboard.form.label.total-landed"/></th>
+                    <td><acme:print value="${totalOfLanded}"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<div>
-	<canvas id="canvasLegs"></canvas>
-</div>
+    <h2 class="mt-5 mb-3">
+        <acme:print code="manager.manager-dasboard.form.title.flight-EUR-cost"/>
+    </h2>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		var data = {
-			labels : [ "ON TIME", "DELAYED" ],
-			datasets : [
-				{
-					data : [
-						<jstl:out value="${ratioOnTimeLegs}"/>, 
-						<jstl:out value="${ratioDelayedLegs}"/>
-					]
-				}
-			]
-		};
-		var options = {
-			scales : {
-				yAxes : [
-					{
-						ticks : {
-							suggestedMin : 0.0,
-							suggestedMax : 1.0
-						}
-					}
-				]
-			},
-			legend : {
-				display : false
-			}
-		};
+    <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+            <canvas id="flightCostChart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-sm table-striped">
+                <tbody>
+                <tr>
+                    <th scope="row"><acme:print code="manager.manager-dashboard.form.label.flight-average"/></th>
+                    <td>
+                        <jstl:if test="${averageFlightCostEUR >= 0}">
+                            <acme:print value="${averageFlightCostEUR}"/>
+                        </jstl:if>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><acme:print code="manager.manager-dashboard.form.label.flight-deviation"/></th>
+                    <td>
+                        <jstl:if test="${deviationOfFlightCostEUR >= 0}">
+                            <acme:print value="${deviationOfFlightCostEUR}"/>
+                        </jstl:if>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><acme:print code="manager.manager-dashboard.form.label.flight-minimum"/></th>
+                    <td>
+                        <jstl:if test="${minimumFlightCostEUR >= 0}">
+                            <acme:print value="${minimumFlightCostEUR}"/>
+                        </jstl:if>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><acme:print code="manager.manager-dashboard.form.label.flight-maximum"/></th>
+                    <td>
+                        <jstl:if test="${maximumFlightCostEUR >= 0}">
+                            <acme:print value="${maximumFlightCostEUR}"/>
+                        </jstl:if>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-		var canvas = document.getElementById("canvasLegs");
-		var context = canvas.getContext("2d");
-		new Chart(context, {
-			type : "bar",
-			data : data,
-			options : options
-		});
-	});
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const legsCtx = document.getElementById('legsChart').getContext('2d');
+            new Chart(legsCtx, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        '<acme:print code="manager.manager-dashboard.form.label.total-time"/>',
+                        '<acme:print code="manager.manager-dashboard.form.label.total-delayed"/>',
+                        '<acme:print code="manager.manager-dashboard.form.label.total-canceled"/>',
+                        '<acme:print code="manager.manager-dashboard.form.label.total-landed"/>'
+                    ],
+                    datasets: [{
+                        data: [
+                            ${totalOfOnTimeLegs},
+                            ${totalOfDelayed},
+                            ${totalOfCanceled},
+                            ${totalOfLanded}
+                        ]
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: {position: 'bottom'}
+                    }
+                }
+            });
 
-<h2>
-	<acme:print code="manager.dashboard.form.title.flight-costs"/>
-</h2>
+            const flightCtx = document.getElementById('flightCostChart').getContext('2d');
+            new Chart(flightCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        '<acme:print code="manager.manager-dashboard.form.label.flight-average"/>',
+                        '<acme:print code="manager.manager-dashboard.form.label.flight-deviation"/>',
+                        '<acme:print code="manager.manager-dashboard.form.label.flight-minimum"/>',
+                        '<acme:print code="manager.manager-dashboard.form.label.flight-maximum"/>'
+                    ],
+                    datasets: [{
+                        data: [
+                            ${averageFlightCostEUR},
+                            ${deviationOfFlightCostEUR},
+                            ${minimumFlightCostEUR},
+                            ${maximumFlightCostEUR}
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {beginAtZero: true}
+                    },
+                    plugins: {
+                        legend: {display: false}
+                    }
+                }
+            });
+        });
+    </script>
 
-<table class="table table-sm">
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.average-flight-cost"/>
-		</th>
-		<td>
-			<acme:print value="${averageFlightCost}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.min-flight-cost"/>
-		</th>
-		<td>
-			<acme:print value="${minFlightCost}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.max-flight-cost"/>
-		</th>
-		<td>
-			<acme:print value="${maxFlightCost}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.stddev-flight-cost"/>
-		</th>
-		<td>
-			<acme:print value="${stdDevFlightCost}"/>
-		</td>
-	</tr>
-</table>
-
-<h2>
-	<acme:print code="manager.dashboard.form.title.airports"/>
-</h2>
-
-<table class="table table-sm">
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.most-popular-airport"/>
-		</th>
-		<td>
-			<acme:print value="${mostPopularAirport}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:print code="manager.dashboard.form.label.least-popular-airport"/>
-		</th>
-		<td>
-			<acme:print value="${leastPopularAirport}"/>
-		</td>
-	</tr>
-</table>
-
-<acme:return/>
+</body>
+</html>

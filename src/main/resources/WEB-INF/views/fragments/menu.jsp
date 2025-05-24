@@ -57,9 +57,10 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
-			<acme:menu-suboption code="master.menu.manager.flight-list" action="/manager/flight/list"/>
-			<acme:menu-separator />
-			<acme:menu-suboption code="master.menu.manager.show-dashboard" action="/manager/manager-dashboard/show" />
+			<acme:menu-suboption code="master.menu.manager.list-legs" action="/manager/leg/list"/>
+			<acme:menu-suboption code="master.menu.manager.list-flights" action="/manager/flight/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.manager.dashboard" action="/manager/manager-dashboard/show" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">

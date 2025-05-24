@@ -1,3 +1,14 @@
+/*
+ * Consumer.java
+ *
+ * Copyright (C) 2012-2025 Rafael Corchuelo.
+ *
+ * In keeping with the traditional purpose of furthering education and research, it is
+ * the policy of the copyright owner to permit non-commercial use and redistribution of
+ * this software. It has been tested carefully, but it is not guaranteed for any particular
+ * purposes. The copyright owner does not offer any warranties or representations, nor do
+ * they accept any liabilities with respect to them.
+ */
 
 package acme.realms.manager;
 
@@ -5,10 +16,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -16,10 +25,9 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidIdentifier;
 import acme.constraints.ValidManager;
-import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,33 +38,29 @@ import lombok.Setter;
 public class Manager extends AbstractRole {
 
 	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
+	@ValidIdentifier
 	@Column(unique = true)
 	private String				identifier;
 
 	@Mandatory
+	@ValidNumber(min = 0, max = 65)
 	@Automapped
-	@ValidNumber(min = 0, max = 70)
-	private int					yearsOfExperience;
+	private Integer				yearsOfExperience;
 
 	@Mandatory
 	@ValidMoment(past = true)
-	@Temporal(TemporalType.DATE)
-	private Date				dateOfBirth;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				birthDate;
 
 	@Optional
 	@ValidUrl
 	@Automapped
-	private String				pictureUrl;
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Airline				airline;
+	private String				picture;
 
 }

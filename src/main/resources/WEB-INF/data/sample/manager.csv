@@ -1,4 +1,4 @@
-key,key:userAccount,identifier,yearsOfExperience,dateOfBirth,pictureUrl,key:airline
-manager-01,user-account-manager-01,JM123456,4,2000/01/20 10:00,http://www.lorem-ipsum.org/dolor/sit.html#dolor,airline-01
-manager-02,user-account-manager-02,SM654321,15,1969/10/15 10:00,http://example.org?a&b,airline-02
-manager-03,user-account-manager-03,AMT000001,5,1976/03/10 10:00,,airline-03
+key,key:userAccount,identifier,yearsOfExperience,birthDate,picture
+manager-01,user-account-manager-01,JM123456,4,2000/01/20 10:00,http://www.lorem-ipsum.org/dolor/sit.html#dolor
+manager-02,user-account-manager-02,SM654321,15,1969/10/15 10:00,http://example.org?a&b
+manager-03,user-account-manager-03,AMT000001,5,1976/03/10 10:00,

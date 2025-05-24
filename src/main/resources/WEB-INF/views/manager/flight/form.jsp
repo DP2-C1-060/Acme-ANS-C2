@@ -5,7 +5,7 @@
 
 <acme:form>	
 	<acme:input-textbox code="manager.flight.form.label.tag" path="tag" />
-	<acme:input-checkbox code="manager.flight.form.label.selfTransfer" path="selfTransfer" />
+	<acme:input-checkbox code="manager.flight.form.label.indication" path="indication" />
 	<acme:input-money code="manager.flight.form.label.cost" path="cost" />
 	<acme:input-textarea code="manager.flight.form.label.description" path="description" />
 	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish')}">
@@ -17,19 +17,16 @@
 	</jstl:if>
 	
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="manager.flight.form.button.legs" action="/manager/leg/list?masterId=${id}"/>
-		</jstl:when>
-		
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="manager.flight.form.button.publish" action="/manager/flight/publish"/>
 			<acme:submit code="manager.flight.form.button.delete" action="/manager/flight/delete"/>
 			<acme:submit code="manager.flight.form.button.update" action="/manager/flight/update"/>
-			<acme:button code="manager.flight.form.button.legs" action="/manager/leg/list?masterId=${id}"/>
+			<acme:button code="manager.flight.form.button.list-legs" action="/manager/leg/list-by?masterId=${id}"/>
 		</jstl:when>
-		
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.flight.form.button.create" action="/manager/flight/create"/> 
 		</jstl:when>		
-	</jstl:choose>	
+	</jstl:choose>
+	
+	
 </acme:form>	

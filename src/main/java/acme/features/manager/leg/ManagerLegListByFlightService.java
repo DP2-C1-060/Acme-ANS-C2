@@ -1,37 +1,39 @@
 
-package acme.features.any.leg;
+package acme.features.manager.leg;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.principals.Any;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flights.Flight;
 import acme.entities.legs.Leg;
+import acme.realms.manager.Manager;
 
 @GuiService
-public class AnyLegListService extends AbstractGuiService<Any, Leg> {
+public class ManagerLegListByFlightService extends AbstractGuiService<Manager, Leg> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyLegRepository repository;
+	private ManagerLegRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
+		Boolean status;
 		int masterId;
 		Flight flight;
+		Manager manager;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		flight = this.repository.findFlightById(masterId);
-		status = flight != null && !flight.isDraftMode();
+		manager = flight == null ? null : flight.getManager();
+		status = flight != null && super.getRequest().getPrincipal().hasRealm(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -42,7 +44,7 @@ public class AnyLegListService extends AbstractGuiService<Any, Leg> {
 		int masterId;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		legs = this.repository.findLegsByFlightId(masterId);
+		legs = this.repository.findLegByFlight(masterId);
 
 		super.getBuffer().addData(legs);
 	}
@@ -52,9 +54,12 @@ public class AnyLegListService extends AbstractGuiService<Any, Leg> {
 		Dataset dataset;
 
 		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival");
-		dataset.put("departure-arrival", leg.getDepartureAirport().getCity() + " - " + leg.getArrivalAirport().getCity());
+		if (leg.isDraftMode())
+			dataset.put("draftMode", "✔");
+		else
+			dataset.put("draftMode", "✖");
 
-		super.addPayload(dataset, leg, "status", "departureAirport.iataCode", "arrivalAirport.iataCode", "aircraft.registrationNumber");
+		super.addPayload(dataset, leg, "status", "departure.iataCode", "arrival.iataCode", "aircraft.registrationNumber", "flight.tag");
 		super.getResponse().addData(dataset);
 	}
 }

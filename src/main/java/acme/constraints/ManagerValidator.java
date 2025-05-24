@@ -1,12 +1,15 @@
 
 package acme.constraints;
 
+import java.util.Date;
+
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 import acme.realms.manager.Manager;
 import acme.realms.manager.ManagerRepository;
 
@@ -42,16 +45,28 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 				existingManager = this.repository.findManagerByIdentifier(manager.getIdentifier());
 				uniqueManager = existingManager == null || existingManager.equals(manager);
 
-				super.state(context, uniqueManager, "ticker", "acme.validation.manager.duplicated-identifier.message");
+				super.state(context, uniqueManager, "identifier", "acme.validation.manager.duplicated-identifier.message");
 			}
 			{
-				boolean correctIdentifier = true;
 
-				if (manager.getIdentifier() != null)
-					correctIdentifier = Character.toUpperCase(manager.getIdentifier().charAt(0)) == Character.toUpperCase(manager.getIdentity().getName().charAt(0))
-						&& Character.toUpperCase(manager.getIdentifier().charAt(1)) == Character.toUpperCase(manager.getIdentity().getSurname().charAt(0));
+				boolean correctIdentifier;
 
-				super.state(context, correctIdentifier, "identifier", "acme.validators.manager.correct-pattern");
+				correctIdentifier = manager.getIdentifier() == "" || manager.getIdentifier().charAt(0) == manager.getIdentity().getName().charAt(0) && manager.getIdentifier().charAt(1) == manager.getIdentity().getSurname().charAt(0);
+
+				super.state(context, correctIdentifier, "identifier", "acme.validation.manager.correct-pattern");
+			}
+			{
+				boolean correctExperience;
+
+				correctExperience = manager.getYearsOfExperience() == null || manager.getYearsOfExperience() >= 0 && manager.getYearsOfExperience() <= 75;
+				super.state(context, correctExperience, "yearsOfExperience", "acme.validation.manager.correct-experience");
+			}
+			{
+				boolean pastDate;
+				Date present = MomentHelper.getBaseMoment();
+
+				pastDate = manager.getBirthDate().before(present);
+				super.state(context, pastDate, "birthDate", "acme.validation.manager.past-birth-date");
 			}
 		}
 

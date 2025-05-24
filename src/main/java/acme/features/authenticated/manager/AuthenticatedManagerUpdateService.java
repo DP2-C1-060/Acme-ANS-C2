@@ -1,17 +1,13 @@
 
 package acme.features.authenticated.manager;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Authenticated;
-import acme.client.components.views.SelectChoices;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.airline.Airline;
 import acme.realms.manager.Manager;
 
 @GuiService
@@ -22,7 +18,7 @@ public class AuthenticatedManagerUpdateService extends AbstractGuiService<Authen
 	@Autowired
 	private AuthenticatedManagerRepository repository;
 
-	// AbstractGuiService interface -------------------------------------------
+	// AbstractService interface ----------------------------------------------ç
 
 
 	@Override
@@ -36,40 +32,41 @@ public class AuthenticatedManagerUpdateService extends AbstractGuiService<Authen
 
 	@Override
 	public void load() {
-		Manager object;
+		Manager manager;
 		int userAccountId;
 
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		object = this.repository.findOneManagerByUserAccountId(userAccountId);
+		manager = this.repository.findManagerByUserAccountId(userAccountId);
 
-		super.getBuffer().addData(object);
+		super.getBuffer().addData(manager);
 	}
 
 	@Override
 	public void bind(final Manager manager) {
-		super.bindObject(manager, "identifier", "yearsOfExperience", "dateOfBirth", "pictureUrl", "airline");
+		assert manager != null;
+
+		super.bindObject(manager, "identifier", "yearsOfExperience", "birthDate", "picture");
 	}
 
 	@Override
 	public void validate(final Manager manager) {
-		// Aquí puedes agregar validaciones personalizadas si es necesario.
+		assert manager != null;
 	}
 
 	@Override
 	public void perform(final Manager manager) {
+		assert manager != null;
+
 		this.repository.save(manager);
 	}
 
 	@Override
 	public void unbind(final Manager manager) {
+		assert manager != null;
+
 		Dataset dataset;
 
-		dataset = super.unbindObject(manager, "identifier", "yearsOfExperience", "dateOfBirth", "pictureUrl", "airline");
-
-		List<Airline> airlines = this.repository.findAirlines();
-		SelectChoices airlinesChoices = SelectChoices.from(airlines, "IATAcode", manager.getAirline());
-		dataset.put("airlines", airlinesChoices);
-		dataset.put("airline", airlinesChoices.getSelected().getKey());
+		dataset = super.unbindObject(manager, "identifier", "yearsOfExperience", "birthDate", "picture");
 		super.getResponse().addData(dataset);
 	}
 

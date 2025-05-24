@@ -1,14 +1,38 @@
-key,tag,self-transfer,cost,description,key:manager,draftMode
-flight-01,"Lorem ipsum dolor sit ame",FALSE,EUR 500000.01,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01,FALSE
-flight-02,"L",FALSE,EUR 0.01,"",manager-01,TRUE
-flight-03,"Lo",FALSE,EUR 0.02,,manager-01,FALSE
-flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",FALSE,EUR 999999.99,"L",manager-01,TRUE
-flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",FALSE,EUR 1000000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager-01,FALSE
-flight-06,"โลเร็ม อิปซัม",FALSE,GBP 500.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",manager-01,TRUE
-flight-07,"لوريم إيبسوم",FALSE,USD 0.01,"โลเร็ม อิปซัม",manager-02,FALSE
-flight-08,"洛伦·伊普森",FALSE,EUR 250.00,"لوريم إيبسوم",manager-02,TRUE
-flight-09,"<marquee>Hacked</marquee>",FALSE,EUR 300.00,"洛伦·伊普森",manager-02,FALSE
-flight-10,"<script>alert(‘Hacked!’);</script>",FALSE,EUR 120.00,"<marquee>Hacked</marquee>",manager-02,TRUE
-flight-11,"' or 'A' = 'A ",FALSE,EUR 0.01,"<script>alert(‘Hacked!’);</script>",manager-02,FALSE
-flight-12,"MAXIMUM COST",FALSE,EUR 999999.99,"' or 'A' = 'A ",manager-02,TRUE
-flight-13,"ECONOMY",FALSE,EUR 199.99,"Standard international flight with high demand. 经济舱",manager-02,FALSE
+key,key:manager,tag,indication,cost,description,draftMode
+flight-01,manager-01,"Lorem ipsum dolor sit ame",True,EUR 100000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true
+flight-02,manager-02,"L",True,USD 230000.00,"",true
+flight-03,manager-01,"Lo",True,GBP 50000.00,"L",false
+flight-04,manager-02,"Lorem ipsum dolor sit amet, consectetur adipiscin",True,EUR 875000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",false
+flight-05,manager-01,"Lorem ipsum dolor sit amet, consectetur adipiscing",True,USD 999999.99,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",true
+flight-06,manager-02,"โลเร็ม อิปซัม",True,EUR 305000.00,"โลเร็ม อิปซัม",false
+flight-07,manager-01,"لوريم إيبسوم",True,USD 700000.00,"لوريم إيبسوم",true
+flight-08,manager-02,"洛伦·伊普森",True,GBP 455000.00,"洛伦·伊普森",true
+flight-09,manager-01,"<marquee>Hacked</marquee>",True,USD 560000.00,"<marquee>Hacked</marquee>",false
+flight-10,manager-02,"<script>alert(‘Hacked!’);</script>",True,GBP 670000.00,"<script>alert(‘Hacked!’);</script>",true
+flight-11,manager-01,"' or 'A' = 'A ",True,EUR 900000.00,"' or 'A' = 'A ",true
+flight-12,manager-02,"Control básico",True,USD 100.00,"Importe mínimo registrado para comprobar el comportamiento del sistema ante valores bajos.",true
+flight-13,manager-01,"Prueba crítica",True,GBP 12345.00,"Entrada diseñada para probar validaciones sensibles en monedas extranjeras con valor intermedio.",true
+flight-14,manager-02,"Operación internacional",True,EUR 600000.00,"Operación simulada de alto coste en euros para comprobar límites superiores en la validación.",true
+flight-15,manager-01,"Moneda extranjera",True,USD 350000.00,"Importe relevante en moneda extranjera para analizar el tratamiento fiscal internacional.",true
+flight-16,manager-02,"Sin movimiento",False,EUR 0.00,"Transacción sin valor económico usada para verificar el sistema en operaciones nulas.",true
+flight-17,manager-01,"Valor simbólico",True,EUR 0.01,"Caso extremo que representa un valor monetario simbólico en euros para pruebas de borde.",true
+flight-18,manager-02,"Micro transacción",True,GBP 30.00,"Simulación de una micro transacción en libras, útil para pruebas de redondeo y márgenes.",true
+flight-19,manager-01,"Transferencia directa",True,GBP 123456.78,"Transacción directa en libras esterlinas con decimales, orientada a test de precisión.",true
+flight-20,manager-02,"Pago urgente",True,USD 667755.12,"Movimiento de gran cuantía para pruebas de rendimiento ante operaciones urgentes.",true
+flight-21,manager-01,"Inversión máxima",True,GBP 889900.56,"Caso que representa una inversión casi total del presupuesto asignado.",true
+flight-22,manager-02,"Coste límite",False,EUR 999999.99,"Prueba que alcanza el límite teórico de validación establecido para el sistema.",true
+flight-23,manager-01,"Top absoluto",True,EUR 1000000.00,"Transacción que representa el valor máximo absoluto permitido para este tipo de registros.",true
+flight-24,manager-02,"Suma media",True,USD 475000.00,"Valor medio representativo dentro del rango de operaciones internacionales estándar.",true
+flight-25,manager-01,"Corte intermedio",False,EUR 510000.00,"Registro ubicado cerca del promedio para detección de errores de interpretación de umbral.",true
+flight-26,manager-02,"Margen alto",True,USD 495000.00,"Caso con importe elevado usado para contrastar con operaciones límite.",true
+flight-27,manager-01,"Bajo disponibilidad",False,USD 530000.00,"Registro que simula una operación en contexto de baja liquidez o recursos limitados.",true
+flight-28,manager-02,"Ejemplo estándar",True,EUR 460000.00,"Caso común que representa una operación estándar de mediana envergadura.",true
+flight-29,manager-01,"Entrada manual",False,GBP 500000.00,"Registro introducido manualmente para evaluar el comportamiento del sistema sin automatismos.",true
+flight-30,manager-02,"Nivel medio",True,EUR 490000.00,"Entrada con valor promedio dentro del flujo operativo esperado.",true
+flight-31,manager-01,"Importe estimado",True,USD 505000.00,"Importe estimado para realizar simulaciones de predicción de coste.",true
+flight-32,manager-02,"Validación automática",False,USD 515000.00,"Registro utilizado para validar que los procesos automáticos de verificación funcionan correctamente.",true
+flight-33,manager-01,"Lote prioritario",True,GBP 535000.00,"Registro con etiqueta de prioridad alta dentro del sistema para evaluar el flujo de decisiones.",true
+flight-34,manager-02,"Ejemplo extendido",True,EUR 450000.00,"Transacción ampliada en contexto simulado para probar múltiples condiciones de negocio.",true
+flight-35,manager-01,"Prueba singular",False,USD 525000.00,"Caso con particularidades únicas utilizado en pruebas específicas de regresión.",true
+flight-36,manager-02,"Evaluación técnica",True,EUR 475000.00,"Operación generada con fines técnicos, enfocada a pruebas de integración y consistencia.",true
+flight-37,manager-01,"Revisión final",True,USD 515000.00,"Entrada que cierra la serie de pruebas programadas en el conjunto actual de validación.",true

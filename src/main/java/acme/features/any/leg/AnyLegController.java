@@ -16,18 +16,17 @@ public class AnyLegController extends AbstractGuiController<Any, Leg> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyLegListService	listService;
+	private AnyLegShowService			showService;
 
 	@Autowired
-	private AnyLegShowService	showService;
+	private AnyLegListByFlightService	listByService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addCustomCommand("list-by", "list", this.listByService);
 	}
-
 }

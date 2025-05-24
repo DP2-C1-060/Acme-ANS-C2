@@ -1,19 +1,24 @@
-any.leg.form.title = Detalles del trayecto
-any.leg.list.title = Lista de trayectos
 
-any.leg.form.label.flightNumber = Número de vuelo:
-any.leg.form.label.scheduledDeparture = Salida programada:
-any.leg.form.label.scheduledArrival = Llegada programada:
-any.leg.form.label.status = Estado:
-any.leg.form.label.duration = Duración:
-any.leg.form.label.departureAirport = Aeropuerto de salida:
-any.leg.form.label.arrivalAirport = Aeropuerto de llegada:
-any.leg.form.label.aircraft = Aeronave:
-any.leg.form.button.view = Ver trayecto
 
-any.leg.list.label.flightNumber = Número de vuelo
-any.leg.list.label.departure-arrival = Salida - Llegada
-any.leg.list.label.scheduledDeparture = Salida programada
-any.leg.list.label.scheduledArrival = Llegada programada
-any.leg.list.label.duration = Duración
-any.leg.list.label.aircraft = Aeronave
+# any.leg.list  ########################################################
+
+any.leg.list.title = Listado de Tramos
+any.leg.list.label.flightNumber = Número de Vuelo
+any.leg.list.label.scheduledDeparture = Salida Prevista
+any.leg.list.label.scheduledArrival = Llegada Prevista
+any.leg.list.label.draftMode = Modo Borrador
+
+# any.leg.form  ########################################################
+
+any.leg.form.title = Formulario de Tramo
+any.leg.form.title = Listado de escalas
+any.leg.form.label.flightNumber = Número de Vuelo
+any.leg.form.label.scheduledDeparture = Salida Prevista
+any.leg.form.label.scheduledArrival = Llegada Prevista
+any.leg.form.label.draftMode = Modo Borrador
+any.leg.form.label.duration = Duracion
+any.leg.form.label.status = Estado
+any.leg.form.label.departure = Aeropuerto de Salida
+any.leg.form.label.arrival = Aeropuerto de Llegada
+any.leg.form.label.aircraft = Aeronave
+any.leg.form.label.flight = Vuelo

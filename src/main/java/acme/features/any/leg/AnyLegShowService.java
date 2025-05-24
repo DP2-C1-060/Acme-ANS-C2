@@ -7,7 +7,6 @@ import acme.client.components.models.Dataset;
 import acme.client.components.principals.Any;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.flights.Flight;
 import acme.entities.legs.Leg;
 
 @GuiService
@@ -23,24 +22,16 @@ public class AnyLegShowService extends AbstractGuiService<Any, Leg> {
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		Flight flight;
-
-		id = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightByLegId(id);
-		status = flight != null && !flight.isDraftMode();
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
+		int legId;
 		Leg leg;
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		leg = this.repository.findLegById(id);
+		legId = super.getRequest().getData("id", int.class);
+		leg = this.repository.findLegById(legId);
 
 		super.getBuffer().addData(leg);
 	}
@@ -49,12 +40,14 @@ public class AnyLegShowService extends AbstractGuiService<Any, Leg> {
 	public void unbind(final Leg leg) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status");
-		dataset.put("departureCity", leg.getDepartureAirport().getCity());
-		dataset.put("arrivalCity", leg.getArrivalAirport().getCity());
-		dataset.put("aircraft", leg.getAircraft().getDisplayName());
-		dataset.put("duration", leg.getDuration());
+		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status", "draftMode");
 
+		dataset.put("duration", leg.getDuration());
+		dataset.put("flight", leg.getFlight().getTag());
+		dataset.put("aircraft", leg.getAircraft().getRegistrationNumber());
+		dataset.put("departure", leg.getDeparture().getIataCode());
+		dataset.put("arrival", leg.getArrival().getIataCode());
 		super.getResponse().addData(dataset);
 	}
+
 }

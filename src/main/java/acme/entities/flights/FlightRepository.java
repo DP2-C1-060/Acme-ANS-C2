@@ -12,10 +12,15 @@ import acme.entities.legs.Leg;
 @Repository
 public interface FlightRepository extends AbstractRepository {
 
-	@Query("select l from Leg l where l.flight.id = :flightId order by l.scheduledDeparture asc")
-	List<Leg> findLegsByFlightId(int flightId);
+	@Query("select l from Leg l where l.flight.id = :id")
+	List<Leg> findLegsByFlight(Integer id);
 
-	@Query("select l from Leg l where l.flight.id = ?1 and l.draftMode = true")
-	List<Leg> findDraftLegsByFlightId(int i);
+	@Query("SELECT l FROM Leg l WHERE l.flight.id = :id ORDER BY l.scheduledDeparture ASC")
+	List<Leg> findLegsByFlightDeparture(Integer id);
 
+	@Query("SELECT l FROM Leg l WHERE l.flight.id = :id ORDER BY l.scheduledArrival DESC")
+	List<Leg> findLegsByFlightArrival(Integer id);
+
+	@Query("select l from Leg l where l.flight.id = :id and l.draftMode = true")
+	List<Leg> findDraftingLegsByFlight(Integer id);
 }
