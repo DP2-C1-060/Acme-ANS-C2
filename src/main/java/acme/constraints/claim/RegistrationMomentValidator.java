@@ -23,7 +23,7 @@ public class RegistrationMomentValidator extends AbstractValidator<ValidRegistra
 
 		if (claim == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
+		else if (claim.getLeg() != null) {
 			boolean consistentMoment;
 
 			Date registrationMoment = claim.getRegistrationMoment();
