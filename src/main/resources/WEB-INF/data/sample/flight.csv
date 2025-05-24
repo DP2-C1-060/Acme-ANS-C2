@@ -1,4 +1,4 @@
-key,key:manager,tag,indication,cost,description,draftMode
+key,key:manager,tag,selfTransfer,cost,description,draftMode
 flight-01,manager-01,"Lorem ipsum dolor sit ame",True,EUR 100000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true
 flight-02,manager-02,"L",True,USD 230000.00,"",true
 flight-03,manager-01,"Lo",True,GBP 50000.00,"L",false

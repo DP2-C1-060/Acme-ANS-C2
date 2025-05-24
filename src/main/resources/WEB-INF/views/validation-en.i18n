@@ -13,15 +13,6 @@ acme.validation.text.message = Must have from 0 to 255 characters
 acme.validation.dateofbirth.message = The date of birth must indicate an age between 18 and 100 years and must not be in the future.
 
 
-
-acme.validation.manager.experience.message = Years of experience exceed the allowed maximum based on the date of birth
-acme.validation.manager.age.tooYoung = The minimum age to work is 16 years
-acme.validation.manager.identifier.invalid = The identifier must start with the first letter of the name and the first letter of the surname
-acme.validation.manager.identifier.unique = The identifier must be unique
-
-acme.validation.manager.duplicated-identifier.message = The manager identifier is already in use. Please use a unique identifier.
-acme.validators.manager.correct-pattern = The manager identifier must start with the first letter of the name followed by the first letter of the surname.
-
 acme.validation.activityLog.invalidLeg = The leg must have taken place
 
 acme.validation.agent.duplicated.message = The employee code must be unique
@@ -38,11 +29,6 @@ acme.validation.log.resolutionPercentage.exceptional = A claim cannot have more 
 acme.validation.log.resolutionPercentage.following = The percentage must be less than or equal to the next highest percentage
 
 acme.validation.constraints.NotNull.message = must not be null
-
-acme.validation.manager.experience.message = Years of experience exceed the allowed maximum based on the date of birth
-acme.validation.manager.age.tooYoung = The minimum age to work is 16 years.
-acme.validation.manager.identifier.invalid = The identifier must start with the first letter of the name and the first letter of the surname
-acme.validation.manager.identifier.unique = The identifier must be unique
 
 acme.validation.past.message = FoundationDate must be in the past.
 acme.validation.phone.message = Phone must have between 6 and 15 digits.

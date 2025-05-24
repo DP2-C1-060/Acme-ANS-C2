@@ -5,7 +5,7 @@
 
 <acme:form>	
 	<acme:input-textbox code="any.flight.form.label.tag" path="tag" />
-	<acme:input-checkbox code="any.flight.form.label.indication" path="indication" />
+	<acme:input-checkbox code="any.flight.form.label.selfTransfer" path="selfTransfer" />
 	<acme:input-money code="any.flight.form.label.cost" path="cost" />
 	<acme:input-textarea code="any.flight.form.label.description" path="description" />
 	<acme:input-textbox code="any.flight.form.label.scheduledDeparture" path="scheduledDeparture" readonly="true" />

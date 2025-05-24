@@ -113,7 +113,7 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 			if (leg.getScheduledDeparture() != null)
 				futureDeparture = leg.getScheduledDeparture().after(present);
 
-			super.state(futureDeparture, "scheduledDeparture", "acme.validation.leg.past-date.message");
+			super.state(futureDeparture, "scheduledDeparture", "acme.validation.leg.departure-in-past.message");
 		}
 		{
 			boolean futureArrival = true;
@@ -123,7 +123,7 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 			if (leg.getScheduledArrival() != null)
 				futureArrival = leg.getScheduledArrival().after(present);
 
-			super.state(futureArrival, "scheduledArrival", "acme.validation.leg.past-date.message");
+			super.state(futureArrival, "scheduledArrival", "acme.validation.leg.arrival-in-past.message");
 		}
 	}
 

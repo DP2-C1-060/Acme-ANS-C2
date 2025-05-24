@@ -52,7 +52,7 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 				hasLegs = flight.isDraftMode() ? true : !flightLegs.isEmpty();
 
-				super.state(context, hasLegs, "tag", "acme.validation.flight.no-legs.message");
+				super.state(context, hasLegs, "tag", "acme.validation.flight.no-associated-legs.message");
 			}
 			{
 				boolean publishedLegs;
@@ -72,7 +72,7 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 				validCurrency = flight.getCost() == null || acceptedCurrencies.contains(flight.getCost().getCurrency());
 
-				super.state(context, validCurrency, "cost", "acme.validation.flight.valid-currency.message");
+				super.state(context, validCurrency, "cost", "acme.validation.flight.unsupported-currency.message");
 			}
 		}
 		result = !super.hasErrors(context);

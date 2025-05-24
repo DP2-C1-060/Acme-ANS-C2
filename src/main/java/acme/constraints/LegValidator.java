@@ -45,27 +45,27 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 				existingLeg = this.repository.findLegByFlightNumber(leg.getFlightNumber());
 				uniqueLeg = existingLeg == null || existingLeg.equals(leg);
 
-				super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.duplicated-flight-number.message");
+				super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.non-unique-flight-number.message");
 			}
 			{
 
 				boolean rightOrder;
 
 				rightOrder = leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null || leg.getScheduledArrival().after(leg.getScheduledDeparture());
-				super.state(context, rightOrder, "scheduledArrival", "acme.validation.leg.wrong-date-order.message");
+				super.state(context, rightOrder, "scheduledArrival", "acme.validation.leg.arrival-before-departure.message");
 			}
 			{
 				boolean rightFlightNumber = true;
 
 				if (leg.getFlightNumber() != null && leg.getFlightNumber().length() > 3 && leg.getAircraft() != null)
 					rightFlightNumber = leg.getFlightNumber().substring(0, 3).equals(leg.getAircraft().getAirline().getIATAcode());
-				super.state(context, rightFlightNumber, "flightNumber", "acme.validation.leg.wrong-iata.message");
+				super.state(context, rightFlightNumber, "flightNumber", "acme.validation.leg.mismatched-iata-code.message");
 			}
 			{
 				boolean rightManager;
 
 				rightManager = leg.getManager() != null ? true : leg.getManager().getIdentifier().equals(leg.getFlight().getManager().getIdentifier());
-				super.state(context, rightManager, "manager", "acme.validation.leg.diferent-manager.message");
+				super.state(context, rightManager, "manager", "acme.validation.leg.mismatched-manager.message");
 			}
 			{
 				boolean rightDuration = true;
@@ -74,7 +74,7 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 					long diferenciaEnMinutos = longDuration / (1000 * 60);
 					rightDuration = (int) diferenciaEnMinutos >= 1 && (int) diferenciaEnMinutos <= 1000;
 				}
-				super.state(context, rightDuration, "scheduledArrival", "acme.validation.leg.wrong-duration.message");
+				super.state(context, rightDuration, "scheduledArrival", "acme.validation.leg.invalid-duration.message");
 			}
 			{
 				boolean overlapedAircraft = true;
@@ -93,20 +93,20 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 					}
 
 				}
-				super.state(context, overlapedAircraft, "aircraft", "acme.validation.leg.overlaped-aircraft.message");
+				super.state(context, overlapedAircraft, "aircraft", "acme.validation.leg.aircraft-scheduling-conflict.message");
 			}
 			{
 				boolean sameAirport;
 
 				sameAirport = leg.getDeparture() == null && leg.getArrival() == null ? true : leg.getDeparture() != leg.getArrival();
 
-				super.state(context, sameAirport, "departure", "acme.validation.leg.same-airport.message");
+				super.state(context, sameAirport, "departure", "acme.validation.leg.departure-equals-arrival.message");
 			}
 			{
 				boolean correctAircraft = true;
 
 				correctAircraft = leg.getAircraft() == null ? true : leg.getAircraft().getStatus() == AircraftStatus.ACTIVE;
-				super.state(context, correctAircraft, "departure", "acme.validation.leg.maintenance-aircraft.message");
+				super.state(context, correctAircraft, "departure", "acme.validation.leg.inactive-aircraft.message");
 			}
 
 		}

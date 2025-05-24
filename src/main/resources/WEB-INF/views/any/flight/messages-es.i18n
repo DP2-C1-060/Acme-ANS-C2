@@ -1,30 +1,23 @@
+# any.flight.list ########################################################
 
+any.flight.list.title = Listado de vuelos
 
-# manager.flight.list ########################################################
-
-manager.flight.list.title = Lista de vuelos
-
-manager.flight.list.label.tag = Etiqueta
+any.flight.list.label.tag = Etiqueta
 any.flight.list.label.description = Descripción
-manager.flight.list.label.draftMode = Modo borrador
+any.flight.list.label.cost = Coste
 
-manager.flight.form.button.create = Crear
+# any.flight.form ########################################################
 
-# manager.flight.form ########################################################
+any.flight.form.title = Formulario de vuelo
 
-manager.flight.form.title = Formulario de vuelo
+any.flight.form.label.tag = Etiqueta
+any.flight.form.label.selfTransfer = Autotransferencia
+any.flight.form.label.cost = Coste
+any.flight.form.label.description = Descripción
+any.flight.form.label.scheduledDeparture  = Salida programada
+any.flight.form.label.scheduledArrival = Llegada programada
+any.flight.form.label.departureCity = Ciudad de salida
+any.flight.form.label.arrivalCity = Ciudad de llegada
+any.flight.form.label.layovers = Escalas
 
-manager.flight.form.label.tag = Etiqueta
-manager.flight.form.label.indication = Transferencia propia
-manager.flight.form.label.cost = Costo
-manager.flight.form.label.description = Descripción
-manager.flight.form.label.scheduledDeparture = Salida programada
-manager.flight.form.label.scheduledArrival = Llegada programada
-manager.flight.form.label.departureCity = Ciudad de salida
-manager.flight.form.label.arrivalCity = Ciudad de llegada
-manager.flight.form.label.layovers = Escalas
-
-manager.flight.form.button.update = Actualizar
-manager.flight.form.button.publish = Publicar
-manager.flight.form.button.delete = Eliminar
-manager.flight.form.button.list-legs = Tramos del Vuelo
+any.flight.form.button.list-legs = Tramos del vuelo

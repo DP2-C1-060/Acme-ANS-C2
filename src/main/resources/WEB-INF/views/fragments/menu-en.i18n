@@ -99,8 +99,6 @@ master.menu.flight-crew-member.list-my-planned-flights-assignments = Planned Fli
 
 # master.menu.manager ##########################################################
 
-master.menu.manager = Manager
-master.menu.manager.flight-list = Flights
 master.menu.member = Flight Crew Member
 master.menu.member.completedlist-flightAssignment= Completed Flight Assignments List
 master.menu.member.notCompletedlist-flightAssignment = Not Completed Flight Assignments List

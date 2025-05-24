@@ -52,7 +52,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 	@Override
 	public void bind(final Flight flight) {
 
-		super.bindObject(flight, "tag", "indication", "cost", "description");
+		super.bindObject(flight, "tag", "selfTransfer", "cost", "description");
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 
 			hasLegs = !flightLegs.isEmpty();
 
-			super.state(hasLegs, "*", "acme.validation.flight.no-legs.message");
+			super.state(hasLegs, "*", "acme.validation.flight.no-associated-legs.message");
 		}
 		{
 			boolean publishedLegs;
@@ -87,7 +87,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "tag", "indication", "cost", "description", "draftMode");
+		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
 		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		dataset.put("scheduledArrival", flight.getScheduledArrival());
 		dataset.put("departureCity", flight.getDepartureCity());
