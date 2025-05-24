@@ -42,14 +42,14 @@ public class TrackingValidator extends AbstractValidator<ValidTracking, Tracking
 					boolean correctStatus = false;
 
 					TrackingStatus status = log.getIndicator();
-					if (percentage < 100 && status == TrackingStatus.PENDING || percentage == 100 && (status == TrackingStatus.ACCEPTED || status == TrackingStatus.REJECTED))
+					if (percentage > 100 || percentage < 100 && status == TrackingStatus.PENDING || percentage == 100 && (status == TrackingStatus.ACCEPTED || status == TrackingStatus.REJECTED))
 						correctStatus = true;
 					super.state(context, correctStatus, "resolutionPercentage", "acme.validation.log.indicator.message");
 				}
 				{
 					String resolution = log.getResolution();
 
-					boolean hasResolutionWhen100Percent = percentage < 100 || !resolution.isBlank();
+					boolean hasResolutionWhen100Percent = percentage != 100 || !resolution.isBlank();
 					super.state(context, hasResolutionWhen100Percent, "resolution", "acme.validation.log.resolution.message");
 				}
 				Date lastUpdateMoment = log.getLastUpdateMoment();
@@ -86,12 +86,14 @@ public class TrackingValidator extends AbstractValidator<ValidTracking, Tracking
 
 					List<Tracking> sortedTracking = previousTracking.stream().sorted(Comparator.comparing(Tracking::getResolutionPercentage).reversed()).toList();
 
-					Tracking first = sortedTracking.get(0);
-					Tracking second = sortedTracking.get(1);
+					if (sortedTracking.size() >= 2) {
+						Tracking first = sortedTracking.get(0);
+						Tracking second = sortedTracking.get(1);
 
-					boolean firstIs100AndDiffIndicator = log.getResolutionPercentage() != 100 || first.getResolutionPercentage() != 100.0 || second.getResolutionPercentage() == 100.0 || first.getIndicator().equals(log.getIndicator());
+						boolean firstIs100AndDiffIndicator = log.getResolutionPercentage() != 100 || first.getResolutionPercentage() != 100.0 || second.getResolutionPercentage() == 100.0 || first.getIndicator().equals(log.getIndicator());
 
-					super.state(context, firstIs100AndDiffIndicator, "indicator", "acme.validation.log.indicator.hundred");
+						super.state(context, firstIs100AndDiffIndicator, "indicator", "acme.validation.log.indicator.hundred");
+					}
 				}
 				{
 					List<Tracking> followingTracking = this.repository.findByClaimIdAndDateAfter(claim.getId(), lastUpdateMoment);
