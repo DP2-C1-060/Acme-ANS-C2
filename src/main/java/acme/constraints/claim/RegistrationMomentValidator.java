@@ -27,11 +27,10 @@ public class RegistrationMomentValidator extends AbstractValidator<ValidRegistra
 			boolean consistentMoment;
 
 			Date registrationMoment = claim.getRegistrationMoment();
-			Date workStartMoment = claim.getAgent().getWorkStartMoment();
 
-			consistentMoment = registrationMoment.after(workStartMoment);// && registrationMoment.after(claim.getLeg().getScheduledArrival());
+			consistentMoment = registrationMoment.after(claim.getLeg().getScheduledArrival());
 
-			super.state(context, consistentMoment, "registrationMoment", "acme.validation.claim.registrationMoment.message");
+			super.state(context, consistentMoment, "leg", "acme.validation.claim.leg.message");
 		}
 
 		result = !super.hasErrors(context);
