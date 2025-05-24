@@ -42,12 +42,7 @@ public class ManagerFlightListService extends AbstractGuiService<Manager, Flight
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "tag", "cost", "description");
-		if (flight.isSelfTransfer())
-			dataset.put("selfTransfer", "✔");
-		else
-			dataset.put("selfTransfer", "✖");
-
+		dataset = super.unbindObject(flight, "tag", "cost", "description", "draftMode");
 		if (flight.isDraftMode())
 			dataset.put("draftMode", "✔");
 		else

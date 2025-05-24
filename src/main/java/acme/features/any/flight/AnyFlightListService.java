@@ -41,13 +41,6 @@ public class AnyFlightListService extends AbstractGuiService<Any, Flight> {
 		Dataset dataset;
 
 		dataset = super.unbindObject(flight, "tag", "cost", "description");
-		if (flight.isSelfTransfer())
-			dataset.put("selfTransfer", "✔");
-		else
-			dataset.put("selfTransfer", "✖");
-
-		dataset.put("departure-arrival", flight.getOriginCity() + " - " + flight.getDestinationCity());
-		dataset.put("manager", flight.getManager().getUserAccount().getUsername() + " | " + flight.getManager().getIdentifier());
 		super.getResponse().addData(dataset);
 	}
 }

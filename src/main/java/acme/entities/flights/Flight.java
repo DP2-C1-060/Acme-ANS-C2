@@ -1,12 +1,14 @@
 
 package acme.entities.flights;
 
+import java.beans.Transient;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -15,10 +17,9 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
+import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.constraints.ValidFlight;
-import acme.constraints.ValidOptionalLongText;
-import acme.constraints.ValidShortText;
 import acme.entities.legs.Leg;
 import acme.realms.manager.Manager;
 import lombok.Getter;
@@ -27,30 +28,34 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "id, manager_id, draftMode"), @Index(columnList = "manager_id, draftMode")
+})
 @ValidFlight
 public class Flight extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidShortText
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				tag;
 
 	@Mandatory
 	@Automapped
-	private boolean				selfTransfer;
+	private boolean				indication;
 
 	@Mandatory
-	@ValidMoney(min = 0.01, max = 1000000)
+	@ValidMoney(min = 0.00, max = 1000000.00)
 	@Automapped
 	private Money				cost;
 
 	@Optional
-	@ValidOptionalLongText
+	@ValidString(min = 0, max = 255)
 	@Automapped
 	private String				description;
 
@@ -62,51 +67,69 @@ public class Flight extends AbstractEntity {
 
 
 	@Transient
-	public String getFlightSummary() {
-		return this.getOriginCity() + " -> " + this.getDestinationCity() + " --- " + this.getScheduledDeparture() + " // " + this.getScheduledArrival();
-	}
-
-	@Transient
 	public Date getScheduledDeparture() {
-		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> legs = repository.findLegsByFlightId(this.getId());
-		if (legs != null && !legs.isEmpty())
-			return legs.get(0).getScheduledDeparture();
-		return null;
+		Date result;
+		FlightRepository repository;
+
+		repository = SpringHelper.getBean(FlightRepository.class);
+		List<Leg> legs = repository.findLegsByFlightDeparture(this.getId());
+
+		result = legs.isEmpty() ? null : legs.get(0).getScheduledDeparture();
+
+		return result;
 	}
 
 	@Transient
 	public Date getScheduledArrival() {
-		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> legs = repository.findLegsByFlightId(this.getId());
-		if (legs != null && !legs.isEmpty())
-			return legs.get(legs.size() - 1).getScheduledArrival();
-		return null;
+		Date result;
+		FlightRepository repository;
+
+		repository = SpringHelper.getBean(FlightRepository.class);
+		List<Leg> legs = repository.findLegsByFlightArrival(this.getId());
+
+		result = legs.isEmpty() ? null : legs.get(0).getScheduledArrival();
+
+		return result;
 	}
 
 	@Transient
-	public String getOriginCity() {
-		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> legs = repository.findLegsByFlightId(this.getId());
-		if (legs != null && !legs.isEmpty() && legs.get(0).getDepartureAirport() != null)
-			return legs.get(0).getDepartureAirport().getCity();
-		return null;
+	public String getDepartureCity() {
+		String result;
+		FlightRepository repository;
+
+		repository = SpringHelper.getBean(FlightRepository.class);
+		List<Leg> legs = repository.findLegsByFlightDeparture(this.getId());
+
+		result = legs.isEmpty() ? null : legs.get(0).getDeparture().getCity();
+		return result;
+
 	}
 
 	@Transient
-	public String getDestinationCity() {
-		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> legs = repository.findLegsByFlightId(this.getId());
-		if (legs != null && !legs.isEmpty() && legs.get(legs.size() - 1).getArrivalAirport() != null)
-			return legs.get(legs.size() - 1).getArrivalAirport().getCity();
-		return null;
+	public String getArrivalCity() {
+		String result;
+		FlightRepository repository;
+
+		repository = SpringHelper.getBean(FlightRepository.class);
+		List<Leg> legs = repository.findLegsByFlightArrival(this.getId());
+
+		result = legs.isEmpty() ? null : legs.get(0).getArrival().getCity();
+		return result;
+
 	}
 
 	@Transient
-	public int getLayoverCount() {
-		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> legs = repository.findLegsByFlightId(this.getId());
-		return legs != null && legs.size() > 1 ? legs.size() - 1 : 0;
+	public Integer getLayovers() {
+		Integer result;
+		FlightRepository repository;
+
+		repository = SpringHelper.getBean(FlightRepository.class);
+
+		List<Leg> legs = repository.findLegsByFlight(this.getId());
+
+		result = legs.size() > 0 ? legs.size() - 1 : 0;
+
+		return result;
 	}
 
 	// Relationships ----------------------------------------------------------
@@ -116,4 +139,5 @@ public class Flight extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Manager manager;
+
 }
