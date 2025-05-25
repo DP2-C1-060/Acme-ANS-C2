@@ -4,9 +4,9 @@ claim-02,2024/12/03 09:15,ana.lopez@example.com,"El pasajero expresa su desconte
 claim-03,2024/12/03 10:05,carlos.gomez@example.com,"El pasajero fue sometido a un control de seguridad excesivamente riguroso y poco justificado, causando una experiencia incómoda.",SECURITY_INCIDENT,true,agent-02,leg-06
 claim-04,2024/12/03 11:20,maria.fernandez@example.com,"El pasajero reporta un maltrato por parte del personal de abordo, quien fue grosero y poco servicial durante el vuelo.",OTHER_ISSUES,true,agent-02,leg-06
 claim-05,2024/12/03 12:10,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02,leg-06
-# registrationMoment (la fecha minima es el workStartMoment del agent + delta)
-claim-06,2024/11/23 08:01,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02,leg-06
-claim-07,2024/11/23 08:02,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02,leg-06
+# registrationMoment (la fecha mínima es la fecha de llegada del leg + 1 segundo),""
+claim-06,2019/12/30 14:01,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02,leg-06
+claim-07,2019/12/30 14:02,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02,leg-06
 claim-08,2024/12/31 23:59,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02,leg-06
 claim-09,2025/01/01 00:00,luis.rodriguez@example.com,El pasajero reclama que su asiento asignado no coincidía con el que había reservado y no recibió compensación.,FLIGHT_ISSUES,true,agent-02,leg-06
 #

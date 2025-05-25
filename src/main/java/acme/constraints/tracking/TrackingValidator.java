@@ -106,6 +106,12 @@ public class TrackingValidator extends AbstractValidator<ValidTracking, Tracking
 
 					super.state(context, isPercentageLessThanFollowing, "resolutionPercentage", "acme.validation.log.resolutionPercentage.following");
 				}
+				{
+					if (log.getLastUpdateMoment() != null) {
+						boolean isMomentAfterRegistration = !log.getLastUpdateMoment().before(log.getClaim().getRegistrationMoment());
+						super.state(context, isMomentAfterRegistration, "resolutionPercentage", "acme.validation.log.lastUpdateMoment.message");
+					}
+				}
 			}
 		}
 
