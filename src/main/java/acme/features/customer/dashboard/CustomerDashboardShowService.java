@@ -62,7 +62,7 @@ public class CustomerDashboardShowService extends AbstractGuiService<Customer, C
 		// ---------------------------
 		// 1. Últimos 5 destinos
 		// ---------------------------
-		Collection<String> last5destinations = bookings.stream().sorted(Comparator.comparing(Booking::getPurchaseMoment).reversed()).map(b -> b.getFlight().getDestinationCity()).distinct().limit(5).toList();
+		Collection<String> last5destinations = bookings.stream().sorted(Comparator.comparing(Booking::getPurchaseMoment).reversed()).map(b -> b.getFlight().getArrivalCity()).distinct().limit(5).toList();
 		dashboard.setLastFiveDestinations((List<String>) last5destinations);
 
 		// ---------------------------

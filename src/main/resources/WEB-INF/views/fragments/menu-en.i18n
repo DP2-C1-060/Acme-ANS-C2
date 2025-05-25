@@ -22,8 +22,14 @@ master.menu.anonymous.ivafrurai = 54182365T: Frutos Raigón, Iván
 
 
 master.menu.flight = Published Flights
-master.menu.anonymous.list-flights = Flights
-master.menu.manager.show-dashboard = Manager dashboard
+master.menu.any.list-flights = Flight List
+
+# master.menu.manager  ########################################################
+
+master.menu.manager = Manager
+master.menu.manager.list-legs = Legs listing
+master.menu.manager.list-flights = Flights listing
+master.menu.manager.dashboard = Manager Dashboard
 
 
 # master.menu.administrator ###################################################
@@ -93,8 +99,6 @@ master.menu.flight-crew-member.list-my-planned-flights-assignments = Planned Fli
 
 # master.menu.manager ##########################################################
 
-master.menu.manager = Manager
-master.menu.manager.flight-list = Flights
 master.menu.member = Flight Crew Member
 master.menu.member.completedlist-flightAssignment= Completed Flight Assignments List
 master.menu.member.notCompletedlist-flightAssignment = Not Completed Flight Assignments List

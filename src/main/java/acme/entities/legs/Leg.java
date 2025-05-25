@@ -1,15 +1,18 @@
 
 package acme.entities.legs;
 
+import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -20,38 +23,43 @@ import acme.constraints.ValidLeg;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.flights.Flight;
+import acme.realms.manager.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "aircraft_id, draftMode, id"), @Index(columnList = "flight_id, draftMode"), @Index(columnList = "id, flight_id, draftMode")
+})
 @ValidLeg
 public class Leg extends AbstractEntity {
-
 	// Serialisation version --------------------------------------------------
+
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
+	@NotBlank
 	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
 	@Column(unique = true)
 	private String				flightNumber;
 
 	@Mandatory
-	@ValidMoment(past = false)
+	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				scheduledDeparture;
 
 	@Mandatory
-	@ValidMoment(past = false)
+	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				scheduledArrival;
 
 	@Mandatory
-	@Automapped
 	@Valid
+	@Automapped
 	private LegStatus			status;
 
 	@Mandatory
@@ -62,34 +70,42 @@ public class Leg extends AbstractEntity {
 
 
 	@Transient
-	public Double getDuration() {
-		if (this.scheduledDeparture == null || this.scheduledArrival == null)
-			return 0.0;
-		long diffMillis = this.scheduledArrival.getTime() - this.scheduledDeparture.getTime();
-		double diffMinutes = diffMillis / 60000.0;
-		return diffMinutes;
+	public Integer getDuration() {
+		long diferenciaEnMinutos = 0;
+		if (this.getScheduledArrival() != null && this.getScheduledDeparture() != null) {
+			long longDuration = this.getScheduledArrival().getTime() - this.getScheduledDeparture().getTime();
+			diferenciaEnMinutos = longDuration / (1000 * 60);
+		}
+
+		return diferenciaEnMinutos == 0 ? null : (int) diferenciaEnMinutos;
 	}
 
 	// Relationships ----------------------------------------------------------
 
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
-	private Airport		departureAirport;
+	@ManyToOne(optional = false)
+	private Airport		departure;
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
-	private Airport		arrivalAirport;
+	@ManyToOne(optional = false)
+	private Airport		arrival;
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
+	@ManyToOne(optional = false)
 	private Aircraft	aircraft;
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
+	@ManyToOne(optional = false)
 	private Flight		flight;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Manager		manager;
+
 }

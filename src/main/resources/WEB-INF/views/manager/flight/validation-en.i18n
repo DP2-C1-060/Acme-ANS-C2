@@ -1,0 +1,4 @@
+acme.validation.flight.no-associated-legs.message = There are no legs associated with this flight
+acme.validation.flight.unpublished-legs.message = All legs must be published before proceeding
+acme.validation.flight.unsupported-currency.message = The currency you are using is not supported
+acme.validation.flight.deletion-blocked-by-legs.message = You cannot delete a flight with published legs

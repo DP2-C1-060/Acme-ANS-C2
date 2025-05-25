@@ -1,0 +1,4 @@
+acme.validation.flight.no-associated-legs.message = No hay tramos asociados a este vuelo
+acme.validation.flight.unpublished-legs.message = Todos los tramos deben estar publicados antes de continuar
+acme.validation.flight.unsupported-currency.message = La moneda que estás usando no está permitida
+acme.validation.flight.deletion-blocked-by-legs.message = No puedes eliminar un vuelo con tramos publicados

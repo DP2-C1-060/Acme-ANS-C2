@@ -1,19 +1,25 @@
+
+
+# any.flight.list ########################################################
+
+any.flight.list.title = Flights listing
+
+any.flight.list.label.tag = Tag
+any.flight.list.label.description = Description
+any.flight.list.label.cost = Cost
+
+# any.flight.form ########################################################
+
+any.flight.form.title = Flight Form
+
 any.flight.form.label.tag = Tag
-any.flight.form.label.selfTransfer = Self-transfer
+any.flight.form.label.selfTransfer = Self Transfer
 any.flight.form.label.cost = Cost
 any.flight.form.label.description = Description
-any.flight.form.label.scheduledDeparture = Scheduled departure
-any.flight.form.label.scheduledArrival = Scheduled arrival
-any.flight.form.label.departureCity = Departure city
-any.flight.form.label.arrivalCity = Arrival city
-any.flight.form.label.layovers = Layovers
-any.flight.form.title = Flight
-any.flight.form.label.manager = Manager
+any.flight.form.label.scheduledDeparture  = Scheduled Departure
+any.flight.form.label.scheduledArrival = Scheduled Arrival
+any.flight.form.label.departureCity = Departure City
+any.flight.form.label.arrivalCity = Arrival City
+any.flight.form.label.layovers = Lay Overs
 
-any.flight.form.button.legs = Legs
-any.flight.list.title = Flights
-any.flight.list.label.tag = Tag
-any.flight.list.label.selfTransfer = Self-transfer
-any.flight.list.label.cost = Cost
-any.flight.list.label.departure-arrival = Departure - Arrival
-any.flight.list.label.manager = Manager
+any.flight.form.button.list-legs = Flight Legs

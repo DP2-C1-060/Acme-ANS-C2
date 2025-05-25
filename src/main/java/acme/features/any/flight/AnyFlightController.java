@@ -16,10 +16,10 @@ public class AnyFlightController extends AbstractGuiController<Any, Flight> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyFlightListService	listService;
+	private AnyFlightShowService	showService;
 
 	@Autowired
-	private AnyFlightShowService	showService;
+	private AnyFlightListService	listService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -29,5 +29,4 @@ public class AnyFlightController extends AbstractGuiController<Any, Flight> {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 	}
-
 }

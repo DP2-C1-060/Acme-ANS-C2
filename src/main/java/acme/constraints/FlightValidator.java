@@ -3,6 +3,7 @@ package acme.constraints;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.ConstraintValidatorContext;
@@ -47,42 +48,31 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 			{
 				boolean hasLegs;
 
-				List<Leg> flightLegs = this.repository.findLegsByFlightId(flight.getId());
+				List<Leg> flightLegs = this.repository.findLegsByFlight(flight.getId());
 
 				hasLegs = flight.isDraftMode() ? true : !flightLegs.isEmpty();
 
-				super.state(context, hasLegs, "*", "acme.validation.flight.no-legs.message");
+				super.state(context, hasLegs, "tag", "acme.validation.flight.no-associated-legs.message");
 			}
 			{
 				boolean publishedLegs;
 
-				List<Leg> flightLegs = this.repository.findLegsByFlightId(flight.getId());
+				List<Leg> flightLegs = this.repository.findDraftingLegsByFlight(flight.getId());
 
-				publishedLegs = flight.isDraftMode() || flightLegs.stream().allMatch(l -> !l.isDraftMode());
+				publishedLegs = flight.isDraftMode() ? true : flightLegs.isEmpty();
 
-				super.state(context, publishedLegs, "*", "acme.validation.flight.unpublished-legs.message");
+				super.state(context, publishedLegs, "tag", "acme.validation.flight.unpublished-legs.message");
 			}
 			{
-				boolean validCurrency = true;
+				boolean validCurrency;
 
-				if (flight.getCost() != null) {
-					String allowedCurrenciesString = this.currencyRepository.findAllAcceptedCurrency();
-					List<String> allowedCurrencies = Arrays.asList(allowedCurrenciesString.split(","));
-					validCurrency = allowedCurrencies.contains(flight.getCost().getCurrency());
+				String currencies = this.currencyRepository.findAllAcceptedCurrency();
 
-					super.state(context, validCurrency, "cost", "acme.validation.flight.invalid-currency.message");
-				}
-			}
-			{
-				boolean validSelfTransfer = true;
+				Set<String> acceptedCurrencies = Arrays.stream(currencies.split(",")).map(String::trim).filter(s -> !s.isEmpty()).collect(Collectors.toSet());
 
-				List<Leg> flightLegs = this.repository.findLegsByFlightId(flight.getId());
-				List<Leg> publishedLegs = flightLegs.stream().filter(l -> !l.isDraftMode()).collect(Collectors.toList());
+				validCurrency = flight.getCost() == null || acceptedCurrencies.contains(flight.getCost().getCurrency());
 
-				if (publishedLegs.size() == 1)
-					validSelfTransfer = !flight.isSelfTransfer();
-
-				super.state(context, validSelfTransfer, "selfTransfer", "acme.validation.flight.invalid-selftransfer.message");
+				super.state(context, validCurrency, "cost", "acme.validation.flight.unsupported-currency.message");
 			}
 		}
 		result = !super.hasErrors(context);

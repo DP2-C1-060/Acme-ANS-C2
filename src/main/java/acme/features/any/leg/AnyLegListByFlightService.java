@@ -1,23 +1,23 @@
 
-package acme.features.manager.leg;
+package acme.features.any.leg;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Any;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.legs.Leg;
-import acme.realms.manager.Manager;
 
 @GuiService
-public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
+public class AnyLegListByFlightService extends AbstractGuiService<Any, Leg> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerLegRepository repository;
+	private AnyLegRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -30,10 +30,10 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void load() {
 		Collection<Leg> legs;
-		int managerId;
+		int masterId;
 
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		legs = this.repository.findLegByManagerId(managerId);
+		masterId = super.getRequest().getData("masterId", int.class);
+		legs = this.repository.findLegByFlight(masterId);
 
 		super.getBuffer().addData(legs);
 	}
@@ -48,7 +48,7 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 		else
 			dataset.put("draftMode", "✖");
 
-		super.addPayload(dataset, leg, "status", "departure", "arrival", "aircraft.registrationNumber", "flight.tag");
+		super.addPayload(dataset, leg, "status", "departure.iataCode", "arrival.iataCode", "aircraft.registrationNumber", "flight.tag");
 		super.getResponse().addData(dataset);
 	}
 }

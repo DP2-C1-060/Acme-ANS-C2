@@ -22,15 +22,7 @@ public class AnyFlightShowService extends AbstractGuiService<Any, Flight> {
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int flightId;
-		Flight flight;
-
-		flightId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findFlightById(flightId);
-		status = flight != null && !flight.isDraftMode();
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -48,13 +40,14 @@ public class AnyFlightShowService extends AbstractGuiService<Any, Flight> {
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description");
+		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
 		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		dataset.put("scheduledArrival", flight.getScheduledArrival());
-		dataset.put("departureCity", flight.getOriginCity());
-		dataset.put("arrivalCity", flight.getDestinationCity());
-		dataset.put("layovers", flight.getLayoverCount());
-		dataset.put("manager", flight.getManager().getUserAccount().getUsername() + " | " + flight.getManager().getIdentifier());
+		dataset.put("departureCity", flight.getDepartureCity());
+		dataset.put("arrivalCity", flight.getArrivalCity());
+		dataset.put("layovers", flight.getLayovers());
+
 		super.getResponse().addData(dataset);
 	}
+
 }

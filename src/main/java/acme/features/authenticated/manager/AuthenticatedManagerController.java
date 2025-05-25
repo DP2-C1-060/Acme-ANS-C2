@@ -29,4 +29,5 @@ public class AuthenticatedManagerController extends AbstractGuiController<Authen
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 	}
+
 }

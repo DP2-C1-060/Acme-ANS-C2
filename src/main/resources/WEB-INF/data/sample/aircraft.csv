@@ -2,9 +2,9 @@ key,model,registrationNumber,capacity,cargoWeight,status,details,key:airline
 aircraft-01,"Boeing 737","N73701",189,25000,ACTIVE,"Short-haul aircraft",airline-01
 aircraft-02,"Airbus A320","N32002",180,23000,ACTIVE,"",airline-01
 aircraft-03,"Embraer E190","N19003",100,15000,MAINTENANCE,"Undergoing routine checks",airline-01
-aircraft-04,"Boeing 787 Dreamliner","N78704",242,30000,ACTIVE,"Long-haul aircraft with modern amenities",airline-01
+aircraft-04,"Boeing 787 Dreamliner","N78704",242,30000,MAINTENANCE,"Long-haul aircraft with modern amenities",airline-01
 aircraft-05,"Airbus A380","N38005",525,50000,ACTIVE,"Largest passenger aircraft",airline-01
-aircraft-06,"Bombardier CRJ900","NCRJ06",90,10000,MAINTENANCE,"Regional jet",airline-01
+aircraft-06,"Bombardier CRJ900","NCRJ06",90,10000,ACTIVE,"Regional jet",airline-01
 aircraft-07,"Airbus A350","N35007",300,32000,ACTIVE,"",airline-02
 aircraft-08,"Boeing 777","N77708",396,45000,ACTIVE,"Wide-body twin-engine jet",airline-02
 aircraft-09,"Embraer E175","N17509",76,12000,MAINTENANCE,"",airline-02

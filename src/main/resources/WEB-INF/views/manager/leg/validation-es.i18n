@@ -1,0 +1,11 @@
+acme.validation.leg.non-unique-flight-number.message = Este número de vuelo ya está asignado a otro tramo
+acme.validation.leg.arrival-before-departure.message = La fecha de llegada debe ser posterior a la fecha de salida
+acme.validation.leg.mismatched-iata-code.message = El número de vuelo debe comenzar con el código IATA de la aerolínea asignada
+acme.validation.leg.mismatched-manager.message = El tramo debe pertenecer al mismo gestor que el vuelo
+acme.validation.leg.invalid-duration.message = La duración del tramo debe estar entre 1 y 1000 minutos
+acme.validation.leg.aircraft-scheduling-conflict.message = Esta aeronave ya está asignada a otro tramo en el horario seleccionado
+acme.validation.leg.departure-equals-arrival.message = El aeropuerto de salida y el de llegada deben ser distintos
+acme.validation.leg.inactive-aircraft.message = La aeronave asignada no está activa y no puede utilizarse
+acme.validation.leg.departure-in-past.message = La fecha de salida debe estar en el futuro
+acme.validation.leg.arrival-in-past.message = La fecha de llegada debe estar en el futuro
+acme.validation.leg.overlapping-leg.message = Este tramo se solapa con otro tramo ya programado en el mismo vuelo

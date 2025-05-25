@@ -34,6 +34,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 		flight = this.repository.findFlightById(flightId);
 		manager = flight == null ? null : flight.getManager();
 		status = flight != null && super.getRequest().getPrincipal().hasRealm(manager) && flight.isDraftMode();
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -63,14 +64,14 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 
 			hasLegs = !flightLegs.isEmpty();
 
-			super.state(hasLegs, "*", "acme.validation.flight.no-legs.message");
+			super.state(hasLegs, "*", "acme.validation.flight.no-associated-legs.message");
 		}
 		{
 			boolean publishedLegs;
 
-			List<Leg> flightLegs = this.repository.findLegsByFlight(flight.getId());
+			List<Leg> flightLegs = this.repository.findDraftingLegsByFlight(flight.getId(), true);
 
-			publishedLegs = flightLegs.stream().allMatch(l -> !l.isDraftMode());
+			publishedLegs = flightLegs.isEmpty();
 
 			super.state(publishedLegs, "*", "acme.validation.flight.unpublished-legs.message");
 		}
@@ -89,9 +90,9 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
 		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		dataset.put("scheduledArrival", flight.getScheduledArrival());
-		dataset.put("departureCity", flight.getOriginCity());
-		dataset.put("arrivalCity", flight.getDestinationCity());
-		dataset.put("layovers", flight.getLayoverCount());
+		dataset.put("departureCity", flight.getDepartureCity());
+		dataset.put("arrivalCity", flight.getArrivalCity());
+		dataset.put("layovers", flight.getLayovers());
 
 		super.getResponse().addData(dataset);
 	}

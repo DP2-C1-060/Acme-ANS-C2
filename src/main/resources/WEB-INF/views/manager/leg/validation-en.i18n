@@ -1,0 +1,11 @@
+acme.validation.leg.non-unique-flight-number.message = This flight number is already assigned to another leg
+acme.validation.leg.arrival-before-departure.message = Arrival date must be after the departure date
+acme.validation.leg.mismatched-iata-code.message = The flight number must start with the IATA code of the assigned airline
+acme.validation.leg.mismatched-manager.message = The leg must belong to the same manager as the flight
+acme.validation.leg.invalid-duration.message = The flight duration must be between 1 and 1000 minutes
+acme.validation.leg.aircraft-scheduling-conflict.message = This aircraft is already assigned to another leg during the selected time
+acme.validation.leg.departure-equals-arrival.message = Departure and arrival airports must be different
+acme.validation.leg.inactive-aircraft.message = The assigned aircraft is not active and cannot be used
+acme.validation.leg.departure-in-past.message = Departure date must be in the future
+acme.validation.leg.arrival-in-past.message = Arrival date must be in the future
+acme.validation.leg.overlapping-leg.message = This leg overlaps with another scheduled leg in the same flight
