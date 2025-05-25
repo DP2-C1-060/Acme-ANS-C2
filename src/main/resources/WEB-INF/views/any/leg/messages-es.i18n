@@ -11,7 +11,6 @@ any.leg.list.label.draftMode = Modo Borrador
 # any.leg.form  ########################################################
 
 any.leg.form.title = Formulario de Tramo
-any.leg.form.title = Listado de escalas
 any.leg.form.label.flightNumber = Número de Vuelo
 any.leg.form.label.scheduledDeparture = Salida Prevista
 any.leg.form.label.scheduledArrival = Llegada Prevista

@@ -114,7 +114,7 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 			if (leg.getScheduledDeparture() != null)
 				futureDeparture = leg.getScheduledDeparture().after(present);
 
-			super.state(futureDeparture, "scheduledDeparture", "acme.validation.leg.past-date.message");
+			super.state(futureDeparture, "scheduledDeparture", "acme.validation.leg.departure-in-past.message");
 		}
 		{
 			boolean futureArrival = true;
@@ -124,7 +124,7 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 			if (leg.getScheduledArrival() != null)
 				futureArrival = leg.getScheduledArrival().after(present);
 
-			super.state(futureArrival, "scheduledArrival", "acme.validation.leg.past-date.message");
+			super.state(futureArrival, "scheduledArrival", "acme.validation.leg.arrival-in-past.message");
 		}
 		{
 			boolean overlapedLegs = true;
@@ -142,7 +142,7 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 					}
 				}
 			}
-			super.state(overlapedLegs, "flight", "acme.validation.leg.overlaped-leg.message");
+			super.state(overlapedLegs, "flight", "acme.validation.leg.overlapping-leg.message");
 		}
 	}
 

@@ -51,7 +51,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 	@Override
 	public void bind(final Flight flight) {
 
-		super.bindObject(flight, "tag", "indication", "cost", "description");
+		super.bindObject(flight, "tag", "selfTransfer", "cost", "description");
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 
 			publishedLegs = flightLegs.isEmpty();
 
-			super.state(publishedLegs, "*", "acme.validation.flight.delete-with-legs.message");
+			super.state(publishedLegs, "*", "acme.validation.flight.deletion-blocked-by-legs.message");
 		}
 	}
 
@@ -79,7 +79,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "tag", "indication", "cost", "description", "draftMode");
+		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
 		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		dataset.put("scheduledArrival", flight.getScheduledArrival());
 		dataset.put("departureCity", flight.getDepartureCity());

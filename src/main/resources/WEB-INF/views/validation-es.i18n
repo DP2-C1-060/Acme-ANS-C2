@@ -29,11 +29,6 @@ acme.validation.log.resolutionPercentage.message = El porcentaje debe ser mayor 
 acme.validation.log.resolutionPercentage.exceptional = Una reclamación no puede tener más de dos registros de seguimiento con un porcentaje de 100%
 acme.validation.log.resolutionPercentage.following = El porcentaje debe ser menor o igual al siguiente porcentaje más alto.
 
-acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento
-acme.validation.manager.age.tooYoung = La edad mínima para trabajar es de 16 años
-acme.validation.manager.identifier.invalid = El identificador debe comenzar con la primera letra del nombre y la primera letra del apellido
-acme.validation.manager.identifier.unique = El identificador debe ser único
-
 acme.validation.past.message = La fecha de fundacion debe ser una fecha pasada.
 acme.validation.phone.message = El numero de telefono debe tener entre 6 y 15 digitos
 
@@ -42,7 +37,6 @@ acme.validation.member.employeecode.message = El código de empleado debe ser se
 acme.validation.member.duplicated.message = El código de empleado está duplicado.
 
 acme.validation.technician.duplicated-license-number.message = Los técnicos deben tener Números de licencia únicos.
-
 
 acme.validation.member.nullornotpattern.message = El identificador no debe ser nulo y debe seguir el patrón correcto
 acme.validation.member.notInitials.message = El employee code debe comenzar con las iniciales del usuario

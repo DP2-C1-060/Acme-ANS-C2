@@ -50,7 +50,7 @@ public class ManagerFlightShowService extends AbstractGuiService<Manager, Flight
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "tag", "indication", "cost", "description", "draftMode");
+		dataset = super.unbindObject(flight, "tag", "selfTransfer", "cost", "description", "draftMode");
 		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		dataset.put("scheduledArrival", flight.getScheduledArrival());
 		dataset.put("departureCity", flight.getDepartureCity());
