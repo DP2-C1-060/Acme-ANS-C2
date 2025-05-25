@@ -12,6 +12,57 @@ acme.validation.header.message = Debe tener entre 1 y 50 caracteres
 acme.validation.text.message = Debe tener entre 0 y 255 caracteres
 acme.validation.dateofbirth.message = La fecha de nacimiento debe indicar una edad entre 18 y 100 años y no puede estar en el futuro
 
+acme.validation.flight.no-legs.message = Un vuelo debe tener al menos un tramo definido.
+acme.validation.flight.unpublished-legs.message = Un vuelo no puede publicarse si contiene tramos sin publicar.
+acme.validation.flight.invalid-currency.message = La moneda especificada para el costo del vuelo no es válida.
+acme.validation.flight.invalid-selftransfer.message = Un vuelo con un único tramo no puede estar marcado como autotransferencia.
+
+acme.validation.leg.message = El Trayecto contiene datos inválidos
+acme.validation.leg.dates.message = La llegada programada debe ser posterior a la salida programada
+acme.validation.leg.airports.message = Los aeropuertos de salida y llegada deben ser diferentes
+acme.validation.leg.prefix.message = El prefijo del número de vuelo debe coincidir con el código IATA de la aerolínea
+acme.validation.leg.number.message = El número de vuelo ya existe en el sistema (los últimos 4 dígitos deben ser únicos)
+acme.validation.leg.flight.number.message = El número de vuelo debe consistir en tres letras mayúsculas seguidas de cuatro dígitos (por ejemplo, "ABC1234")
+acme.validation.leg.uniqueFlightNumber.message = El número de vuelo debe ser único
+
+acme.validation.leg.airline.mismatch.message = El manager y el avión deben pertenecer a la misma aerolínea.
+acme.validation.passenger.passportNumber.pattern= El patrón debe ser "^[A-Z0-9]{6,9}$
+acme.validation.passenger.passportNumber.unique= Numero de pasaporte ya existe
+customer.booking.form.error.locatorCode= Codigo de Localizacion ya  existe
+customer.booking.form.error.existingRecord= No puedes borrar mientras este ligado a una reserva o pasajero
+customer.booking-record.form.error.duplicate= Booking Record ya existe
+acme.validation.flight.null.message = El vuelo no debe ser nulo
+acme.validation.flight.message = El vuelo contiene datos inválidos
+acme.validation.flight.legs.order.message = Los tramos del vuelo deben estar ordenados cronológicamente sin solapamientos
+acme.validation.flight.published.message = Los vuelos publicados deben tener al menos un tramo y ningún tramo en modo borrador
+acme.validation.flight.selftransfer.message = Los vuelos con auto-trasbordo deben tener al menos dos tramos
+acme.validation.flight.airports.different.message=El aeropuerto de salida del primer tramo y el aeropuerto de llegada del último tramo deben ser diferentes.
+
+acme.validation.leg.airline.mismatch.message = El gerente y la aeronave deben pertenecer a la misma aerolínea.
+acme.validation.leg.overlaped-aircraft.message = La aeronave tiene Trayectos solapados
+acme.validation.leg.wrong-date-order.message = La fecha de llegada debe ser posterior a la fecha de salida
+acme.validation.leg.wrong-iata.message = El prefijo del número de vuelo no coincide con el código IATA de la aerolínea
+acme.validation.leg.wrong-duration.message = La duración del vuelo debe estar entre 1 y 1000 minutos
+acme.validation.leg.same-airport.message = Los aeropuertos de salida y llegada deben ser diferentes
+acme.validation.leg.last4-digits-not-unique.message = Los últimos 4 dígitos del número de vuelo deben ser únicos
+acme.validation.leg.invalid-time-link.message = Los Trayectos consecutivos deben tener tiempos de salida y llegada coherentes
+acme.validation.leg.invalid-airport-link.previous.selfTransfer.message = En vuelos con autotransferencia, el aeropuerto de llegada del Trayecto anterior y el aeropuerto de salida del Trayecto actual deben ser diferentes
+acme.validation.leg.invalid-airport-link.previous.message = El aeropuerto de llegada del Trayecto anterior y el aeropuerto de salida del Trayecto actual deben ser el mismo
+acme.validation.leg.invalid-airport-link.next.selfTransfer.message = En vuelos con autotransferencia, el aeropuerto de llegada del Trayecto actual y el aeropuerto de salida del siguiente Trayecto deben ser diferentes
+acme.validation.leg.invalid-airport-link.next.message = El aeropuerto de llegada del Trayecto actual y el aeropuerto de salida del siguiente Trayecto deben ser el mismo
+acme.validation.leg.repeated-airport.message = Los aeropuertos no deben repetirse en la secuencia de vuelo
+acme.validation.leg.inactive-aircraft.message = La aeronave debe estar activa
+acme.validation.flight.delete = El vuelo solo se puede borrar si no tiene Trayectos publicados.
+
+
+acme.validation.manager.experience.message = Los años de experiencia superan el máximo permitido según la fecha de nacimiento
+acme.validation.manager.age.tooYoung = La edad mínima para trabajar es de 16 años
+acme.validation.manager.identifier.invalid = El identificador debe comenzar con la primera letra del nombre y la primera letra del apellido
+acme.validation.manager.identifier.unique = El identificador debe ser único
+
+acme.validation.manager.duplicated-identifier.message = El identificador del gestor ya está en uso. Por favor, utilice un identificador único.
+acme.validators.manager.correct-pattern = El identificador del gestor debe comenzar con la primera letra del nombre seguida de la primera letra del apellido.
+
 
 acme.validation.activityLog.invalidLeg = El Trayecto de vuelo tiene que haber dado tiempo
 

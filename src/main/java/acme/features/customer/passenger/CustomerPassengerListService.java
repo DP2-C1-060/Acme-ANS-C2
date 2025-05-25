@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.booking.Booking;
 import acme.entities.booking.Passenger;
 import acme.realms.Customer;
 
@@ -19,20 +18,12 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 	@Autowired
 	private CustomerPassengerRepository customerPassengerRepository;
-
 	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
-
-		if (!super.getRequest().getData().isEmpty()) {
-			Integer bookingId = super.getRequest().getData("bookingId", int.class);
-			Booking booking = this.customerPassengerRepository.getBookingById(bookingId);
-			Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			status = status && booking.getCustomer().getId() == customerId;
-		}
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -48,22 +39,21 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 			Integer bookingId = super.getRequest().getData("bookingId", int.class);
 			passengers = this.customerPassengerRepository.findPassengerByBookingId(bookingId);
 		}
-		super.getBuffer().addData(passengers);
-	}
 
-	@Override
-	public void validate(final Passenger passenger) {
-		;
+		super.getBuffer().addData(passengers);
+		System.out.println(super.getBuffer());
 	}
 
 	@Override
 	public void unbind(final Passenger passenger) {
 		assert passenger != null;
+		Boolean containsBookingId;
 
-		Dataset dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "dateOfBirth", "specialNeeds", "isPublished");
-
+		Dataset dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "birthDate", "specialNeeds", "isPublished");
+		containsBookingId = super.getRequest().getData().containsKey("bookingId");
+		super.getResponse().addGlobal("containsBookingId", containsBookingId);
 		super.getResponse().addData(dataset);
-		super.addPayload(dataset, passenger, "specialNeeds");
+
 	}
 
 }

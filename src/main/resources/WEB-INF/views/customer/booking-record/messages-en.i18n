@@ -4,8 +4,9 @@ customer.booking-record.form.title =  New Booking Record
 customer.booking-record.list.title = List of Booking Records
 
 
-customer.bookingPassenger.form.button.create = Create
+customer.bookingRecord.form.button.delete = Delete
 customer.bookingRecord.list.button.create = Create New Booking Record
+customer.bookingRecord.form.button.create = Create
 
 
 customer.bookingRecord.list.label.passenger = Passenger

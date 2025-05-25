@@ -45,7 +45,11 @@ acme.validation.flight-assignment.member-not-available.message = Message not ava
 acme.validation.flight-assignment.member-with-overlapping-legs.message = There selected member has overlapping legs
 acme.validation.flight-assignment.leg-has-pilot.message = The selected leg has already have a pilot
 acme.validation.flight-assignment.leg-has-copilot.message = The selected leg has already have a copilot.
-acme.validation.passenger.passportNumber.pattern= Must pattern "^[A-Z0-9]{6,8}$
+acme.validation.passenger.passportNumber.pattern= Must pattern "^[A-Z0-9]{6,9}$
+acme.validation.passenger.passportNumber.unique= PassportNumber already exists
+customer.booking.form.error.locatorCode= LocatorCode already exists
+customer.booking.form.error.existingRecord= Cannot delete while there is an existing relationship with a Booking or Passenger.
+customer.booking-record.form.error.duplicate= Booking Record already exists
 
 
 acme.validation.member.nullornotpattern.message = The identifier must not be null and must follow the correct pattern  

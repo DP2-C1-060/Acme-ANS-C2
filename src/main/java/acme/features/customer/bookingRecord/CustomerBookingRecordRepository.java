@@ -17,7 +17,7 @@ public interface CustomerBookingRecordRepository extends AbstractRepository {
 	@Query("SELECT b FROM Booking b WHERE b.id=:bookingId")
 	Booking getBookingById(int bookingId);
 
-	@Query("SELECT p FROM Passenger p WHERE p.customer.id=:customerId and p.isPublished=true")
+	@Query("SELECT p FROM Passenger p WHERE p.customer.id=:customerId")
 	Collection<Passenger> getAllPassengersByCustomer(int customerId);
 
 	@Query("SELECT br.passenger FROM BookingRecord br WHERE br.booking.id=:bookingId")
@@ -28,5 +28,17 @@ public interface CustomerBookingRecordRepository extends AbstractRepository {
 
 	@Query("SELECT br FROM BookingRecord br WHERE br.booking.customer.id=:customerId")
 	Collection<BookingRecord> getBookingRecordsByCustomerId(int customerId);
+
+	@Query("SELECT br FROM BookingRecord br WHERE br.id=:bookingRecordId")
+	BookingRecord getBookingRecordByBookingRecordId(int bookingRecordId);
+
+	@Query("SELECT br.booking FROM BookingRecord br WHERE br.booking.id=:bookingId")
+	Booking getBookingFromBookingRecord(int bookingId);
+
+	@Query("SELECT br.passenger FROM BookingRecord br WHERE br.passenger.id=:passengerId")
+	Passenger getPassengerFromBookingRecord(int passengerId);
+
+	@Query("SELECT COUNT(br)FROM BookingRecord br WHERE br.booking.id = :bookingId AND br.passenger.id = :passengerId")
+	long countByBookingAndPassenger(int bookingId, int passengerId);
 
 }
