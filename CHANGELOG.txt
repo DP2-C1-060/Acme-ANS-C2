@@ -16,6 +16,9 @@
 
 25.3.0	This is the version of Acme ANS D03
 
+25.5.0	This is the version of Acme ANS D04
+
+
 ** Year 2024
 
 24.1.0	Upgraded to the new version of the Acme framework.
