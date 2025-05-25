@@ -28,7 +28,22 @@ public class AgentClaimCreateService extends AbstractGuiService<Agent, Claim> {
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		String method;
+		int legId;
+		Agent agent;
+
+		method = super.getRequest().getMethod();
+
+		if (method.equals("GET"))
+			status = true;
+		else {
+			agent = (Agent) super.getRequest().getPrincipal().getActiveRealm();
+			Collection<Leg> validLegs = this.repository.findLegsByAgentId(agent.getId());
+			legId = super.getRequest().getData("leg", int.class);
+			status = validLegs != null ? validLegs.stream().anyMatch(leg -> leg.getId() == legId) || legId == 0 : false;
+		}
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -75,6 +90,7 @@ public class AgentClaimCreateService extends AbstractGuiService<Agent, Claim> {
 		SelectChoices legChoices;
 
 		typeChoices = SelectChoices.from(ClaimType.class, claim.getType());
+
 		legs = this.repository.findLegsByAgentId(claim.getAgent().getId());
 		legChoices = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 
