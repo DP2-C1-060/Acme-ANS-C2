@@ -1,8 +1,6 @@
 
 package acme.features.customer.bookingRecord;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -12,7 +10,7 @@ import acme.entities.booking.BookingRecord;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingRecordListService extends AbstractGuiService<Customer, BookingRecord> {
+public class CustomerBookingRecordShowService extends AbstractGuiService<Customer, BookingRecord> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -25,22 +23,31 @@ public class CustomerBookingRecordListService extends AbstractGuiService<Custome
 	@Override
 	public void authorise() {
 		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+
+		Integer bookingRecordId = super.getRequest().getData("id", int.class);
+		BookingRecord bookingRecord = this.customerBookingRecordRepository.getBookingRecordByBookingRecordId(bookingRecordId);
+
+		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		status = status && bookingRecord.getBooking().getCustomer().getId() == customerId;
+
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		Collection<BookingRecord> bookingRecords = this.customerBookingRecordRepository.getBookingRecordsByCustomerId(customerId);
+		Integer id = super.getRequest().getData("id", int.class);
+		BookingRecord bookingRecords = this.customerBookingRecordRepository.getBookingRecordByBookingRecordId(id);
 		super.getBuffer().addData(bookingRecords);
 	}
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-
+		Boolean publishedBooking = bookingRecord.getBooking().getIsPublished();
 		Dataset dataset = super.unbindObject(bookingRecord, "booking", "passenger");
 		dataset.put("bookingLocator", bookingRecord.getBooking().getLocatorCode());
 		dataset.put("passengerFullName", bookingRecord.getPassenger().getFullName());
+		dataset.put("publishedBooking", publishedBooking);
 		super.getResponse().addData(dataset);
 	}
 

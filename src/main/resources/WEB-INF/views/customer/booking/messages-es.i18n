@@ -8,6 +8,8 @@ customer.booking.form.button.create = Reservar
 customer.booking.form.button.passenger = Pasajeros de esta reserva
 customer.booking.form.button.publish = Publicar
 customer.booking.form.button.bookingRecord = Añadir Pasajeros
+customer.booking.form.button.delete = Eliminar
+customer.booking.form.button.passengers = Pasajeros
 
 
 customer.booking.list.button.create = Reservar
@@ -28,3 +30,4 @@ customer.booking.form.label.passengers = Pasajeros
 
 customer.booking.form.error.lastNibble = Para publicar la reserva debe introducir los 4 ultimos digitos de la tarjeta
 customer.booking.form.error.passengers = Para publicar la reserva debe añadir Pasajeros primero
+customer.booking.form.error.passengers2 = Hay pasajeros sin publicar en esta Reserva

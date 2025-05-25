@@ -50,7 +50,7 @@ public class Passenger extends AbstractEntity {
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				dateOfBirth;
+	private Date				birthDate;
 
 	@Optional
 	@ValidString(min = 1, max = 50)
@@ -68,7 +68,7 @@ public class Passenger extends AbstractEntity {
 
 	@Mandatory
 	@Valid
-	@ManyToOne(optional = true)
+	@ManyToOne(optional = false)
 	private Customer			customer;
 
 }

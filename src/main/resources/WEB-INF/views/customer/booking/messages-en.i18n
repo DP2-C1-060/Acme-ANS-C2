@@ -8,6 +8,8 @@ customer.booking.form.button.create = Book
 customer.booking.form.button.passenger = Passengers of this booking
 customer.booking.form.button.publish = Publish
 customer.booking.form.button.bookingRecord = Add Passengers
+customer.booking.form.button.delete = Delete
+customer.booking.form.button.passengers = Passengers
 
 customer.booking.list.button.create = Book
 customer.booking.list.label.locatorCode = Locator Code
@@ -28,3 +30,4 @@ customer.booking.form.label.passengers = Passengers
 
 customer.booking.form.error.lastNibble = To publish this booking you have to introduce the last nibble of your credit card
 customer.booking.form.error.passengers = To publish this booking you have to add Passengers
+customer.booking.form.error.passengers2 = Unpublished Passengers in the Booking

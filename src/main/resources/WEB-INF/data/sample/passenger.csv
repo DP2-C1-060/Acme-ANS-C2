@@ -1,52 +1,52 @@
-key,key:customer,fullName,email,passportNumber,dateOfBirth,specialNeeds,isPublished
+key,key:customer,fullName,email,passportNumber,birthDate,specialNeeds,isPublished
 
-passenger-00,customer-01,Pasajero Viajero,viajero00@example.com,1234F6789,2003/12/31 12:30,,true
+passenger-00,customer-01,Pasajero Viajero,viajero00@example.com,1234F6789,2003/12/31 12:30,,false
 
 # FULL NAME
-passenger-01,customer-01,L,viajero@example.com,1234F689,2025/01/01 00:00,,true
-passenger-02,customer-01,Lo,viajero@example.com,1234F679,2025/01/01 00:00,,true
-passenger-03,customer-02,Lorem ipsum dolor sit amet aconsectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,viajero@example.com,1235F6789,2025/01/01 00:00,,true
-passenger-04,customer-01,Lorem ipsum dolor sit amet aconsectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,passenger04@example.com,ABC12345,2025/01/01 00:00,,true
-passenger-05,customer-02,โลเร็ม อิปปปปปปปปปซัม,viajero@example.com,2234F6789,2025/01/01 00:00,,true
+passenger-01,customer-01,L,viajero@example.com,1234F689,2025/01/01 00:00,,false
+passenger-02,customer-01,Lo,viajero@example.com,1234F679,2025/01/01 00:00,,false
+passenger-03,customer-02,Lorem ipsum dolor sit amet aconsectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,viajero@example.com,1235F6789,2025/01/01 00:00,,false
+passenger-04,customer-01,Lorem ipsum dolor sit amet aconsectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,passenger04@example.com,ABC12345,2025/01/01 00:00,,false
+passenger-05,customer-02,โลเร็ม อิปปปปปปปปปซัม,viajero@example.com,2234F6789,2025/01/01 00:00,,false
 passenger-06,customer-02,لوريم إم إم إم إم إم إم إيبسوم,viajero@example.com,1854F6789,2025/01/01 00:00,,true
-passenger-07,customer-02,洛伦·洛伦·洛伦·洛伦·伊普森,viajero@example.com,1234F6009,2025/01/01 00:00,,true
-passenger-08,customer-02,<marquee>Hacked</marquee>,viajero@example.com,1004F6789,2025/01/01 00:00,,true
-passenger-09,customer-01,<script>alert(‘Hacked!’);</script>,viajero@example.com,1134F6789,2025/01/01 00:00,,true
-passenger-10,customer-02,' or 'A' = 'A,viajero@example.com,1234FU789,2025/01/01 00:00,,true
+passenger-07,customer-02,洛伦·洛伦·洛伦·洛伦·伊普森,viajero@example.com,1234F6009,2025/01/01 00:00,,false
+passenger-08,customer-02,<marquee>Hacked</marquee>,viajero@example.com,1004F6789,2025/01/01 00:00,,false
+passenger-09,customer-01,<script>alert(‘Hacked!’);</script>,viajero@example.com,1134F6789,2025/01/01 00:00,,false
+passenger-10,customer-02,' or 'A' = 'A,viajero@example.com,1234FU789,2025/01/01 00:00,,false
 
 # EMAIL
-passenger-11,customer-01,x,acme@lorem-ipsum.org,14F6789,2025/01/01 00:00,,true
-passenger-12,customer-01,x,acme@lorem-ipsum.org,34F6789,2025/01/01 00:00,,true
-passenger-13,customer-01,x,a@b.e,1234FGW,2025/01/01 00:00,,true
-passenger-14,customer-02,x,a@b.es,1234FGE,2025/01/01 00:00,,true
-passenger-15,customer-01,x,a@b.esx,1234FGQ,2025/01/01 00:00,,true
-passenger-16,customer-02,x,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,1234FGG,2025/01/01 00:00,,true
-passenger-17,customer-01,x,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,1234FGF,2025/01/01 00:00,,true
+passenger-11,customer-01,x,acme@lorem-ipsum.org,14F6789,2025/01/01 00:00,,false
+passenger-12,customer-01,x,acme@lorem-ipsum.org,34F6789,2025/01/01 00:00,,false
+passenger-13,customer-01,x,a@b.e,1234FGW,2025/01/01 00:00,,false
+passenger-14,customer-02,x,a@b.es,1234FGE,2025/01/01 00:00,,false
+passenger-15,customer-01,x,a@b.esx,1234FGQ,2025/01/01 00:00,,false
+passenger-16,customer-02,x,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,1234FGG,2025/01/01 00:00,,false
+passenger-17,customer-01,x,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,1234FGF,2025/01/01 00:00,,false
 
 # PASSPORT NUMBER
-passenger-18,customer-02,x,viajero@example.com,ABCDEF,2025/01/01 00:00,,true
-passenger-19,customer-01,x,viajero@example.com,123456,2025/01/01 00:00,,true
-passenger-20,customer-02,x,viajero@example.com,ABC123,2025/01/01 00:00,,true
-passenger-21,customer-01,x,viajero@example.com,ABCDEFGHI,2025/01/01 00:00,,true
-passenger-22,customer-02,x,viajero@example.com,123456789,2025/01/01 00:00,,true
-passenger-23,customer-01,x,viajero@example.com,A1B2C3D45,2025/01/01 00:00,,true
+passenger-18,customer-02,x,viajero@example.com,ABCDEF,2025/01/01 00:00,,false
+passenger-19,customer-01,x,viajero@example.com,123456,2025/01/01 00:00,,false
+passenger-20,customer-02,x,viajero@example.com,ABC123,2025/01/01 00:00,,false
+passenger-21,customer-01,x,viajero@example.com,ABCDEFGHI,2025/01/01 00:00,,false
+passenger-22,customer-02,x,viajero@example.com,123456789,2025/01/01 00:00,,false
+passenger-23,customer-01,x,viajero@example.com,A1B2C3D45,2025/01/01 00:00,,false
 
 # DATE OF BIRTH
-passenger-24,customer-01,x,viajero@example.com,ABC12346R,2000/01/01 00:00,,true
-passenger-25,customer-02,x,viajero@example.com,ABCYUP46,1900/01/01 00:00,,true
-passenger-26,customer-02,x,viajero@example.com,ABHJA6,1900/01/01 00:01,,true
-passenger-27,customer-02,x,viajero@example.com,ABC12347R,2025/01/01 00:00,,true
-passenger-28,customer-02,x,viajero@example.com,ABC12348E,2024/12/31 23:59,,true
+passenger-24,customer-01,x,viajero@example.com,ABC12346R,2000/01/01 00:00,,false
+passenger-25,customer-02,x,viajero@example.com,ABCYUP46,1900/01/01 00:00,,false
+passenger-26,customer-02,x,viajero@example.com,ABHJA6,1900/01/01 00:01,,false
+passenger-27,customer-02,x,viajero@example.com,ABC12347R,2025/01/01 00:00,,false
+passenger-28,customer-02,x,viajero@example.com,ABC12348E,2024/12/31 23:59,,false
 
 # SPECIAL NEEDS
-passenger-29,customer-01,x,viajero@example.com,ABC12349,2025/01/01 00:00,,true
-passenger-30,customer-01,x,viajero@example.com,ABC12340,2025/01/01 00:00,L,true
-passenger-31,customer-01,x,viajero@example.com,ABC12341,2025/01/01 00:00,Lo,true
-passenger-32,customer-02,x,viajero@example.com,ABC12342,2025/01/01 00:00,Lorem ipsum dolor sit amet consectetur adipiscing,true
-passenger-33,customer-01,x,viajero@example.com,ABC12343,2025/01/01 00:00,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,true
-passenger-34,customer-01,x,viajero@example.com,ABC12344,2025/01/01 00:00,โลเร็ม อิปซัอิปซัอิปซัม,true
-passenger-35,customer-01,x,viajero@example.com,ABC12312,2025/01/01 00:00,لوريم وريم وريم وريم إيبسوم,true
-passenger-36,customer-01,x,viajero@example.com,ABC12300,2025/01/01 00:00,洛伦·伊普森·伊普森·伊普森,true
-passenger-37,customer-02,x,viajero@example.com,ABC12301,2025/01/01 00:00,<marquee>Hacked</marquee>,true
+passenger-29,customer-01,x,viajero@example.com,ABC12349,2025/01/01 00:00,,false
+passenger-30,customer-01,x,viajero@example.com,ABC12340,2025/01/01 00:00,L,false
+passenger-31,customer-01,x,viajero@example.com,ABC12341,2025/01/01 00:00,Lo,false
+passenger-32,customer-02,x,viajero@example.com,ABC12342,2025/01/01 00:00,Lorem ipsum dolor sit amet consectetur adipiscing,false
+passenger-33,customer-01,x,viajero@example.com,ABC12343,2025/01/01 00:00,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,false
+passenger-34,customer-01,x,viajero@example.com,ABC12344,2025/01/01 00:00,โลเร็ม อิปซัอิปซัอิปซัม,false
+passenger-35,customer-01,x,viajero@example.com,ABC12312,2025/01/01 00:00,لوريم وريم وريم وريم إيبسوم,false
+passenger-36,customer-01,x,viajero@example.com,ABC12300,2025/01/01 00:00,洛伦·伊普森·伊普森·伊普森,false
+passenger-37,customer-02,x,viajero@example.com,ABC12301,2025/01/01 00:00,<marquee>Hacked</marquee>,false
 passenger-38,customer-01,x,viajero@example.com,ABC12302,2025/01/01 00:00,<script>alert(‘Hacked!’);</script>,false
 passenger-39,customer-02,x,viajero@example.com,ABC12303,2025/01/01 00:00,' or 'A' = 'A,false

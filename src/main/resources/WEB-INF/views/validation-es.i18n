@@ -26,7 +26,11 @@ acme.validation.leg.flight.number.message = El número de vuelo debe consistir e
 acme.validation.leg.uniqueFlightNumber.message = El número de vuelo debe ser único
 
 acme.validation.leg.airline.mismatch.message = El manager y el avión deben pertenecer a la misma aerolínea.
-acme.validation.passenger.passportNumber.pattern = Must pattern "^[A-Z0-9]{6,8}$
+acme.validation.passenger.passportNumber.pattern= El patrón debe ser "^[A-Z0-9]{6,9}$
+acme.validation.passenger.passportNumber.unique= Numero de pasaporte ya existe
+customer.booking.form.error.locatorCode= Codigo de Localizacion ya  existe
+customer.booking.form.error.existingRecord= No puedes borrar mientras este ligado a una reserva o pasajero
+customer.booking-record.form.error.duplicate= Booking Record ya existe
 acme.validation.flight.null.message = El vuelo no debe ser nulo
 acme.validation.flight.message = El vuelo contiene datos inválidos
 acme.validation.flight.legs.order.message = Los tramos del vuelo deben estar ordenados cronológicamente sin solapamientos
