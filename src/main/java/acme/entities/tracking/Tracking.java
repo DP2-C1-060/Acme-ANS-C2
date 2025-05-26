@@ -4,7 +4,9 @@ package acme.entities.tracking;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -26,6 +28,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidTracking
+@Table(indexes = {
+	@Index(columnList = "claim_id"), //
+	@Index(columnList = "claim_id, lastUpdateMoment"), //
+	@Index(columnList = "claim_id, resolutionPercentage")
+})
 public class Tracking extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
