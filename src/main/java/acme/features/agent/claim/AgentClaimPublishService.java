@@ -47,7 +47,7 @@ public class AgentClaimPublishService extends AbstractGuiService<Agent, Claim> {
 				agent = (Agent) super.getRequest().getPrincipal().getActiveRealm();
 				Collection<Leg> validLegs = this.repository.findLegsByAgentId(agent.getId());
 				legId = super.getRequest().getData("leg", int.class);
-				status = validLegs != null ? validLegs.stream().anyMatch(leg -> leg.getId() == legId) || legId == 0 : false;
+				status = validLegs.stream().anyMatch(leg -> leg.getId() == legId) || legId == 0;
 			}
 		}
 		super.getResponse().setAuthorised(status);
