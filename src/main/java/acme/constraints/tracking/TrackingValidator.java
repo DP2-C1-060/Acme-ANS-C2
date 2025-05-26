@@ -62,7 +62,7 @@ public class TrackingValidator extends AbstractValidator<ValidTracking, Tracking
 
 					Optional<Double> maxPercentage = sortedPercentages.stream().findFirst();
 
-					boolean isPercentageGreaterThanPrevious = percentage >= maxPercentage.orElse(0.0);
+					boolean isPercentageGreaterThanPrevious = percentage >= maxPercentage.orElse(0.0) || percentage < 0;
 
 					super.state(context, isPercentageGreaterThanPrevious, "resolutionPercentage", "acme.validation.log.resolutionPercentage.message");
 				}

@@ -109,5 +109,4 @@ public class AgentClaimDeleteService extends AbstractGuiService<Agent, Claim> {
 
 		super.getResponse().addData(dataset);
 	}
-
 }
