@@ -54,7 +54,7 @@ public class AuthenticatedManagerUpdateService extends AbstractGuiService<Authen
 	public void bind(final Manager manager) {
 		assert manager != null;
 
-		super.bindObject(manager, "identifier", "experience", "birthDate", "picture");
+		super.bindObject(manager, "identifier", "yearsOfExperience", "birthDate", "picture");
 	}
 
 	@Override
@@ -75,7 +75,7 @@ public class AuthenticatedManagerUpdateService extends AbstractGuiService<Authen
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(manager, "identifier", "experience", "birthDate", "picture");
+		dataset = super.unbindObject(manager, "identifier", "yearsOfExperience", "birthDate", "picture");
 		super.getResponse().addData(dataset);
 	}
 
