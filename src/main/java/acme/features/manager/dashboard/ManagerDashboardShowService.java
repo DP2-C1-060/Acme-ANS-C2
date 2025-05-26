@@ -31,13 +31,14 @@ public class ManagerDashboardShowService extends AbstractGuiService<Manager, Man
 
 	@Override
 	public void load() {
+
 		ManagerDashboard dashboard;
 		int id = super.getRequest().getPrincipal().getAccountId();
 		Manager manager = this.repository.findManagerByAccountId(id);
 
 		Integer ranking;
 		Integer retire;
-		Integer ratio;
+		double ratio;
 		String mostPopularAirport;
 		String lessPopularAirport;
 
@@ -46,17 +47,20 @@ public class ManagerDashboardShowService extends AbstractGuiService<Manager, Man
 		Integer totalOfCanceled;
 		Integer totalOfLanded;
 
-		double averageFlightCostEUR;
-		double deviationOfFlightCostEUR;
-		double minimumFlightCostEUR;
-		double maximumFlightCostEUR;
+		double averageFlightCostEUR = -1;
+		double deviationOfFlightCostEUR = -1;
+		double minimumFlightCostEUR = -1;
+		double maximumFlightCostEUR = -1;
 
 		List<Manager> managers = this.repository.getAllManagers();
 		managers.sort(Comparator.comparing(Manager::getYearsOfExperience));
-		ranking = managers.indexOf(manager);
+		ranking = managers.indexOf(manager) + 1;
 		retire = 65 - manager.getYearsOfExperience();
+
 		try {
-			ratio = this.repository.getManagerLegsByStatus(manager.getId(), LegStatus.ON_TIME).size() / this.repository.getManagerLegsByStatus(manager.getId(), LegStatus.DELAYED).size();
+			int onTime = this.repository.getManagerLegsByStatus(manager.getId(), LegStatus.ON_TIME).size();
+			int delayed = this.repository.getManagerLegsByStatus(manager.getId(), LegStatus.DELAYED).size();
+			ratio = delayed != 0 ? (double) onTime / delayed : -1;
 		} catch (Exception e) {
 			ratio = -1;
 		}
@@ -67,16 +71,34 @@ public class ManagerDashboardShowService extends AbstractGuiService<Manager, Man
 		totalOfLanded = this.repository.getManagerLegsByStatus(manager.getId(), LegStatus.LANDED).size();
 
 		try {
-			averageFlightCostEUR = this.repository.findAverageFlightCost(manager.getId(), "EUR");
-			deviationOfFlightCostEUR = this.repository.findDeviationFlightCost(manager.getId(), "EUR");
-			minimumFlightCostEUR = this.repository.findMinimumFlightCost(manager.getId(), "EUR");
-			maximumFlightCostEUR = this.repository.findMaximumFlightCost(manager.getId(), "EUR");
+			List<Object[]> rawCosts = this.repository.findAllFlightCosts(manager.getId());
+
+			List<Double> eurCosts = rawCosts.stream().map(obj -> {
+				double amount = (Double) obj[0];
+				String currency = (String) obj[1];
+				return switch (currency) {
+				case "USD" -> amount * 0.92;
+				case "GBP" -> amount * 1.15;
+				case "EUR" -> amount;
+				default -> amount;
+				};
+			}).toList();
+
+			if (!eurCosts.isEmpty()) {
+				double avg = eurCosts.stream().mapToDouble(Double::doubleValue).average().orElse(-1);
+				double dev = Math.sqrt(eurCosts.stream().mapToDouble(v -> Math.pow(v - avg, 2)).average().orElse(0));
+				double min = eurCosts.stream().mapToDouble(Double::doubleValue).min().orElse(-1);
+				double max = eurCosts.stream().mapToDouble(Double::doubleValue).max().orElse(-1);
+
+				averageFlightCostEUR = avg;
+				deviationOfFlightCostEUR = dev;
+				minimumFlightCostEUR = min;
+				maximumFlightCostEUR = max;
+			}
 		} catch (Exception e) {
-			averageFlightCostEUR = -1;
-			deviationOfFlightCostEUR = -1;
-			minimumFlightCostEUR = -1;
-			maximumFlightCostEUR = -1;
+			// valores ya inicializados a -1
 		}
+
 		dashboard = new ManagerDashboard();
 		dashboard.setRanking(ranking);
 		dashboard.setRetire(retire);

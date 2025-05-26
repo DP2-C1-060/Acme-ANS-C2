@@ -1,19 +1,11 @@
 
 package acme.features.manager.leg;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.aircraft.Aircraft;
-import acme.entities.airport.Airport;
-import acme.entities.flights.Flight;
 import acme.entities.legs.Leg;
-import acme.entities.legs.LegStatus;
 import acme.realms.manager.Manager;
 
 @GuiService
@@ -56,8 +48,6 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		assert leg != null;
-
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status");
 	}
 
@@ -69,43 +59,6 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void perform(final Leg leg) {
 		this.repository.delete(leg);
-	}
-
-	@Override
-	public void unbind(final Leg leg) {
-		Dataset dataset;
-		SelectChoices flightChoices;
-		List<Flight> managerFlights = this.repository.findDraftingFlightByManagerId(leg.getManager().getId());
-		flightChoices = SelectChoices.from(managerFlights, "tag", leg.getFlight());
-
-		SelectChoices aircraftChoices;
-		List<Aircraft> aircrafts = this.repository.findAircrafts();
-		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
-
-		SelectChoices departureChoices;
-		SelectChoices arrivalChoices;
-		List<Airport> airports = this.repository.findAirports();
-		departureChoices = SelectChoices.from(airports, "iataCode", leg.getDeparture());
-		arrivalChoices = SelectChoices.from(airports, "iataCode", leg.getArrival());
-
-		SelectChoices statusChoices;
-		statusChoices = SelectChoices.from(LegStatus.class, leg.getStatus());
-
-		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "status");
-
-		dataset.put("duration", leg.getDuration());
-		dataset.put("statuss", statusChoices);
-		dataset.put("flights", flightChoices);
-		dataset.put("flight", flightChoices.getSelected().getKey());
-		dataset.put("aircrafts", aircraftChoices);
-		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
-		dataset.put("departures", departureChoices);
-		dataset.put("departure", departureChoices.getSelected().getKey());
-		dataset.put("arrivals", arrivalChoices);
-		dataset.put("arrival", arrivalChoices.getSelected().getKey());
-
-		super.getResponse().addData(dataset);
-
 	}
 
 }

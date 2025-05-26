@@ -59,7 +59,8 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 			boolean arrivalStatus = arrivalId == 0 || arrival != null;
 			boolean aircraftStatus = aircraftId == 0 || aircraft != null;
 			boolean flightStatus = flightId == 0 || flight != null;
-			status = legId == 0 && departureStatus && arrivalStatus && aircraftStatus && flightStatus;
+			boolean selectStatus = departureStatus && arrivalStatus && aircraftStatus && flightStatus;
+			status = legId == 0 && selectStatus;
 		}
 
 		super.getResponse().setAuthorised(status);
