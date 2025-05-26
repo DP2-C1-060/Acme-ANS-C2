@@ -3,7 +3,7 @@ key,key:customer,fullName,email,passportNumber,birthDate,specialNeeds,isPublishe
 passenger-00,customer-01,Pasajero Viajero,viajero00@example.com,1234F6789,2003/12/31 12:30,,false
 
 # FULL NAME
-passenger-01,customer-01,L,viajero@example.com,1234F689,2025/01/01 00:00,,false
+passenger-01,customer-01,L,viajero@example.com,1234F689,2025/01/01 00:00,,true
 passenger-02,customer-01,Lo,viajero@example.com,1234F679,2025/01/01 00:00,,false
 passenger-03,customer-02,Lorem ipsum dolor sit amet aconsectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,viajero@example.com,1235F6789,2025/01/01 00:00,,false
 passenger-04,customer-01,Lorem ipsum dolor sit amet aconsectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,passenger04@example.com,ABC12345,2025/01/01 00:00,,false

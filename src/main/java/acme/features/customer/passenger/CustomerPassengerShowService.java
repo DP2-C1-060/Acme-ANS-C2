@@ -43,7 +43,6 @@ public class CustomerPassengerShowService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void unbind(final Passenger passenger) {
-		assert passenger != null;
 
 		Dataset dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "birthDate", "specialNeeds", "isPublished");
 

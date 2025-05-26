@@ -19,7 +19,7 @@ booking-13,flight-09,customer-02,JKL3212,2024/12/31 23:59,BUSINESS,,false
 # PRICE-TRAVELCLASS
 booking-14,flight-04,customer-02,MNO345,2024/12/31 23:59,ECONOMY,,false
 booking-15,flight-04,customer-01,PQR678,2024/12/31 23:59,BUSINESS,,false
-booking-16,flight-04,customer-01,STU901,2024/12/31 23:59,ECONOMY,,false
+booking-16,flight-04,customer-01,STU901,2024/12/31 23:59,ECONOMY,6589,true
 booking-17,flight-04,customer-01,VWX234,2024/12/31 23:59,ECONOMY,,false
 # LASTNIBBLE
 booking-18,flight-06,customer-02,EFG123,2024/12/31 23:59,ECONOMY,,false

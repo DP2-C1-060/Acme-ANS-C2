@@ -3,7 +3,6 @@ package acme.features.customer.bookingRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.BookingRecord;
@@ -22,16 +21,21 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
-		Integer bookingRecordId = super.getRequest().getData("id", int.class);
-		BookingRecord bookingRecord = this.customerBookingRecordRepository.getBookingRecordByBookingRecordId(bookingRecordId);
+		boolean pre = "POST".equalsIgnoreCase(super.getRequest().getMethod()) && super.getRequest().getPrincipal().hasRealmOfType(Customer.class) && super.getRequest().getData().containsKey("id");
 
-		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		if (pre) {
 
-		status = status && bookingRecord.getBooking().getCustomer().getId() == customerId;
+			int recordId = super.getRequest().getData("id", int.class);
+			BookingRecord br = this.customerBookingRecordRepository.getBookingRecordByBookingRecordId(recordId);
 
-		super.getResponse().setAuthorised(status);
+			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+			pre = br != null && br.getBooking().getCustomer().getId() == customerId;
+		}
+
+		super.getResponse().setAuthorised(pre);
+
 	}
 
 	@Override
@@ -63,9 +67,6 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-		Dataset dataset = super.unbindObject(bookingRecord, "booking", "passenger");
-
-		super.getResponse().addData(dataset);
 
 	}
 

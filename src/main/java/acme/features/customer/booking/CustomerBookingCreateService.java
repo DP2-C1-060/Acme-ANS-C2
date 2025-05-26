@@ -57,12 +57,10 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void validate(final Booking booking) {
-		Collection<Booking> bookings = this.customerBookingRepository.findBookingsByLocatorCode(booking.getLocatorCode());
-		boolean isUnique;
-		if (booking.getId() == 0)
-			isUnique = bookings.isEmpty();
-		else
-			isUnique = bookings.isEmpty() || bookings.stream().allMatch(b -> b.getId() == booking.getId());
+		Collection<Booking> duplicates = this.customerBookingRepository.findBookingsByLocatorCode(booking.getLocatorCode());
+
+		boolean isUnique = duplicates.isEmpty();
+
 		super.state(isUnique, "locatorCode", "customer.booking.form.error.locatorCode");
 
 	}
