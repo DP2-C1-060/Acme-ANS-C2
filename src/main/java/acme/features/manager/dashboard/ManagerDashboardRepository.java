@@ -26,6 +26,9 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("select avg(f.cost.amount) FROM Flight f WHERE f.manager.id = :managerId and f.draftMode = false and f.cost.currency = :currency")
 	double findAverageFlightCost(int managerId, String currency);
 
+	@Query("SELECT f.cost.amount, f.cost.currency FROM Flight f WHERE f.manager.id = ?1 AND f.draftMode = false")
+	List<Object[]> findAllFlightCosts(int managerId);
+
 	@Query("select stddev(f.cost.amount) FROM Flight f WHERE f.manager.id = :managerId and f.draftMode = false and f.cost.currency = :currency")
 	double findDeviationFlightCost(int managerId, String currency);
 
