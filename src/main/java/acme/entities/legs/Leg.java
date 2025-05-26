@@ -43,7 +43,7 @@ public class Leg extends AbstractEntity {
 
 	@Mandatory
 	@NotBlank
-	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$", min = 1)
 	@Column(unique = true)
 	private String				flightNumber;
 
