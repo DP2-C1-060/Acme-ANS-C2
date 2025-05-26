@@ -25,7 +25,16 @@ public class AuthenticatedManagerUpdateService extends AbstractGuiService<Authen
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Manager.class);
+		if (super.getRequest().getMethod().equals("GET"))
+			status = super.getRequest().getPrincipal().hasRealmOfType(Manager.class);
+		else {
+			int managerId;
+			Manager manager;
+			int id = super.getRequest().getPrincipal().getAccountId();
+			managerId = super.getRequest().getData("id", int.class);
+			manager = this.repository.findManagerById(managerId);
+			status = id == manager.getUserAccount().getId();
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -45,7 +54,7 @@ public class AuthenticatedManagerUpdateService extends AbstractGuiService<Authen
 	public void bind(final Manager manager) {
 		assert manager != null;
 
-		super.bindObject(manager, "identifier", "yearsOfExperience", "birthDate", "picture");
+		super.bindObject(manager, "identifier", "experience", "birthDate", "picture");
 	}
 
 	@Override
@@ -66,7 +75,7 @@ public class AuthenticatedManagerUpdateService extends AbstractGuiService<Authen
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(manager, "identifier", "yearsOfExperience", "birthDate", "picture");
+		dataset = super.unbindObject(manager, "identifier", "experience", "birthDate", "picture");
 		super.getResponse().addData(dataset);
 	}
 
