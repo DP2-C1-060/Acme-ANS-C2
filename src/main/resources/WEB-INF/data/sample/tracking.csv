@@ -29,7 +29,7 @@ tracking-26,2024/12/05 11:16,Se ha resuelto la reclamación,18,PENDING,"Lorem ip
 tracking-27,2024/12/05 11:17,Se ha resuelto la reclamación,19,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",true,claim-04
 tracking-28,2024/12/05 11:18,Se ha resuelto la reclamación,20,PENDING,โลเร็ม อิปซัม,true,claim-04
 tracking-29,2024/12/05 11:19,Se ha resuelto la reclamación,21,PENDING,لوريم إيبسوم,true,claim-04
-tracking-30,2024/12/05 11:20,Se ha resuelto la reclamación,22,PENDING,洛伦·伊普森,true,claim-04
+tracking-30,2024/12/05 11:20,Se ha resuelto la reclamación,22,PENDING,洛伦·伊普森,false,claim-04
 tracking-31,2024/12/05 11:21,Se ha resuelto la reclamación,23,PENDING,<marquee>Hacked</marquee>,true,claim-04
 tracking-32,2024/12/05 11:22,Se ha resuelto la reclamación,24,PENDING,<script>alert(‘Hacked!’);</script>,true,claim-04
 tracking-33,2024/12/05 11:23,Se ha resuelto la reclamación,25,PENDING,' or 'A' = 'A,true,claim-04

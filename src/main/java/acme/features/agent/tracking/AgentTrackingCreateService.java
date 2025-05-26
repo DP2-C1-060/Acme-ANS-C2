@@ -1,6 +1,10 @@
 
 package acme.features.agent.tracking;
 
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -34,6 +38,11 @@ public class AgentTrackingCreateService extends AbstractGuiService<Agent, Tracki
 		claim = this.repository.findClaimById(claimId);
 		status = claim != null && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
 
+		if (status) {
+			Collection<Tracking> trackings = this.repository.findTrackingsByClaimId(claimId);
+			Collection<Double> topTwoPercentages = trackings.stream().map(Tracking::getResolutionPercentage).sorted(Comparator.reverseOrder()).limit(2).collect(Collectors.toList());
+			status = topTwoPercentages.stream().filter(p -> p == 100.0).count() < 2;
+		}
 		super.getResponse().setAuthorised(status);
 	}
 
