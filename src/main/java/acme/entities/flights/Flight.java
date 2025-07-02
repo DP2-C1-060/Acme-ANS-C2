@@ -80,6 +80,18 @@ public class Flight extends AbstractEntity {
 	}
 
 	@Transient
+	public String getFlightSummary() {
+
+		var fmt = new java.text.SimpleDateFormat("yyyy/MM/dd HH:mm");
+		String from = this.getDepartureCity() != null ? this.getDepartureCity() : "—";
+		String to = this.getArrivalCity() != null ? this.getArrivalCity() : "—";
+		String depart = this.getScheduledDeparture() != null ? fmt.format(this.getScheduledDeparture()) : "—";
+		String arrive = this.getScheduledArrival() != null ? fmt.format(this.getScheduledArrival()) : "—";
+
+		return String.format("%s -> %s --- %s // %s", from, to, depart, arrive);
+	}
+
+	@Transient
 	public Date getScheduledArrival() {
 		Date result;
 		FlightRepository repository;
