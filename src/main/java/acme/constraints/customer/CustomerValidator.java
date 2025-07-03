@@ -71,7 +71,7 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 		// Verificar que no exista otro customer con el mismo identificador
 		Customer customerWithSameIdentifier = this.repository.findCustomerByIdentifier(identifier);
 		if (customerWithSameIdentifier != null && customerWithSameIdentifier.getId() != customer.getId()) {
-			super.state(context, false, "customerIdentifier", "{acme.validation.identifier.repeated.message}: " + identifier);
+			super.state(context, false, "customerIdentifier", "" + identifier);
 			return false;
 		}
 		return true;

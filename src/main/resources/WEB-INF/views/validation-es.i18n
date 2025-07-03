@@ -81,7 +81,7 @@ acme.validation.log.resolutionPercentage.exceptional = Una reclamación no puede
 acme.validation.log.resolutionPercentage.following = El porcentaje debe ser menor o igual al siguiente porcentaje más alto.
 
 acme.validation.past.message = La fecha de fundacion debe ser una fecha pasada.
-acme.validation.phone.message = El numero de telefono debe tener entre 6 y 15 digitos
+acme.validation.phone.message= El numero de telefono debe tener entre 6 y 15 digitos
 
 acme.validation.activityLogMoment.wrong.message = El momento de registro debe ser después de aterrizar.
 acme.validation.member.employeecode.message = El código de empleado debe ser seguir el patrón especificado.

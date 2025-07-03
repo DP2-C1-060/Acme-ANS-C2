@@ -31,7 +31,7 @@ acme.validation.log.resolutionPercentage.following = The percentage must be less
 acme.validation.constraints.NotNull.message = must not be null
 
 acme.validation.past.message = FoundationDate must be in the past.
-acme.validation.phone.message = Phone must have between 6 and 15 digits.
+acme.validation.phone.message= Phone must have between 6 and 15 digits.
 
 acme.validation.activityLogMoment.wrong.message = Registration moment must be after land.
 acme.validation.member.employeecode.message = Employee code is not like the pattern.

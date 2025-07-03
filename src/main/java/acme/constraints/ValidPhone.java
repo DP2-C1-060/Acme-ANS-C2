@@ -18,7 +18,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = ValidPhone.PhoneNumberValidatorImpl.class)
 public @interface ValidPhone {
 
-	String message() default "acme.validation.phone.message";
+	String message() default "6–15 dig";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 
