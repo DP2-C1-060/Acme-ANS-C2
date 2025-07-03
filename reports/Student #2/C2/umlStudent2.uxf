@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>540</y>
+      <w>666</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Booking
+--
++ locatorCode: String {Mandatory, ValidString(pattern = "^[A-Z0-9]{6,8}$"), Column(unique = true)}
++ purchaseMoment: Date {Mandatory, ValidMoment(past = true), Temporal(TemporalType.TIMESTAMP)}
++ travelClass: TravelClass {Mandatory, Valid, Automapped}
++ price: Money {Mandatory, ValidMoney(min = 0.01, max=1000000), Automapped}
++ lastNibble: String {Optional, ValidString(min = 4, max = 4, pattern = "[0-9]{4}"), Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1089</x>
+      <y>765</y>
+      <w>549</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Passenger
+--
++ fullName: String {Mandatory, ValidString(min = 1, max = 255), Automapped}
++ email: String {Mandatory, ValidEmail, Automapped}
++ passportNumber: String {Mandatory, Automapped}
++ dateOfBirth: Date {Mandatory, ValidMoment(past = true), Temporal(TemporalType.TIMESTAMP)}
++ specialNeeds: String {Optional, ValidString(min = 1, max = 50, Automapped)}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1233</x>
+      <y>387</y>
+      <w>306</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidPassportNumber
+--
++ identifier must match pattern pattern “^[A-Z0-9]{6,9}$”"
++ must be unique
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1107</x>
+      <y>585</y>
+      <w>144</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=*
+m2=1
+valid for</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>765</x>
+      <y>351</y>
+      <w>63</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=*
+m2=1
+paid by</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>819</y>
+      <w>279</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=*
+m2=1
+refers to</panel_attributes>
+    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>702</x>
+      <y>810</y>
+      <w>135</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+BookingRecord
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>18</x>
+      <y>531</y>
+      <w>405</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Recommendations
+--
++ amadeusId: String {Optional, ValidString(min = 1, max = 50), Column(unique = false)}
++ name: String {Mandatory, ValidString(min = 1, max = 255)}
++ category: RecommendationCategory {Optional, Enumerated(EnumType.STRING)}
++ bookingLink: String {Optional, ValidString(min = 0, max = 512)}
++ pictures: String {Optional, ValidString(min = 0, max = 5000), Lob}
++ rating: Double {Optional, ValidNumber(min = 0, max = 5)}
++ latitude: Double {Optional, ValidNumber(min = -90, max = 90)}
++ longitude: Double {Optional, ValidNumber(min = -180, max = 180)}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>261</x>
+      <y>765</y>
+      <w>135</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+TravelClass
+--
+ECONOMY
+BUSINESS
+bg=GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>468</x>
+      <y>216</y>
+      <w>576</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Customer: ValidCustomer
+--
++ identifier: String {Mandatory, ValidString(pattern = "^[A-Z]{2,3}\d{6}$"), Column(unique = true)}
++ customerPhoneNumber: String {Mandatory, ValidString(pattern = "^\\+?\d{6,15}$"), Automapped}
++ physicalAddress: String {Mandatory, ValidString(min = 1, max = 255), Automapped}
++ city: String {Mandatory, ValidString(min = 1, max = 50), Automapped}
++ country: String {Mandatory, ValidString(min = 1, max = 50), Automapped}
++ earnedPoints: Integer {Optional, Validnumber(min = 0, max = 500000), Automapped}
+bg=PINK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>765</x>
+      <y>666</y>
+      <w>81</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=*
+m2=1
+belongs to</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>45</x>
+      <y>729</y>
+      <w>162</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+RecommendationCategory
+--
+EXPERIENCE
+ACTIVITY
+RESTAURANT
+ACCOMMODATION
+OTHER
+
+bg=GRAY</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>54</x>
+      <y>216</y>
+      <w>279</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+CustomerDashboard
+--
++ lastFiveDestinations: List&lt;String&gt;
++ moneySpentLastYear: Money
++ economyBookings: Integer
++ businessBookings: Integer
++ bookingCostCount: Money
++ bookingCostAverage: Money
++ bookingCostMin: Money
++ bookingCostMax: Money
++ bookingCostStdDev: Money
++ bookingPassengersCount: Integer
++ bookingPassengersAverage: Double
++ bookingPassengersMin: Integer
++ bookingPassengersMax: Integer
++ bookingPassengersStdDev: Double
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1233</x>
+      <y>504</y>
+      <w>396</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Flight
+--
++ tag: String {Mandatory, ValidShortText, Automapped}
++ selfTransfer: boolean {Mandatory}
++ cost: Money {Mandatory, ValidMoney(min=0.01), Automapped}
++ description: String {Optional, ValidLongText, Automapped}
++ draftMode: boolean {Mandatory, Automapped}
+--
++ scheduledDeparture: Date {Transient}
++ scheduledArrival: Date {Transient}
++ originCity: String {Transient}
++ destinationCity: String {Transient}
++ layoverCount: int {Transient}
+
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1233</x>
+      <y>216</y>
+      <w>180</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidPhone
+--
++ Matches regex: ^\+?\d{6,15}$
+
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1233</x>
+      <y>297</y>
+      <w>306</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidCustomer
+--
++ identifier must match pattern "^[A-Z]{2,3}\\d{6}$"
++ Must be Users´s initials
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -9,7 +9,4 @@
 # they accept any liabilities with respect to them.
 
 - Juan Núñez Sánchez (juanunsan2@alum.us.es)
-- Javier Muñoz Romero (javmunrom@alum.us.es)
-- Nicolas Perez Gomez (nicpergom@alum.us.es)
-- Iván Frutos Raigon (ivafrurai@alum.us.es)
-- Sergio Manuel Conde Bajo (serconbaj@alum.us.es)
+
