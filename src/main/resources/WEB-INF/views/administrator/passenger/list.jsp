@@ -6,7 +6,7 @@
 <acme:list navigable="false">
     <acme:list-column code="customer.passenger.list.label.fullName" path="fullName" />
 	<acme:list-column code="customer.passenger.list.label.passportNumber" path="passportNumber" />
-	<acme:list-column code="customer.passenger.list.label.birthDate" path="dateOfBirth" />
-	<acme:list-column code="customer.passenger.list.label.isPublished" path="isPublished" />
+	<acme:list-column code="customer.passenger.list.label.birthDate" path="birthDate" />
+	<acme:list-column code="customer.passenger.list.label.published" path="isPublished" />
 
 </acme:list>

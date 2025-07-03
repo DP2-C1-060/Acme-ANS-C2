@@ -41,7 +41,7 @@ public class AdministratorPassengerListService extends AbstractGuiService<Admini
 
 		Dataset dataset;
 
-		dataset = super.unbindObject(passenger, "fullName", "passportNumber", "dateOfBirth", "isPublished");
+		dataset = super.unbindObject(passenger, "fullName", "passportNumber", "birthDate", "isPublished");
 
 		super.getResponse().addData(dataset);
 	}
