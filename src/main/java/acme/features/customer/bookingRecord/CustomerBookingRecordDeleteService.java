@@ -22,19 +22,16 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 	@Override
 	public void authorise() {
 
-		boolean pre = "POST".equalsIgnoreCase(super.getRequest().getMethod()) && super.getRequest().getPrincipal().hasRealmOfType(Customer.class) && super.getRequest().getData().containsKey("id");
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
-		if (pre) {
+		Integer bookingRecordId = super.getRequest().getData("id", int.class);
+		BookingRecord bookingRecord = this.customerBookingRecordRepository.getBookingRecordByBookingRecordId(bookingRecordId);
 
-			int recordId = super.getRequest().getData("id", int.class);
-			BookingRecord br = this.customerBookingRecordRepository.getBookingRecordByBookingRecordId(recordId);
+		Integer customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		status = status && bookingRecord.getBooking().getCustomer().getId() == customerId;
 
-			pre = br != null && br.getBooking().getCustomer().getId() == customerId;
-		}
-
-		super.getResponse().setAuthorised(pre);
+		super.getResponse().setAuthorised(status);
 
 	}
 
@@ -53,10 +50,6 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
-		//		Booking booking = this.customerBookingRecordRepository.getBookingFromBookingRecord(bookingRecord.getBooking().getId());
-		//		boolean status;
-		//		status = booking.getPublished();
-		//		super.state(!status, "*", "customer.booking.form.error.existingRecord");
 
 	}
 
