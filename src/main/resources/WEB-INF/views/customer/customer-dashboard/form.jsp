@@ -30,7 +30,7 @@
                         <acme:print value="${lastFiveDestinations}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="Sin Datos"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -45,7 +45,7 @@
                         <acme:print value="${spentMoneyLastYear}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -62,7 +62,7 @@
                         <acme:print value="${economyBookings}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -77,7 +77,7 @@
                         <acme:print value="${businessBookings}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -94,7 +94,7 @@
                         <acme:print value="${bookingCountCost}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -109,7 +109,7 @@
                         <acme:print value="${bookingAverageCost}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -124,7 +124,7 @@
                         <acme:print value="${bookingMinimumCost}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -139,7 +139,7 @@
                         <acme:print value="${bookingMaximumCost}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -154,7 +154,7 @@
                         <acme:print value="${bookingDeviationCost}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -171,7 +171,7 @@
                         <acme:print value="${bookingCountPassengers}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -186,7 +186,7 @@
                         <acme:print value="${bookingAveragePassengers}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -201,7 +201,7 @@
                         <acme:print value="${bookingMinimumPassengers}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -216,7 +216,7 @@
                         <acme:print value="${bookingMaximumPassengers}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -231,7 +231,7 @@
                         <acme:print value="${bookingDeviationPassengers}"/>
                     </jstl:when>
                     <jstl:otherwise>
-                        <acme:print value="N/A"/>
+                        <acme:print value="0"/>
                     </jstl:otherwise>
                 </jstl:choose>
             </td>
@@ -271,7 +271,7 @@
             data: data,
             options: {
                 responsive: true,
-                maintainAspectRatio: false, // Permite que el alto del contenedor determine el tamaño
+                maintainAspectRatio: false, 
                 title: {
                     display: true,
                     text: "Bookings Distribution"
@@ -285,7 +285,7 @@
             <h3>
                 <fmt:message key="client.dashboard.form.label.bookings.distribution"/>
             </h3>
-            <acme:print value="N/A"/>
+            <acme:print value="0"/>
         </jstl:otherwise>
     </jstl:choose>
         
